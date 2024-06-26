@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "ES2021",
+    "incremental": true,
+    "types": ["node"],
+    "typeRoots": ["./app/types", "./node_modules/@types"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "out",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "strictPropertyInitialization": false,
+    "lib": ["esnext.asynciterable", "es2018", "dom", "dom.iterable"]
+  },
+  "ts-node": {
+    "files": true
+  },
+  "exclude": [
+    "frontend"
+  ],
+  "extends": "@tsconfig/node18/tsconfig.json"
+}

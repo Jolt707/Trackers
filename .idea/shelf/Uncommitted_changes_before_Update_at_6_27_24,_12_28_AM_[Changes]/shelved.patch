@@ -1,0 +1,1885 @@
+Index: frontend/src/gql/index.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/gql/index.ts b/frontend/src/gql/index.ts
+new file mode 100644
+--- /dev/null	(date 1719400612305)
++++ b/frontend/src/gql/index.ts	(date 1719400612305)
+@@ -0,0 +1,2 @@
++export * from "./fragment-masking";
++export * from "./gql";
+\ No newline at end of file
+Index: .idea/prettier.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/prettier.xml b/.idea/prettier.xml
+new file mode 100644
+--- /dev/null	(date 1719398446139)
++++ b/.idea/prettier.xml	(date 1719398446139)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="PrettierConfiguration">
++    <option name="myConfigurationMode" value="AUTOMATIC" />
++    <option name="myRunOnSave" value="true" />
++  </component>
++</project>
+\ No newline at end of file
+Index: frontend/graphql.schema.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/graphql.schema.json b/frontend/graphql.schema.json
+new file mode 100644
+--- /dev/null	(date 1719400612305)
++++ b/frontend/graphql.schema.json	(date 1719400612305)
+@@ -0,0 +1,1501 @@
++{
++  "__schema": {
++    "queryType": {
++      "name": "Query"
++    },
++    "mutationType": {
++      "name": "Mutation"
++    },
++    "subscriptionType": null,
++    "types": [
++      {
++        "kind": "SCALAR",
++        "name": "Boolean",
++        "description": "The `Boolean` scalar type represents `true` or `false`.",
++        "isOneOf": null,
++        "fields": null,
++        "inputFields": null,
++        "interfaces": null,
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "SCALAR",
++        "name": "Int",
++        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
++        "isOneOf": null,
++        "fields": null,
++        "inputFields": null,
++        "interfaces": null,
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "INPUT_OBJECT",
++        "name": "LoginInput",
++        "description": null,
++        "isOneOf": false,
++        "fields": null,
++        "inputFields": [
++          {
++            "name": "password",
++            "description": null,
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "defaultValue": null,
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "username",
++            "description": null,
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "defaultValue": null,
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "interfaces": null,
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "LoginUser",
++        "description": null,
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "token",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "user",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "OBJECT",
++                "name": "User",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "Mutation",
++        "description": null,
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "login",
++            "description": null,
++            "args": [
++              {
++                "name": "input",
++                "description": null,
++                "type": {
++                  "kind": "NON_NULL",
++                  "name": null,
++                  "ofType": {
++                    "kind": "INPUT_OBJECT",
++                    "name": "LoginInput",
++                    "ofType": null
++                  }
++                },
++                "defaultValue": null,
++                "isDeprecated": false,
++                "deprecationReason": null
++              }
++            ],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "OBJECT",
++                "name": "LoginUser",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "register",
++            "description": null,
++            "args": [
++              {
++                "name": "input",
++                "description": null,
++                "type": {
++                  "kind": "NON_NULL",
++                  "name": null,
++                  "ofType": {
++                    "kind": "INPUT_OBJECT",
++                    "name": "UserInput",
++                    "ofType": null
++                  }
++                },
++                "defaultValue": null,
++                "isDeprecated": false,
++                "deprecationReason": null
++              }
++            ],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "OBJECT",
++                "name": "LoginUser",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "Query",
++        "description": null,
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "currentUser",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "OBJECT",
++                "name": "User",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "user",
++            "description": null,
++            "args": [
++              {
++                "name": "username",
++                "description": null,
++                "type": {
++                  "kind": "NON_NULL",
++                  "name": null,
++                  "ofType": {
++                    "kind": "SCALAR",
++                    "name": "String",
++                    "ofType": null
++                  }
++                },
++                "defaultValue": null,
++                "isDeprecated": false,
++                "deprecationReason": null
++              }
++            ],
++            "type": {
++              "kind": "OBJECT",
++              "name": "User",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "SCALAR",
++        "name": "String",
++        "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
++        "isOneOf": null,
++        "fields": null,
++        "inputFields": null,
++        "interfaces": null,
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "User",
++        "description": null,
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "admin",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "Boolean",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "avatar",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "createdAt",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "email",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "id",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "Int",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "password",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "updatedAt",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "username",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "INPUT_OBJECT",
++        "name": "UserInput",
++        "description": null,
++        "isOneOf": false,
++        "fields": null,
++        "inputFields": [
++          {
++            "name": "email",
++            "description": null,
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "defaultValue": null,
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "password",
++            "description": null,
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "defaultValue": null,
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "username",
++            "description": null,
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "defaultValue": null,
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "interfaces": null,
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "__Directive",
++        "description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "name",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "description",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "isRepeatable",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "Boolean",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "locations",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "LIST",
++                "name": null,
++                "ofType": {
++                  "kind": "NON_NULL",
++                  "name": null,
++                  "ofType": {
++                    "kind": "ENUM",
++                    "name": "__DirectiveLocation",
++                    "ofType": null
++                  }
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "args",
++            "description": null,
++            "args": [
++              {
++                "name": "includeDeprecated",
++                "description": null,
++                "type": {
++                  "kind": "SCALAR",
++                  "name": "Boolean",
++                  "ofType": null
++                },
++                "defaultValue": "false",
++                "isDeprecated": false,
++                "deprecationReason": null
++              }
++            ],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "LIST",
++                "name": null,
++                "ofType": {
++                  "kind": "NON_NULL",
++                  "name": null,
++                  "ofType": {
++                    "kind": "OBJECT",
++                    "name": "__InputValue",
++                    "ofType": null
++                  }
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "ENUM",
++        "name": "__DirectiveLocation",
++        "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
++        "isOneOf": null,
++        "fields": null,
++        "inputFields": null,
++        "interfaces": null,
++        "enumValues": [
++          {
++            "name": "QUERY",
++            "description": "Location adjacent to a query operation.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "MUTATION",
++            "description": "Location adjacent to a mutation operation.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "SUBSCRIPTION",
++            "description": "Location adjacent to a subscription operation.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "FIELD",
++            "description": "Location adjacent to a field.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "FRAGMENT_DEFINITION",
++            "description": "Location adjacent to a fragment definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "FRAGMENT_SPREAD",
++            "description": "Location adjacent to a fragment spread.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "INLINE_FRAGMENT",
++            "description": "Location adjacent to an inline fragment.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "VARIABLE_DEFINITION",
++            "description": "Location adjacent to a variable definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "SCHEMA",
++            "description": "Location adjacent to a schema definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "SCALAR",
++            "description": "Location adjacent to a scalar definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "OBJECT",
++            "description": "Location adjacent to an object type definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "FIELD_DEFINITION",
++            "description": "Location adjacent to a field definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "ARGUMENT_DEFINITION",
++            "description": "Location adjacent to an argument definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "INTERFACE",
++            "description": "Location adjacent to an interface definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "UNION",
++            "description": "Location adjacent to a union definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "ENUM",
++            "description": "Location adjacent to an enum definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "ENUM_VALUE",
++            "description": "Location adjacent to an enum value definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "INPUT_OBJECT",
++            "description": "Location adjacent to an input object type definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "INPUT_FIELD_DEFINITION",
++            "description": "Location adjacent to an input object field definition.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "__EnumValue",
++        "description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "name",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "description",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "isDeprecated",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "Boolean",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "deprecationReason",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "__Field",
++        "description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "name",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "description",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "args",
++            "description": null,
++            "args": [
++              {
++                "name": "includeDeprecated",
++                "description": null,
++                "type": {
++                  "kind": "SCALAR",
++                  "name": "Boolean",
++                  "ofType": null
++                },
++                "defaultValue": "false",
++                "isDeprecated": false,
++                "deprecationReason": null
++              }
++            ],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "LIST",
++                "name": null,
++                "ofType": {
++                  "kind": "NON_NULL",
++                  "name": null,
++                  "ofType": {
++                    "kind": "OBJECT",
++                    "name": "__InputValue",
++                    "ofType": null
++                  }
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "type",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "OBJECT",
++                "name": "__Type",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "isDeprecated",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "Boolean",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "deprecationReason",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "__InputValue",
++        "description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "name",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "description",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "type",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "OBJECT",
++                "name": "__Type",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "defaultValue",
++            "description": "A GraphQL-formatted string representing the default value for this input value.",
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "isDeprecated",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "Boolean",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "deprecationReason",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "__Schema",
++        "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "description",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "types",
++            "description": "A list of all types supported by this server.",
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "LIST",
++                "name": null,
++                "ofType": {
++                  "kind": "NON_NULL",
++                  "name": null,
++                  "ofType": {
++                    "kind": "OBJECT",
++                    "name": "__Type",
++                    "ofType": null
++                  }
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "queryType",
++            "description": "The type that query operations will be rooted at.",
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "OBJECT",
++                "name": "__Type",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "mutationType",
++            "description": "If this server supports mutation, the type that mutation operations will be rooted at.",
++            "args": [],
++            "type": {
++              "kind": "OBJECT",
++              "name": "__Type",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "subscriptionType",
++            "description": "If this server support subscription, the type that subscription operations will be rooted at.",
++            "args": [],
++            "type": {
++              "kind": "OBJECT",
++              "name": "__Type",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "directives",
++            "description": "A list of all directives supported by this server.",
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "LIST",
++                "name": null,
++                "ofType": {
++                  "kind": "NON_NULL",
++                  "name": null,
++                  "ofType": {
++                    "kind": "OBJECT",
++                    "name": "__Directive",
++                    "ofType": null
++                  }
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "OBJECT",
++        "name": "__Type",
++        "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByURL`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
++        "isOneOf": null,
++        "fields": [
++          {
++            "name": "kind",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "ENUM",
++                "name": "__TypeKind",
++                "ofType": null
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "name",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "description",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "specifiedByURL",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "fields",
++            "description": null,
++            "args": [
++              {
++                "name": "includeDeprecated",
++                "description": null,
++                "type": {
++                  "kind": "SCALAR",
++                  "name": "Boolean",
++                  "ofType": null
++                },
++                "defaultValue": "false",
++                "isDeprecated": false,
++                "deprecationReason": null
++              }
++            ],
++            "type": {
++              "kind": "LIST",
++              "name": null,
++              "ofType": {
++                "kind": "NON_NULL",
++                "name": null,
++                "ofType": {
++                  "kind": "OBJECT",
++                  "name": "__Field",
++                  "ofType": null
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "interfaces",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "LIST",
++              "name": null,
++              "ofType": {
++                "kind": "NON_NULL",
++                "name": null,
++                "ofType": {
++                  "kind": "OBJECT",
++                  "name": "__Type",
++                  "ofType": null
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "possibleTypes",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "LIST",
++              "name": null,
++              "ofType": {
++                "kind": "NON_NULL",
++                "name": null,
++                "ofType": {
++                  "kind": "OBJECT",
++                  "name": "__Type",
++                  "ofType": null
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "enumValues",
++            "description": null,
++            "args": [
++              {
++                "name": "includeDeprecated",
++                "description": null,
++                "type": {
++                  "kind": "SCALAR",
++                  "name": "Boolean",
++                  "ofType": null
++                },
++                "defaultValue": "false",
++                "isDeprecated": false,
++                "deprecationReason": null
++              }
++            ],
++            "type": {
++              "kind": "LIST",
++              "name": null,
++              "ofType": {
++                "kind": "NON_NULL",
++                "name": null,
++                "ofType": {
++                  "kind": "OBJECT",
++                  "name": "__EnumValue",
++                  "ofType": null
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "inputFields",
++            "description": null,
++            "args": [
++              {
++                "name": "includeDeprecated",
++                "description": null,
++                "type": {
++                  "kind": "SCALAR",
++                  "name": "Boolean",
++                  "ofType": null
++                },
++                "defaultValue": "false",
++                "isDeprecated": false,
++                "deprecationReason": null
++              }
++            ],
++            "type": {
++              "kind": "LIST",
++              "name": null,
++              "ofType": {
++                "kind": "NON_NULL",
++                "name": null,
++                "ofType": {
++                  "kind": "OBJECT",
++                  "name": "__InputValue",
++                  "ofType": null
++                }
++              }
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "ofType",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "OBJECT",
++              "name": "__Type",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "isOneOf",
++            "description": null,
++            "args": [],
++            "type": {
++              "kind": "SCALAR",
++              "name": "Boolean",
++              "ofType": null
++            },
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "inputFields": null,
++        "interfaces": [],
++        "enumValues": null,
++        "possibleTypes": null
++      },
++      {
++        "kind": "ENUM",
++        "name": "__TypeKind",
++        "description": "An enum describing what kind of type a given `__Type` is.",
++        "isOneOf": null,
++        "fields": null,
++        "inputFields": null,
++        "interfaces": null,
++        "enumValues": [
++          {
++            "name": "SCALAR",
++            "description": "Indicates this type is a scalar.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "OBJECT",
++            "description": "Indicates this type is an object. `fields` and `interfaces` are valid fields.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "INTERFACE",
++            "description": "Indicates this type is an interface. `fields`, `interfaces`, and `possibleTypes` are valid fields.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "UNION",
++            "description": "Indicates this type is a union. `possibleTypes` is a valid field.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "ENUM",
++            "description": "Indicates this type is an enum. `enumValues` is a valid field.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "INPUT_OBJECT",
++            "description": "Indicates this type is an input object. `inputFields` is a valid field.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "LIST",
++            "description": "Indicates this type is a list. `ofType` is a valid field.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          },
++          {
++            "name": "NON_NULL",
++            "description": "Indicates this type is a non-null. `ofType` is a valid field.",
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ],
++        "possibleTypes": null
++      }
++    ],
++    "directives": [
++      {
++        "name": "deprecated",
++        "description": "Marks an element of a GraphQL schema as no longer supported.",
++        "isRepeatable": false,
++        "locations": [
++          "ARGUMENT_DEFINITION",
++          "ENUM_VALUE",
++          "FIELD_DEFINITION",
++          "INPUT_FIELD_DEFINITION"
++        ],
++        "args": [
++          {
++            "name": "reason",
++            "description": "Explains why this element was deprecated, usually also including a suggestion for how to access supported similar data. Formatted using the Markdown syntax, as specified by [CommonMark](https://commonmark.org/).",
++            "type": {
++              "kind": "SCALAR",
++              "name": "String",
++              "ofType": null
++            },
++            "defaultValue": "\"No longer supported\"",
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ]
++      },
++      {
++        "name": "include",
++        "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
++        "isRepeatable": false,
++        "locations": [
++          "FIELD",
++          "FRAGMENT_SPREAD",
++          "INLINE_FRAGMENT"
++        ],
++        "args": [
++          {
++            "name": "if",
++            "description": "Included when true.",
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "Boolean",
++                "ofType": null
++              }
++            },
++            "defaultValue": null,
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ]
++      },
++      {
++        "name": "skip",
++        "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
++        "isRepeatable": false,
++        "locations": [
++          "FIELD",
++          "FRAGMENT_SPREAD",
++          "INLINE_FRAGMENT"
++        ],
++        "args": [
++          {
++            "name": "if",
++            "description": "Skipped when true.",
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "Boolean",
++                "ofType": null
++              }
++            },
++            "defaultValue": null,
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ]
++      },
++      {
++        "name": "specifiedBy",
++        "description": "Exposes a URL that specifies the behaviour of this scalar.",
++        "isRepeatable": false,
++        "locations": [
++          "SCALAR"
++        ],
++        "args": [
++          {
++            "name": "url",
++            "description": "The URL that specifies the behaviour of this scalar.",
++            "type": {
++              "kind": "NON_NULL",
++              "name": null,
++              "ofType": {
++                "kind": "SCALAR",
++                "name": "String",
++                "ofType": null
++              }
++            },
++            "defaultValue": null,
++            "isDeprecated": false,
++            "deprecationReason": null
++          }
++        ]
++      }
++    ]
++  }
++}
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1719384441665)
++++ b/.idea/.gitignore	(date 1719384441665)
+@@ -0,0 +1,5 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Editor-based HTTP Client requests
++/httpRequests/
+Index: frontend/src/gql/gql.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/gql/gql.ts b/frontend/src/gql/gql.ts
+new file mode 100644
+--- /dev/null	(date 1719400612305)
++++ b/frontend/src/gql/gql.ts	(date 1719400612305)
+@@ -0,0 +1,52 @@
++/* eslint-disable */
++import * as types from './graphql';
++import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
++
++/**
++ * Map of all GraphQL operations in the project.
++ *
++ * This map has several performance disadvantages:
++ * 1. It is not tree-shakeable, so it will include all operations in the project.
++ * 2. It is not minifiable, so the string of a GraphQL query will be multiple times inside the bundle.
++ * 3. It does not support dead code elimination, so it will add unused operations.
++ *
++ * Therefore it is highly recommended to use the babel or swc plugin for production.
++ */
++const documents = {
++    "mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}": types.LoginDocument,
++    "mutation Register($input: UserInput!) {\n  register(input: $input) {\n    token\n    user {\n    username\n    }\n  }\n}": types.RegisterDocument,
++    "\n    query CurrentUser {\n  currentUser {\n    id\n    username\n    password\n    avatar\n    createdAt\n    updatedAt\n    admin\n    email\n  }\n}": types.CurrentUserDocument,
++};
++
++/**
++ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
++ *
++ *
++ * @example
++ * ```ts
++ * const query = graphql(`query GetUser($id: ID!) { user(id: $id) { name } }`);
++ * ```
++ *
++ * The query argument is unknown!
++ * Please regenerate the types.
++ */
++export function graphql(source: string): unknown;
++
++/**
++ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
++ */
++export function graphql(source: "mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}"): (typeof documents)["mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}"];
++/**
++ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
++ */
++export function graphql(source: "mutation Register($input: UserInput!) {\n  register(input: $input) {\n    token\n    user {\n    username\n    }\n  }\n}"): (typeof documents)["mutation Register($input: UserInput!) {\n  register(input: $input) {\n    token\n    user {\n    username\n    }\n  }\n}"];
++/**
++ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
++ */
++export function graphql(source: "\n    query CurrentUser {\n  currentUser {\n    id\n    username\n    password\n    avatar\n    createdAt\n    updatedAt\n    admin\n    email\n  }\n}"): (typeof documents)["\n    query CurrentUser {\n  currentUser {\n    id\n    username\n    password\n    avatar\n    createdAt\n    updatedAt\n    admin\n    email\n  }\n}"];
++
++export function graphql(source: string) {
++  return (documents as any)[source] ?? {};
++}
++
++export type DocumentType<TDocumentNode extends DocumentNode<any, any>> = TDocumentNode extends DocumentNode<  infer TType,  any>  ? TType  : never;
+\ No newline at end of file
+Index: frontend/src/gql/fragment-masking.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/gql/fragment-masking.ts b/frontend/src/gql/fragment-masking.ts
+new file mode 100644
+--- /dev/null	(date 1719400612305)
++++ b/frontend/src/gql/fragment-masking.ts	(date 1719400612305)
+@@ -0,0 +1,87 @@
++/* eslint-disable */
++import type { ResultOf, DocumentTypeDecoration, TypedDocumentNode } from '@graphql-typed-document-node/core';
++import type { FragmentDefinitionNode } from 'graphql';
++import type { Incremental } from './graphql';
++
++
++export type FragmentType<TDocumentType extends DocumentTypeDecoration<any, any>> = TDocumentType extends DocumentTypeDecoration<
++  infer TType,
++  any
++>
++  ? [TType] extends [{ ' $fragmentName'?: infer TKey }]
++    ? TKey extends string
++      ? { ' $fragmentRefs'?: { [key in TKey]: TType } }
++      : never
++    : never
++  : never;
++
++// return non-nullable if `fragmentType` is non-nullable
++export function useFragment<TType>(
++  _documentNode: DocumentTypeDecoration<TType, any>,
++  fragmentType: FragmentType<DocumentTypeDecoration<TType, any>>
++): TType;
++// return nullable if `fragmentType` is undefined
++export function useFragment<TType>(
++  _documentNode: DocumentTypeDecoration<TType, any>,
++  fragmentType: FragmentType<DocumentTypeDecoration<TType, any>> | undefined
++): TType | undefined;
++// return nullable if `fragmentType` is nullable
++export function useFragment<TType>(
++  _documentNode: DocumentTypeDecoration<TType, any>,
++  fragmentType: FragmentType<DocumentTypeDecoration<TType, any>> | null
++): TType | null;
++// return nullable if `fragmentType` is nullable or undefined
++export function useFragment<TType>(
++  _documentNode: DocumentTypeDecoration<TType, any>,
++  fragmentType: FragmentType<DocumentTypeDecoration<TType, any>> | null | undefined
++): TType | null | undefined;
++// return array of non-nullable if `fragmentType` is array of non-nullable
++export function useFragment<TType>(
++  _documentNode: DocumentTypeDecoration<TType, any>,
++  fragmentType: Array<FragmentType<DocumentTypeDecoration<TType, any>>>
++): Array<TType>;
++// return array of nullable if `fragmentType` is array of nullable
++export function useFragment<TType>(
++  _documentNode: DocumentTypeDecoration<TType, any>,
++  fragmentType: Array<FragmentType<DocumentTypeDecoration<TType, any>>> | null | undefined
++): Array<TType> | null | undefined;
++// return readonly array of non-nullable if `fragmentType` is array of non-nullable
++export function useFragment<TType>(
++  _documentNode: DocumentTypeDecoration<TType, any>,
++  fragmentType: ReadonlyArray<FragmentType<DocumentTypeDecoration<TType, any>>>
++): ReadonlyArray<TType>;
++// return readonly array of nullable if `fragmentType` is array of nullable
++export function useFragment<TType>(
++  _documentNode: DocumentTypeDecoration<TType, any>,
++  fragmentType: ReadonlyArray<FragmentType<DocumentTypeDecoration<TType, any>>> | null | undefined
++): ReadonlyArray<TType> | null | undefined;
++export function useFragment<TType>(
++  _documentNode: DocumentTypeDecoration<TType, any>,
++  fragmentType: FragmentType<DocumentTypeDecoration<TType, any>> | Array<FragmentType<DocumentTypeDecoration<TType, any>>> | ReadonlyArray<FragmentType<DocumentTypeDecoration<TType, any>>> | null | undefined
++): TType | Array<TType> | ReadonlyArray<TType> | null | undefined {
++  return fragmentType as any;
++}
++
++
++export function makeFragmentData<
++  F extends DocumentTypeDecoration<any, any>,
++  FT extends ResultOf<F>
++>(data: FT, _fragment: F): FragmentType<F> {
++  return data as FragmentType<F>;
++}
++export function isFragmentReady<TQuery, TFrag>(
++  queryNode: DocumentTypeDecoration<TQuery, any>,
++  fragmentNode: TypedDocumentNode<TFrag>,
++  data: FragmentType<TypedDocumentNode<Incremental<TFrag>, any>> | null | undefined
++): data is FragmentType<typeof fragmentNode> {
++  const deferredFields = (queryNode as { __meta__?: { deferredFields: Record<string, (keyof TFrag)[]> } }).__meta__
++    ?.deferredFields;
++
++  if (!deferredFields) return true;
++
++  const fragDef = fragmentNode.definitions[0] as FragmentDefinitionNode | undefined;
++  const fragName = fragDef?.name?.value;
++
++  const fields = (fragName && deferredFields[fragName]) || [];
++  return fields.length > 0 && fields.every(field => data && field in data);
++}
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1719384655033)
++++ b/.idea/modules.xml	(date 1719384655033)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/Trackers.iml" filepath="$PROJECT_DIR$/.idea/Trackers.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: frontend/src/gql/graphql.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/gql/graphql.ts b/frontend/src/gql/graphql.ts
+new file mode 100644
+--- /dev/null	(date 1719400612305)
++++ b/frontend/src/gql/graphql.ts	(date 1719400612305)
+@@ -0,0 +1,97 @@
++/* eslint-disable */
++import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
++export type Maybe<T> = T | null;
++export type InputMaybe<T> = Maybe<T>;
++export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
++export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
++export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
++export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
++export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
++/** All built-in and custom scalars, mapped to their actual values */
++export type Scalars = {
++  ID: { input: string; output: string; }
++  String: { input: string; output: string; }
++  Boolean: { input: boolean; output: boolean; }
++  Int: { input: number; output: number; }
++  Float: { input: number; output: number; }
++};
++
++export type LoginInput = {
++  password: Scalars['String']['input'];
++  username: Scalars['String']['input'];
++};
++
++export type LoginUser = {
++  __typename?: 'LoginUser';
++  token: Scalars['String']['output'];
++  user: User;
++};
++
++export type Mutation = {
++  __typename?: 'Mutation';
++  login: LoginUser;
++  register: LoginUser;
++};
++
++
++export type MutationLoginArgs = {
++  input: LoginInput;
++};
++
++
++export type MutationRegisterArgs = {
++  input: UserInput;
++};
++
++export type Query = {
++  __typename?: 'Query';
++  currentUser: User;
++  user?: Maybe<User>;
++};
++
++
++export type QueryUserArgs = {
++  username: Scalars['String']['input'];
++};
++
++export type User = {
++  __typename?: 'User';
++  admin: Scalars['Boolean']['output'];
++  avatar?: Maybe<Scalars['String']['output']>;
++  createdAt: Scalars['String']['output'];
++  email: Scalars['String']['output'];
++  id: Scalars['Int']['output'];
++  password: Scalars['String']['output'];
++  updatedAt: Scalars['String']['output'];
++  username: Scalars['String']['output'];
++};
++
++export type UserInput = {
++  email: Scalars['String']['input'];
++  password: Scalars['String']['input'];
++  username: Scalars['String']['input'];
++};
++
++export type LoginMutationVariables = Exact<{
++  input: LoginInput;
++}>;
++
++
++export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'LoginUser', token: string, user: { __typename?: 'User', username: string } } };
++
++export type RegisterMutationVariables = Exact<{
++  input: UserInput;
++}>;
++
++
++export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'LoginUser', token: string, user: { __typename?: 'User', username: string } } };
++
++export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
++
++
++export type CurrentUserQuery = { __typename?: 'Query', currentUser: { __typename?: 'User', id: number, username: string, password: string, avatar?: string | null, createdAt: string, updatedAt: string, admin: boolean, email: string } };
++
++
++export const LoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Login"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"LoginInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"login"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"username"}}]}}]}}]}}]} as unknown as DocumentNode<LoginMutation, LoginMutationVariables>;
++export const RegisterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Register"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"register"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"username"}}]}}]}}]}}]} as unknown as DocumentNode<RegisterMutation, RegisterMutationVariables>;
++export const CurrentUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CurrentUser"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"currentUser"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"username"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"admin"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<CurrentUserQuery, CurrentUserQueryVariables>;
+\ No newline at end of file
+Index: .idea/Trackers.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/Trackers.iml b/.idea/Trackers.iml
+new file mode 100644
+--- /dev/null	(date 1719384655030)
++++ b/.idea/Trackers.iml	(date 1719384655030)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="WEB_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
++      <excludeFolder url="file://$MODULE_DIR$/temp" />
++      <excludeFolder url="file://$MODULE_DIR$/tmp" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1719390817978)
++++ b/.idea/vcs.xml	(date 1719390817978)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file

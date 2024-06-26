@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["app/**/*.ts"],
+  "filesGlob": ["app/lib/*.mmdb"],
+  "exclude": ["**/*.spec.ts", "test/*"],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true
+  }
+}
