@@ -1,6 +1,6 @@
 <template>
   <template v-if="!userStore.user">
-    <h1>Logged out Home</h1>
+    <v-card-title class="d-flex justify-center text-lg-h3">Trackers</v-card-title>
   </template>
   <template v-else>
     <h1>Logged in {{ userStore.user.username }}</h1>
