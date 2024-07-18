@@ -4,7 +4,58 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="" />
+    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Created Login and Register pages">
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_27_24__12_28_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_27_24__12_28_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_27_24__12_38_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_27_24__12_38_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/app/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/app/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/authChecker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/authChecker.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/config/config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/db.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/db.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/src/components/__tests__/HelloWorld.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/src/components/__tests__/HelloWorld.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/src/main.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/src/router/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/src/stores/counter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/src/stores/counter.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/vite.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/vite.config.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/vitest.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/frontend/vitest.config.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/graphql/server/context.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/graphql/server/context.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/graphql/user/createUser.input.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/graphql/user/createUser.input.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/graphql/user/loginUser.input.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/graphql/user/loginUser.input.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/graphql/user/loginUser.output.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/graphql/user/loginUser.output.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/models/session.model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/models/session.model.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/models/user.model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/models/user.model.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/resolvers/auth.resolver.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/resolvers/auth.resolver.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/resolvers/user.resolver.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/resolvers/user.resolver.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/server.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/tsconfig.tsbuildinfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/yarn-error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +69,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -32,6 +88,12 @@
     &quot;accountId&quot;: &quot;11dfc37a-8bcd-4f5c-b8b2-e6edc81f14e2&quot;
   }
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -45,16 +107,20 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "something",
     "last_opened_file_path": "/home/jolt707/WebstormProjects/Trackers/frontend/src/views",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.serve.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/home/jolt707/WebstormProjects/Trackers/frontend/node_modules/prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/home/jolt707/WebstormProjects/Trackers/node_modules/typescript/lib",
+    "ts.external.directory.path": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -76,12 +142,22 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
-      </set>
-    </attachedChunks>
+  <component name="RunManager">
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.serve" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -95,6 +171,8 @@
       <workItem from="1719384753643" duration="5326000" />
       <workItem from="1719390749513" duration="14200000" />
       <workItem from="1719411425840" duration="806000" />
+      <workItem from="1721101792722" duration="83000" />
+      <workItem from="1721266023341" duration="3705000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, navbar, sidebar and pages">
       <option name="closed" value="true" />
@@ -122,7 +200,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added login, register, navbar, sidebar and pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added login, register, navbar, sidebar and pages" />
+    <MESSAGE value="Created Login and Register pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Login and Register pages" />
   </component>
 </project>
