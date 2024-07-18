@@ -13,14 +13,13 @@
         Trackers
       </v-app-bar-title>
     </router-link>
-    <div
+    <div v-if="userStore.user"
       class="d-flex justify-center align-center"
       style="margin-left: 90px; width: 200px"
     >
       <v-text-field
         variant="outlined"
         density="compact"
-        single-line
         style="height: 40px"
         prepend-inner-icon="mdi-magnify"
         placeholder="Search Everything"

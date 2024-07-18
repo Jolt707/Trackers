@@ -5,9 +5,10 @@
         {{ props.title }} to
         <span style="color: #ffd707">Trackers</span>
       </v-card-title>
-      <v-text-field label="Username" v-model="username"></v-text-field>
+      <v-text-field label="Username" v-model="username" @keydown.enter="$emit('auth')"></v-text-field>
       <slot name="inputs" />
       <v-text-field
+          @keydown.enter="$emit('auth')"
         label="Password"
         v-model="password"
         type="password"
