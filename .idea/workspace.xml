@@ -4,57 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Created Login and Register pages">
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_27_24__12_28_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_27_24__12_28_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_27_24__12_38_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_27_24__12_38_AM__Changes_.xml" afterDir="false" />
+    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Did the thing">
+      <change afterPath="$PROJECT_DIR$/app/graphql/task/permissions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/task.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/graphql/task/permissions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/graphql/task/permissions.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/models/task.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/models/task.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/app/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/app/index.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/authChecker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/authChecker.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/config/config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/db.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/db.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/src/components/__tests__/HelloWorld.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/src/components/__tests__/HelloWorld.spec.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/src/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/src/main.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/src/router/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/src/router/index.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/src/stores/counter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/src/stores/counter.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/vite.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/vite.config.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/vitest.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/frontend/vitest.config.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/server/context.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/server/context.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/user/createUser.input.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/user/createUser.input.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/user/loginUser.input.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/user/loginUser.input.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/user/loginUser.output.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/user/loginUser.output.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/models/session.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/models/session.model.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/models/user.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/models/user.model.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/resolvers/auth.resolver.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/resolvers/auth.resolver.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/resolvers/user.resolver.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/resolvers/user.resolver.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/server.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/tsconfig.tsbuildinfo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/yarn-error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/auth/register.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/auth/register.graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Tasks.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Tasks.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/models/user.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/out/models/user.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +83,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.serve.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "/home/jolt707/WebstormProjects/Trackers/frontend/node_modules/prettier",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\frontend\\node_modules\\prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
     "ts.external.directory.path": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
@@ -203,6 +168,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added login, register, navbar, sidebar and pages" />
     <MESSAGE value="Created Login and Register pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Login and Register pages" />
+    <MESSAGE value="Did the thing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Did the thing" />
   </component>
 </project>
