@@ -1,6 +1,8 @@
 <template>
-  <h1>Tasks</h1>
-  <TaskList></TaskList>
+  <VContainer>
+    <h1>Tasks</h1>
+    <TaskList></TaskList>
+  </VContainer>
 </template>
 
 <style scoped></style>

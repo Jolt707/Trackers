@@ -2,7 +2,7 @@
   <VDialog v-model="model" width="800">
     <VCard>
       <VToolbar color="#323232">
-        <VCardTitle>Create Task</VCardTitle>
+        <VCardTitle><slot name="title" /></VCardTitle>
       </VToolbar>
       <VContainer>
         <VTextField
@@ -21,20 +21,17 @@
           style="margin-top: -2px"
         ></VTextField>
         <VDateInput
+          prepend-icon=""
+          append-icon="mdi-calendar"
           label="Due Date"
           v-model="dueDate"
-          style="margin-top: -2px"
         ></VDateInput>
-        <VTextField
-          label="Priority"
-          v-model="priority"
-          style="margin-top: -2px"
-        ></VTextField>
+        <VNumberInput label="Priority" v-model="priority"></VNumberInput>
       </VContainer>
       <VCardActions>
         <VSpacer />
         <VBtn @click="$emit('taskAdd')" color="#ffd707" class="mr-3">
-          Continue
+          <slot name="button" />
         </VBtn>
         <VBtn @click="model = false">Cancel</VBtn>
       </VCardActions>

@@ -8,15 +8,43 @@
       v-model:notes="taskDetails.notes"
       v-model:dueDate="taskDetails.dueDate"
       v-model:priority="taskDetails.priority"
-    ></TaskDialog>
+    >
+      <template v-if="!editingId" #title>Create Task</template>
+      <template v-if="editingId" #title>Editing Task</template>
+      <template v-if="!editingId" #button>continue</template>
+      <template v-if="editingId" #button>confirm</template>
+    </TaskDialog>
     Task List
     <VSpacer />
-    <VIcon @click="addDialog = true">mdi-plus</VIcon>
+    <VIcon
+      @click="
+        addDialog = true;
+        editingId = undefined;
+      "
+    >
+      mdi-plus
+    </VIcon>
   </VToolbar>
 
   <VExpansionPanels>
     <VExpansionPanel v-for="task in tasks" :key="task.id">
-      <VExpansionPanelTitle>{{ task.title }}</VExpansionPanelTitle>
+      <VExpansionPanelTitle>
+        {{ task.title }}
+        <VSpacer />
+        <VIcon
+          @click.stop="
+            editingId = task.id;
+            addDialog = true;
+            taskDetails.title = task.title;
+            taskDetails.description = task.description;
+            taskDetails.notes = task.notes;
+            taskDetails.dueDate = new Date(task.dueDate);
+            taskDetails.priority = task.priority;
+          "
+        >
+          mdi-pen
+        </VIcon>
+      </VExpansionPanelTitle>
       <VExpansionPanelText>
         {{ task.dueDate }}
       </VExpansionPanelText>
@@ -35,12 +63,14 @@ import { Task } from "@/gql/graphql.ts";
 
 const addDialog = ref(false);
 
+const editingId = ref<number | undefined>(undefined);
+
 const taskDetails = ref({
   title: "",
   description: "",
-  notes: "",
-  dueDate: new Date(),
-  priority: ""
+  notes: "" as string | null | undefined,
+  dueDate: new Date() as Date | undefined,
+  priority: 0 as number | undefined
 });
 
 const tasks = ref<Task[]>([]);
@@ -51,8 +81,7 @@ async function createTask() {
     mutation: CREATE_TASK_QUERY,
     variables: {
       input: {
-        ...taskDetails.value,
-        priority: parseInt(taskDetails.value.priority)
+        ...taskDetails.value
       }
     }
   });
