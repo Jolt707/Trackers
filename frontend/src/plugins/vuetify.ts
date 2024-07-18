@@ -13,6 +13,7 @@ import "vuetify/lib/styles/main.sass";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
+import { VDateInput } from "vuetify/labs/components";
 
 export class DefaultThemes {
   themes: any;
@@ -107,7 +108,10 @@ export class DefaultThemes {
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
-  components,
+  components: {
+    ...components,
+    VDateInput
+  },
   directives,
   display: {
     thresholds: {

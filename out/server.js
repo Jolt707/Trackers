@@ -18,6 +18,7 @@ const node_http_1 = require("node:http");
 const db_1 = __importDefault(require("./db"));
 const auth_resolver_1 = require("./resolvers/auth.resolver");
 const authChecker_1 = require("./authChecker");
+const task_resolver_1 = require("./resolvers/task.resolver");
 let Server = class Server {
     constructor() {
         this.ErrorInterceptor = async ({ context, info }, next) => {
@@ -33,7 +34,7 @@ let Server = class Server {
         db_1.default;
         // Create a Yoga instance with a GraphQL schema.
         const schema = await (0, type_graphql_1.buildSchema)({
-            resolvers: [user_resolver_1.UserResolver, auth_resolver_1.AuthResolver],
+            resolvers: [user_resolver_1.UserResolver, auth_resolver_1.AuthResolver, task_resolver_1.TaskResolver],
             globalMiddlewares: [this.ErrorInterceptor],
             authChecker: authChecker_1.authChecker,
         });

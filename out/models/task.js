@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Task = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const type_graphql_1 = require("type-graphql");
+const date_1 = require("../graphql/date");
 let Task = class Task extends sequelize_typescript_1.Model {
 };
 exports.Task = Task;
@@ -23,6 +24,11 @@ __decorate([
     (0, type_graphql_1.Field)(() => type_graphql_1.Int),
     __metadata("design:type", Number)
 ], Task.prototype, "id", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    (0, type_graphql_1.Field)(() => type_graphql_1.Int),
+    __metadata("design:type", Number)
+], Task.prototype, "userId", void 0);
 __decorate([
     sequelize_typescript_1.Column,
     (0, type_graphql_1.Field)(),
@@ -54,7 +60,7 @@ __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.DATE
     }),
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)(() => date_1.DateType, { nullable: true }),
     __metadata("design:type", String)
 ], Task.prototype, "dueDate", void 0);
 __decorate([

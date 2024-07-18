@@ -20,11 +20,11 @@
           v-model="notes"
           style="margin-top: -2px"
         ></VTextField>
-        <VTextField
+        <VDateInput
           label="Due Date"
           v-model="dueDate"
           style="margin-top: -2px"
-        ></VTextField>
+        ></VDateInput>
         <VTextField
           label="Priority"
           v-model="priority"
@@ -36,7 +36,7 @@
         <VBtn @click="$emit('taskAdd')" color="#ffd707" class="mr-3">
           Continue
         </VBtn>
-        <VBtn>Cancel</VBtn>
+        <VBtn @click="model = false">Cancel</VBtn>
       </VCardActions>
     </VCard>
   </VDialog>
@@ -50,4 +50,5 @@ const description = defineModel("description");
 const notes = defineModel("notes");
 const dueDate = defineModel("dueDate");
 const priority = defineModel("priority");
+defineEmits(["taskAdd"]);
 </script>

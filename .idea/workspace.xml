@@ -5,20 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Did the thing">
-      <change afterPath="$PROJECT_DIR$/app/graphql/task/permissions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/task.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/graphql/task/permissions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/graphql/task/permissions.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/models/task.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/models/task.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/graphql/date.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/graphql/task/createTask.input.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/migrations/20240216124649-task.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/graphql.schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/gql/fragment-masking.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/gql/gql.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/gql/graphql.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/gql/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/task/createTask.graphql.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/task/getTasks.graphql.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/graphql/date.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/graphql/date.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/graphql/task/createTask.input.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/graphql/task/createTask.input.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/resolvers/task.resolver.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/resolvers/task.resolver.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/task.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/task.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/auth/register.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/auth/register.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Tasks.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Tasks.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/plugins/vuetify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/plugins/vuetify.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/models/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/models/task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/models/task.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/out/models/task.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/models/user.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/out/models/user.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/server.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/out/server.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +46,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Composition API Component" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -70,37 +87,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "something",
-    "last_opened_file_path": "/home/jolt707/WebstormProjects/Trackers/frontend/src/views",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.serve.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\frontend\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;something&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jolt707/WebstormProjects/Trackers/app/graphql&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.serve.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/jolt707/WebstormProjects/Trackers/frontend/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/jolt707/WebstormProjects/Trackers/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/graphql" />
+      <recent name="$PROJECT_DIR$/app/migrations" />
       <recent name="$PROJECT_DIR$/frontend/src/views" />
       <recent name="$PROJECT_DIR$/frontend/src/graphql/auth" />
       <recent name="$PROJECT_DIR$/frontend/src" />
-      <recent name="$PROJECT_DIR$/frontend/src/plugins" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend" />
@@ -124,6 +141,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -138,6 +162,7 @@
       <workItem from="1719411425840" duration="806000" />
       <workItem from="1721101792722" duration="83000" />
       <workItem from="1721266023341" duration="3705000" />
+      <workItem from="1721303356628" duration="1064000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, navbar, sidebar and pages">
       <option name="closed" value="true" />

@@ -1,5 +1,6 @@
 import {Column, DataType, Model, Table} from "sequelize-typescript";
 import {Field, Int, ObjectType} from "type-graphql";
+import { DateType } from "../graphql/date";
 
 @Table
 @ObjectType()
@@ -10,6 +11,10 @@ export class Task extends Model {
   })
   @Field(() => Int)
   id: number
+
+  @Column
+  @Field(() => Int)
+  userId: number
 
   @Column
   @Field()
@@ -37,7 +42,7 @@ export class Task extends Model {
   @Column({
     type: DataType.DATE
   })
-  @Field()
+  @Field(()=> DateType, {nullable:true})
   dueDate: string
 
   @Column

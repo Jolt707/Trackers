@@ -7,6 +7,7 @@ import {createServer} from "node:http"
 import db from "./db";
 import {AuthResolver} from "./resolvers/auth.resolver";
 import {authChecker} from "./authChecker";
+import { TaskResolver } from "./resolvers/task.resolver";
 @Service()
 export class Server {
     graphqlServer: YogaServer<any, any>
@@ -23,7 +24,7 @@ export class Server {
         db
         // Create a Yoga instance with a GraphQL schema.
         const schema = await buildSchema({
-            resolvers: [UserResolver, AuthResolver],
+            resolvers: [UserResolver, AuthResolver, TaskResolver],
             globalMiddlewares: [this.ErrorInterceptor],
             authChecker: authChecker,
         });
