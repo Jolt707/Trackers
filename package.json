@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "serve": "tsc-watch -p tsconfig.app.json --onSuccess 'node ./out/index.js'"
+    "serve": "ts-node-dev app/index.ts"
   },
   "dependencies": {
     "@tsconfig/node18": "^18.2.2",
@@ -23,6 +23,7 @@
     "sequelize-typescript": "^2.1.6",
     "sqlite3": "^5.1.7",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "tsc": "^2.0.4",
     "tsc-watch": "^6.0.4",
     "type-graphql": "^1.1.1",

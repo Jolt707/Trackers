@@ -4,24 +4,34 @@ import { User } from "../models/user.model";
 import { Context } from "../graphql/server/context";
 import { Task } from "../models/task";
 import { CreateTaskInput } from "../graphql/task/createTask.input";
+import { DeleteTaskInput } from "../graphql/task/deleteTask.input";
 
 @Service()
 @Resolver(Task)
 export class TaskResolver {
   @Mutation(() => Task)
-  async createTask(@Arg("input")input:CreateTaskInput){
+  async createTask(@Arg("input") input: CreateTaskInput) {
     return await Task.create({
       ...input,
       userId: 1
     });
   }
 
-  @Query(()=>[Task])
+  @Query(() => [Task])
   async tasks() {
-    const tasks = await Task.findAll({
-
-    })
+    const tasks = await Task.findAll({})
     console.log(tasks)
     return tasks
+  }
+
+  @Mutation(() => Boolean)
+  async deleteTask(@Arg("input") input: DeleteTaskInput) {
+    await Task.destroy({
+      where: {
+        id: input.taskId,
+        userId: 1
+      }
+    });
+    return true
   }
 }

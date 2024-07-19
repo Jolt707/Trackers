@@ -14,12 +14,17 @@
       <template v-if="!editingId" #button>continue</template>
       <template v-if="editingId" #button>confirm</template>
     </TaskDialog>
+    <ConfirmationDialog
+      @submit="deleteTask"
+      v-model="confirmation"
+    ></ConfirmationDialog>
     Task List
     <VSpacer />
     <VIcon
       @click="
         addDialog = true;
         editingId = undefined;
+        clearInputs();
       "
     >
       mdi-plus
@@ -41,8 +46,18 @@
             taskDetails.dueDate = new Date(task.dueDate);
             taskDetails.priority = task.priority;
           "
+          color="#0190ea"
         >
           mdi-pen
+        </VIcon>
+        <VIcon
+          @click.stop="
+            editingId = task.id;
+            confirmation = true;
+          "
+          color="red"
+        >
+          mdi-delete
         </VIcon>
       </VExpansionPanelTitle>
       <VExpansionPanelText>
@@ -58,10 +73,14 @@ import { onMounted, ref } from "vue";
 import TaskDialog from "@/components/TaskDialog.vue";
 import { useApolloClient } from "@vue/apollo-composable";
 import { CREATE_TASK_QUERY } from "@/graphql/task/createTask.graphql.ts";
-import { GET_TASKS_QUERY } from "@/graphql/task/getTasks.graphql.ts";
 import { Task } from "@/gql/graphql.ts";
+import ConfirmationDialog from "@/components/ConfirmationDialog.vue";
+import { getTasks } from "@/composables/getTasks.ts";
+import { DELETE_TASK_QUERY } from "@/graphql/task/deleteTask.graphql.ts";
 
 const addDialog = ref(false);
+
+const confirmation = ref(false);
 
 const editingId = ref<number | undefined>(undefined);
 
@@ -86,18 +105,33 @@ async function createTask() {
     }
   });
   addDialog.value = false;
+  tasks.value = await getTasks();
 }
 
-async function getTasks() {
+async function deleteTask() {
   const apollo = useApolloClient();
-  const {
-    data: { tasks: tasksList }
-  } = await apollo.client.query({
-    query: GET_TASKS_QUERY
+  await apollo.client.mutate({
+    mutation: DELETE_TASK_QUERY,
+    variables: {
+      input: {
+        taskId: editingId.value
+      }
+    }
   });
-  tasks.value = tasksList;
+  editingId.value = undefined;
+  tasks.value = await getTasks();
+  confirmation.value = false;
 }
-onMounted(() => {
-  getTasks();
+
+onMounted(async () => {
+  tasks.value = await getTasks();
 });
+
+async function clearInputs() {
+  taskDetails.value.title = "";
+  taskDetails.value.description = "";
+  taskDetails.value.notes = "";
+  taskDetails.value.dueDate = undefined;
+  taskDetails.value.priority = 0;
+}
 </script>
