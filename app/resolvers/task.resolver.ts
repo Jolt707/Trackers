@@ -5,6 +5,7 @@ import { Context } from "../graphql/server/context";
 import { Task } from "../models/task";
 import { CreateTaskInput } from "../graphql/task/createTask.input";
 import { DeleteTaskInput } from "../graphql/task/deleteTask.input";
+import { UpdateTaskInput } from "../graphql/task/updateTask.input";
 
 @Service()
 @Resolver(Task)
@@ -29,6 +30,22 @@ export class TaskResolver {
     await Task.destroy({
       where: {
         id: input.taskId,
+        userId: 1
+      }
+    });
+    return true
+  }
+  @Mutation(() => Boolean)
+  async updateTask(@Arg("input") input: UpdateTaskInput) {
+    await Task.destroy({
+      where: {
+        id: input.taskId,
+        title: "",
+        description: "",
+        notes: "",
+        dueDate: "",
+        priority: "",
+        updatedAt: "",
         userId: 1
       }
     });

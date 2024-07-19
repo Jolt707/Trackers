@@ -4,28 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/graphql/task/deleteTask.input.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/ConfirmationDialog.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/TaskTable.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/composables/getTasks.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/task/deleteTask.graphql.ts" afterDir="false" />
+    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Added task deleting and the TaskTable (to do edit task)">
+      <change afterPath="$PROJECT_DIR$/app/graphql/task/updateTask.input.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/task/updateTask.graphql.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Upcoming.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Upcoming.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/date.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/graphql/date.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/graphql/task/createTask.input.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/graphql/task/createTask.input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/models/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/models/task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/resolvers/task.resolver.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/resolvers/task.resolver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/yarn-error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721304523835</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added task deleting and the TaskTable (to do edit task)">
+      <option name="closed" value="true" />
+      <created>1721357240611</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721357240611</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +190,8 @@
     <MESSAGE value="Did the thing" />
     <MESSAGE value="Added task creation and frontend viewing (to do due date picker and priority number picker" />
     <MESSAGE value="Added task creation and frontend viewing (to do due date picker and priority number picker)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added task creation and frontend viewing (to do due date picker and priority number picker)" />
+    <MESSAGE value="Added editing slot, date picker and number input for tasks" />
+    <MESSAGE value="Added task deleting and the TaskTable (to do edit task)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added task deleting and the TaskTable (to do edit task)" />
   </component>
 </project>
