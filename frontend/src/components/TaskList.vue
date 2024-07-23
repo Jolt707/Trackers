@@ -1,7 +1,7 @@
 <template>
   <VToolbar class="px-6">
     <TaskDialog
-      @taskAdd="createTask"
+      @taskAdd="editingId ? editTask() : createTask()"
       v-model="addDialog"
       v-model:title="taskDetails.title"
       v-model:description="taskDetails.description"
@@ -32,9 +32,12 @@
   </VToolbar>
 
   <VExpansionPanels>
-    <VExpansionPanel v-for="task in tasks" :key="task.id">
+    <VExpansionPanel
+      v-for="task in tasks.concat().sort((a, b) => b.priority - a.priority)"
+      :key="task.id"
+    >
       <VExpansionPanelTitle>
-        {{ task.title }}
+        {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
         <VSpacer />
         <VIcon
           @click.stop="
@@ -48,7 +51,7 @@
           "
           color="#0190ea"
         >
-          mdi-pen
+          mdi-pencil
         </VIcon>
         <VIcon
           @click.stop="
@@ -61,9 +64,12 @@
         </VIcon>
       </VExpansionPanelTitle>
       <VExpansionPanelText>
-        {{ task.dueDate }}
+        {{ task.description }}
       </VExpansionPanelText>
-      <VExpansionPanelText>{{ task.description }}</VExpansionPanelText>
+      <VExpansionPanelText>
+        {{ task.notes }}
+      </VExpansionPanelText>
+      <VExpansionPanelText>Priority: {{ task.priority }}</VExpansionPanelText>
     </VExpansionPanel>
   </VExpansionPanels>
 </template>
@@ -77,6 +83,7 @@ import { Task } from "@/gql/graphql.ts";
 import ConfirmationDialog from "@/components/ConfirmationDialog.vue";
 import { getTasks } from "@/composables/getTasks.ts";
 import { DELETE_TASK_QUERY } from "@/graphql/task/deleteTask.graphql.ts";
+import { UPDATE_TASK_QUERY } from "@/graphql/task/updateTask.graphql.ts";
 
 const addDialog = ref(false);
 
@@ -101,6 +108,21 @@ async function createTask() {
     variables: {
       input: {
         ...taskDetails.value
+      }
+    }
+  });
+  addDialog.value = false;
+  tasks.value = await getTasks();
+}
+
+async function editTask() {
+  const apollo = useApolloClient();
+  await apollo.client.mutate({
+    mutation: UPDATE_TASK_QUERY,
+    variables: {
+      input: {
+        ...taskDetails.value,
+        taskId: editingId.value
       }
     }
   });

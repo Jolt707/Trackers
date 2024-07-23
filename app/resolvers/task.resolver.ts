@@ -14,15 +14,15 @@ export class TaskResolver {
   async createTask(@Arg("input") input: CreateTaskInput) {
     return await Task.create({
       ...input,
-      userId: 1
+      userId: 1,
     });
   }
 
   @Query(() => [Task])
   async tasks() {
-    const tasks = await Task.findAll({})
-    console.log(tasks)
-    return tasks
+    const tasks = await Task.findAll({});
+    console.log(tasks);
+    return tasks;
   }
 
   @Mutation(() => Boolean)
@@ -30,25 +30,20 @@ export class TaskResolver {
     await Task.destroy({
       where: {
         id: input.taskId,
-        userId: 1
-      }
+        userId: 1,
+      },
     });
-    return true
+    return true;
   }
-  @Mutation(() => Boolean)
+
+  @Mutation(() => Task)
   async updateTask(@Arg("input") input: UpdateTaskInput) {
-    await Task.destroy({
+    await Task.update(input, {
       where: {
         id: input.taskId,
-        title: "",
-        description: "",
-        notes: "",
-        dueDate: "",
-        priority: "",
-        updatedAt: "",
-        userId: 1
-      }
+        userId: 1,
+      },
     });
-    return true
+    return await Task.findByPk(input.taskId);
   }
 }
