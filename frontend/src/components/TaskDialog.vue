@@ -6,6 +6,7 @@
       </VToolbar>
       <VContainer>
         <VTextField
+          :autofocus="true"
           label="Title"
           v-model="title"
           style="margin-top: -2px"
@@ -21,12 +22,18 @@
           style="margin-top: -2px"
         ></VTextField>
         <VDateInput
+          class="w-0"
           prepend-icon=""
           append-icon="mdi-calendar"
           label="Due Date"
           v-model="dueDate"
         ></VDateInput>
-        <VNumberInput label="Priority" v-model="priority"></VNumberInput>
+        <VNumberInput
+          label="Priority"
+          v-model="priority"
+          :min="0"
+          :max="100"
+        ></VNumberInput>
       </VContainer>
       <VCardActions>
         <VSpacer />

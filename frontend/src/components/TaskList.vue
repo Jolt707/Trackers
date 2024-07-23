@@ -1,5 +1,5 @@
 <template>
-  <VToolbar class="px-6">
+  <VToolbar class="px-6 mb-4">
     <TaskDialog
       @taskAdd="editingId ? editTask() : createTask()"
       v-model="addDialog"
@@ -63,13 +63,14 @@
           mdi-delete
         </VIcon>
       </VExpansionPanelTitle>
+      <VExpansionPanelText>Description:</VExpansionPanelText>
       <VExpansionPanelText>
         {{ task.description }}
       </VExpansionPanelText>
-      <VExpansionPanelText>
-        {{ task.notes }}
-      </VExpansionPanelText>
-      <VExpansionPanelText>Priority: {{ task.priority }}</VExpansionPanelText>
+      <VExpansionPanelText>Notes:</VExpansionPanelText>
+      <VExpansionPanelText>{{ task.notes }}</VExpansionPanelText>
+      <VExpansionPanelText>Priority:</VExpansionPanelText>
+      <VExpansionPanelText>{{ task.priority }}</VExpansionPanelText>
     </VExpansionPanel>
   </VExpansionPanels>
 </template>

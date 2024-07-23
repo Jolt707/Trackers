@@ -13,7 +13,7 @@ import "vuetify/lib/styles/main.sass";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
-import { VDateInput, VNumberInput } from "vuetify/labs/components";
+import { VDateInput, VNumberInput, VTimePicker } from "vuetify/labs/components";
 
 export class DefaultThemes {
   themes: any;
@@ -111,7 +111,8 @@ export default createVuetify({
   components: {
     ...components,
     VDateInput,
-    VNumberInput
+    VNumberInput,
+    VTimePicker
   },
   directives,
   display: {
