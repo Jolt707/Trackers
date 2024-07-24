@@ -1,9 +1,16 @@
 <template>
-  <VCard class="mt-6 w-25 mr-4">
+  <VCard class="mt-6 w-33">
     <VCardTitle class="mb-4">{{ props.task.title }}</VCardTitle>
-    <VCardText>DUE: {{ props.task.dueDate }}</VCardText>
-    <VCardText>Description: {{ props.task.description }}</VCardText>
-    <VCardText>Last Modified: {{ props.task.updatedAt }}</VCardText>
+    <VCardText class="text-truncate mt-n2">
+      DUE: {{ props.task.dueDate }}
+    </VCardText>
+    <VCardText class="text-truncate mt-n2">
+      {{ props.task.description }}
+    </VCardText>
+    <VCardActions class="mt-n4">
+      <VBtn color="#ffd707">SET AS COMPLETE</VBtn>
+      <VBtn color="#ffd707">EDIT TASK</VBtn>
+    </VCardActions>
   </VCard>
 </template>
 

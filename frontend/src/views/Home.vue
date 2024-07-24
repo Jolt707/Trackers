@@ -5,10 +5,46 @@
     </v-card-title>
   </template>
   <template v-else>
-    <VContainer>
-      <h1>Logged in {{ userStore.user.username }}</h1>
+    <VContainer class="px-10">
+      <h1>Next Assignments</h1>
+
       <div class="d-flex">
-        <TaskCard v-for="t in tasks" :key="t.id" :task="t"></TaskCard>
+        <TaskCard
+          v-for="task in tasks"
+          :key="task.id"
+          :task="task"
+          class="mb-6 mr-4"
+        ></TaskCard>
+      </div>
+      <div class="d-flex justify-space-between mx-10">
+        <div class="d-flex flex-column align-center">
+          <h2>Create a Task</h2>
+          <VBtn size="100px" color="#ffd707" to="/tasks">
+            <VIcon size="66px">mdi-plus</VIcon>
+          </VBtn>
+        </div>
+        <div class="d-flex flex-column align-center">
+          <h2>Go to Assigned Tasks</h2>
+          <VBtn size="100px" color="#ffd707" to="/assigned">
+            <VIcon size="66px">mdi-clipboard-text</VIcon>
+          </VBtn>
+        </div>
+        <div class="d-flex flex-column align-center">
+          <h2>Go to Upcoming Tasks</h2>
+          <VBtn size="100px" color="#ffd707" to="/upcoming">
+            <VIcon size="66px">mdi-clipboard-clock</VIcon>
+          </VBtn>
+        </div>
+      </div>
+      <h1 class="mt-6">All Assignments</h1>
+
+      <div class="d-flex">
+        <TaskCard
+          v-for="task in tasks"
+          :key="task.id"
+          :task="task"
+          class="mb-6 mr-4"
+        ></TaskCard>
       </div>
     </VContainer>
   </template>
