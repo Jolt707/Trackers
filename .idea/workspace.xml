@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Added completion of tasks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/createTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/createTask.graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Assigned.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Assigned.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/TaskHistory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TaskHistory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +72,7 @@
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\frontend\\node_modules\\prettier",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/home/jolt707/WebstormProjects/Trackers/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {

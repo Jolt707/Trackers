@@ -7,6 +7,7 @@
       v-model:description="taskDetails.description"
       v-model:notes="taskDetails.notes"
       v-model:dueDate="taskDetails.dueDate"
+      v-model:dueTime="taskDetails.dueTime"
       v-model:priority="taskDetails.priority"
     >
       <template v-if="!editingId" #title>Create Task</template>
@@ -43,16 +44,16 @@
       <VExpansionPanelTitle>
         {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
         <VSpacer />
-        <VIcon
+        <VBtn
           @click.stop="
             completedId = task.id;
             confirmation = true;
           "
+          variant="text"
+          icon="mdi-check"
           color="green"
-        >
-          mdi-check
-        </VIcon>
-        <VIcon
+        ></VBtn>
+        <VBtn
           @click.stop="
             editingId = task.id;
             addDialog = true;
@@ -62,20 +63,21 @@
             taskDetails.dueDate = new Date(task.dueDate);
             taskDetails.priority = task.priority;
           "
+          variant="text"
+          icon="mdi-pencil"
           color="#0190ea"
-        >
-          mdi-pencil
-        </VIcon>
-        <VIcon
+        ></VBtn>
+        <VBtn
           @click.stop="
             editingId = task.id;
             completedId = undefined;
             confirmation = true;
           "
+          class="mr-2"
+          variant="text"
+          icon="mdi-delete"
           color="red"
-        >
-          mdi-delete
-        </VIcon>
+        ></VBtn>
       </VExpansionPanelTitle>
       <VExpansionPanelText>
         <p class="font-weight-bold pb-2">Description:</p>
@@ -93,7 +95,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import TaskDialog from "@/components/TaskDialog.vue";
 import { useApolloClient } from "@vue/apollo-composable";
 import { CREATE_TASK_QUERY } from "@/graphql/task/createTask.graphql.ts";
@@ -104,6 +106,7 @@ import { DELETE_TASK_QUERY } from "@/graphql/task/deleteTask.graphql.ts";
 import { UPDATE_TASK_QUERY } from "@/graphql/task/updateTask.graphql.ts";
 import { COMPLETE_TASK_QUERY } from "@/graphql/task/completeTask.graphql.ts";
 import { useRoute } from "vue-router";
+import dayjs from "dayjs";
 
 const addDialog = ref(false);
 
@@ -113,11 +116,22 @@ const completedId = ref<number | undefined>(undefined);
 
 const editingId = ref<number | undefined>(undefined);
 
+const dateAndTime = computed(() => {
+  console.log(taskDetails.value.dueTime);
+  if (!taskDetails.value.dueDate) return "";
+  const date = dayjs(taskDetails.value.dueDate)
+    .set("minute", parseInt(taskDetails.value.dueTime.split(":")[1]))
+    .set("hour", parseInt(taskDetails.value.dueTime.split(":")[0]))
+    .set("second", parseInt(taskDetails.value.dueTime.split(":")[2]));
+  return date.toISOString();
+});
+
 const taskDetails = ref({
   title: "",
   description: "",
   notes: "" as string | null | undefined,
   dueDate: new Date() as Date | undefined,
+  dueTime: "00:00:00",
   priority: 0 as number | undefined
 });
 
@@ -129,7 +143,9 @@ async function createTask() {
     mutation: CREATE_TASK_QUERY,
     variables: {
       input: {
-        ...taskDetails.value
+        ...taskDetails.value,
+        dueTime: undefined,
+        dueDate: dateAndTime.value
       }
     }
   });
@@ -184,16 +200,6 @@ async function deleteTask() {
 
 const route = useRoute();
 
-onMounted(async () => {
-  tasks.value = await getTasks();
-  if (route.query.create) {
-    addDialog.value = true;
-  }
-  if (route.query.edit && editingId) {
-    addDialog.value = true;
-  }
-});
-
 async function clearInputs() {
   taskDetails.value.title = "";
   taskDetails.value.description = "";
@@ -201,4 +207,25 @@ async function clearInputs() {
   taskDetails.value.dueDate = undefined;
   taskDetails.value.priority = 0;
 }
+
+onMounted(async () => {
+  await clearInputs();
+  tasks.value = await getTasks();
+  if (route.query.create) {
+    addDialog.value = true;
+  }
+  if (route.query.edit) {
+    editingId.value = parseInt(<string>route.query.edit);
+    const task = tasks.value.find((task) => task.id === editingId.value);
+    if (!task) {
+      return;
+    }
+    addDialog.value = true;
+    taskDetails.value.title = task.title;
+    taskDetails.value.description = task.description;
+    taskDetails.value.notes = task.notes;
+    taskDetails.value.dueDate = new Date(task.dueDate);
+    taskDetails.value.priority = task.priority;
+  }
+});
 </script>

@@ -1,5 +1,9 @@
 <template>
   <h1>Assigned</h1>
+  <div class="d-flex">
+    <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
+    <h3>No Assigned Tasks</h3>
+  </div>
 </template>
 
 <script setup lang="ts">

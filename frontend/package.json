@@ -17,6 +17,7 @@
     "@vue/apollo-composable": "^4.0.2",
     "@vue/apollo-option": "^4.0.0",
     "apollo-client": "^2.6.10",
+    "dayjs": "^1.11.12",
     "graphql": "^16.9.0",
     "pinia": "^2.1.7",
     "prettier": "^3.3.2",
