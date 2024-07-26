@@ -1,4 +1,4 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, Default, Model, Table } from "sequelize-typescript";
 import { Field, Int, ObjectType } from "type-graphql";
 import { DateType } from "../graphql/date";
 import { MinLength } from "class-validator";
@@ -55,4 +55,9 @@ export class Task extends Model {
   })
   @Field(() => DateType, { nullable: false })
   updatedAt: string;
+
+  @Field()
+  @Default(false)
+  @Column
+  completedTask: boolean;
 }

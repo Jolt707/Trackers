@@ -63,14 +63,17 @@
           mdi-delete
         </VIcon>
       </VExpansionPanelTitle>
-      <VExpansionPanelText>Description:</VExpansionPanelText>
       <VExpansionPanelText>
-        {{ task.description }}
+        <p class="font-weight-bold pb-2">Description:</p>
+        <p class="text-truncate pb-2">
+          {{ task.description }}
+        </p>
+        <p class="font-weight-bold pb-2">Notes:</p>
+        <p class="text-truncate pb-2">{{ task.notes }}</p>
+        <p class="font-weight-bold">Priority:</p>
+        <p class="pb-2" style="font-size: 15px">Higher = Prioritised</p>
+        <p class="text-truncate pb-2">{{ task.priority }}</p>
       </VExpansionPanelText>
-      <VExpansionPanelText>Notes:</VExpansionPanelText>
-      <VExpansionPanelText>{{ task.notes }}</VExpansionPanelText>
-      <VExpansionPanelText>Priority:</VExpansionPanelText>
-      <VExpansionPanelText>{{ task.priority }}</VExpansionPanelText>
     </VExpansionPanel>
   </VExpansionPanels>
 </template>

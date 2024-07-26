@@ -34,7 +34,7 @@ module.exports = {
       },
       priority: {
         type: Sequelize.INTEGER,
-      }
+      },
     })
   },
 

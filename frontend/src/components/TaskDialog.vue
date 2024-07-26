@@ -21,19 +21,28 @@
           v-model="notes"
           style="margin-top: -2px"
         ></VTextField>
-        <VDateInput
-          class="w-0"
-          prepend-icon=""
-          append-icon="mdi-calendar"
-          label="Due Date"
-          v-model="dueDate"
-        ></VDateInput>
+        <div class="d-flex">
+          <VDateInput
+            prepend-icon=""
+            label="Due Date"
+            v-model="dueDate"
+          ></VDateInput>
+          <VTextField
+            label="Due Time"
+            v-model="dueDate"
+            style="margin-top: 8px"
+          ></VTextField>
+        </div>
+
         <VNumberInput
           label="Priority"
           v-model="priority"
           :min="0"
           :max="100"
         ></VNumberInput>
+        <p class="mt-n4" style="font-size: 15px; color: #9d9d9d">
+          Higher = Prioritised
+        </p>
       </VContainer>
       <VCardActions>
         <VSpacer />

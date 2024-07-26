@@ -2,7 +2,7 @@
   <VCard class="mt-6 w-33">
     <VCardTitle class="mb-4">{{ props.task.title }}</VCardTitle>
     <VCardText class="text-truncate mt-n2">
-      DUE: {{ props.task.dueDate }}
+      DUE: {{ new Date(task.dueDate).toLocaleString() }}
     </VCardText>
     <VCardText class="text-truncate mt-n2">
       {{ props.task.description }}

@@ -4,7 +4,28 @@
     :headers="tableHeader"
     :items="tasks"
     :sort-by="[{ key: 'dueDate', order: 'desc' }]"
-  ></VDataTable>
+  >
+    <template #item.description="{ item }">
+      <div style="max-width: 150px" class="text-truncate">
+        {{ item.description }}
+      </div>
+    </template>
+    <template #item.notes="{ item }">
+      <div style="max-width: 150px" class="text-truncate">
+        {{ item.notes }}
+      </div>
+    </template>
+    <template #item.dueDate="{ item }">
+      <div style="max-width: 150px" class="text-truncate">
+        {{ new Date(item.dueDate).toLocaleString() }}
+      </div>
+    </template>
+    <template #item.updatedAt="{ item }">
+      <div style="max-width: 150px" class="text-truncate">
+        {{ new Date(item.updatedAt).toLocaleString() }}
+      </div>
+    </template>
+  </VDataTable>
 </template>
 
 <script setup lang="ts">
@@ -17,8 +38,9 @@ const tasks = ref<Task[]>([]);
 const tableHeader = [
   { key: "title", title: "Title" },
   { key: "description", title: "Description" },
-  { key: "updatedAt", title: "Last Modified" },
+  { key: "notes", title: "Notes" },
   { key: "dueDate", title: "Due Date" },
+  { key: "updatedAt", title: "Last Modified" },
   { key: "priority", title: "Priority" }
 ];
 
