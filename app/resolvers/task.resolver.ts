@@ -7,6 +7,7 @@ import { CreateTaskInput } from "../graphql/task/createTask.input";
 import { DeleteTaskInput } from "../graphql/task/deleteTask.input";
 import { UpdateTaskInput } from "../graphql/task/updateTask.input";
 import { TaskStatusInput } from "../graphql/task/taskStatus.input";
+import { CompleteTaskInput } from "../graphql/task/completeTask.input";
 
 @Service()
 @Resolver(Task)
@@ -16,7 +17,6 @@ export class TaskResolver {
     return await Task.create({
       ...input,
       userId: 1,
-      completedTask: false
     });
   }
 
@@ -43,6 +43,16 @@ export class TaskResolver {
 
   @Mutation(() => Task)
   async updateTask(@Arg("input") input: UpdateTaskInput) {
+    await Task.update(input, {
+      where: {
+        id: input.taskId,
+        userId: 1,
+      },
+    });
+    return await Task.findByPk(input.taskId);
+  }
+  @Mutation(() => Task)
+  async completeTask(@Arg("input") input: CompleteTaskInput) {
     await Task.update(input, {
       where: {
         id: input.taskId,

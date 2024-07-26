@@ -4,7 +4,11 @@
       <VToolbar color="#323232">
         <VCardTitle><slot name="title"></slot></VCardTitle>
       </VToolbar>
-      <VCardText>This will permanently delete the selected task</VCardText>
+      <VCardText>
+        This will permanently
+        <slot name="text"></slot>
+        the selected task
+      </VCardText>
       <VCardActions>
         <VSpacer />
         <VBtn @click="$emit('submit')" color="#ffd707" class="mr-3">

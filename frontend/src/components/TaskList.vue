@@ -19,6 +19,8 @@
       <template v-if="completedId" #title>Complete Task</template>
       <template v-if="!completedId" #button>Delete</template>
       <template v-if="completedId" #button>Confirm</template>
+      <template v-if="!completedId" #text>delete</template>
+      <template v-if="completedId" #text>complete</template>
     </ConfirmationDialog>
     Task List
     <VSpacer />
@@ -100,6 +102,7 @@ import ConfirmationDialog from "@/components/ConfirmationDialog.vue";
 import { getTasks } from "@/composables/getTasks.ts";
 import { DELETE_TASK_QUERY } from "@/graphql/task/deleteTask.graphql.ts";
 import { UPDATE_TASK_QUERY } from "@/graphql/task/updateTask.graphql.ts";
+import { COMPLETE_TASK_QUERY } from "@/graphql/task/completeTask.graphql.ts";
 
 const addDialog = ref(false);
 
@@ -168,7 +171,7 @@ async function deleteTask() {
       variables: {
         input: {
           completedTask: true,
-          taskId: editingId.value
+          taskId: completedId.value
         }
       }
     });
