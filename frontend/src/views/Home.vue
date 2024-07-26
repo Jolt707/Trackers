@@ -7,7 +7,6 @@
   <template v-else>
     <VContainer class="px-10">
       <h1>Next Assignments</h1>
-
       <div class="d-flex">
         <TaskCard
           v-for="task in tasks"
@@ -19,7 +18,7 @@
       <div class="d-flex justify-space-between mx-10">
         <div class="d-flex flex-column align-center">
           <h2>Create a Task</h2>
-          <VBtn size="100px" color="#ffd707" to="/tasks">
+          <VBtn size="100px" color="#ffd707" to="/tasks?create=1">
             <VIcon size="66px">mdi-plus</VIcon>
           </VBtn>
         </div>

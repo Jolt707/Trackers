@@ -103,6 +103,7 @@ import { getTasks } from "@/composables/getTasks.ts";
 import { DELETE_TASK_QUERY } from "@/graphql/task/deleteTask.graphql.ts";
 import { UPDATE_TASK_QUERY } from "@/graphql/task/updateTask.graphql.ts";
 import { COMPLETE_TASK_QUERY } from "@/graphql/task/completeTask.graphql.ts";
+import { useRoute } from "vue-router";
 
 const addDialog = ref(false);
 
@@ -181,8 +182,16 @@ async function deleteTask() {
   }
 }
 
+const route = useRoute();
+
 onMounted(async () => {
   tasks.value = await getTasks();
+  if (route.query.create) {
+    addDialog.value = true;
+  }
+  if (route.query.edit && editingId) {
+    addDialog.value = true;
+  }
 });
 
 async function clearInputs() {

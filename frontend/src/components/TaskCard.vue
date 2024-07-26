@@ -9,7 +9,7 @@
     </VCardText>
     <VCardActions class="mt-n4">
       <VBtn color="#ffd707">SET AS COMPLETE</VBtn>
-      <VBtn color="#ffd707">EDIT TASK</VBtn>
+      <VBtn color="#ffd707" to="/tasks?edit=1">EDIT TASK</VBtn>
     </VCardActions>
   </VCard>
 </template>

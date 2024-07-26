@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Added displaying of completed vs uncompleted tasks. Working on adding task completion to the deleteTask function.">
-      <change afterPath="$PROJECT_DIR$/app/graphql/task/completeTask.input.ts" afterDir="false" />
+    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Added completion of tasks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ConfirmationDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ConfirmationDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskCard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/completeTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/completeTask.graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,7 @@
       <workItem from="1721728103811" duration="12868000" />
       <workItem from="1721870681120" duration="3388000" />
       <workItem from="1721948753232" duration="6707000" />
-      <workItem from="1721956348387" duration="10201000" />
+      <workItem from="1721956348387" duration="13703000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, navbar, sidebar and pages">
       <option name="closed" value="true" />
@@ -133,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721964649413</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added completion of tasks">
+      <option name="closed" value="true" />
+      <created>1721967033365</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1721967033365</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +160,7 @@
     <MESSAGE value="Added login, register, navbar, sidebar and pages" />
     <MESSAGE value="Added input to edit dueDate time, displayed dueDate as the system locale on a few pages, attempted to add a field to the database, database broke (need to fix)" />
     <MESSAGE value="Added displaying of completed vs uncompleted tasks. Working on adding task completion to the deleteTask function." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added displaying of completed vs uncompleted tasks. Working on adding task completion to the deleteTask function." />
+    <MESSAGE value="Added completion of tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added completion of tasks" />
   </component>
 </project>
