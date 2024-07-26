@@ -6,6 +6,7 @@ import { Task } from "../models/task";
 import { CreateTaskInput } from "../graphql/task/createTask.input";
 import { DeleteTaskInput } from "../graphql/task/deleteTask.input";
 import { UpdateTaskInput } from "../graphql/task/updateTask.input";
+import { TaskStatusInput } from "../graphql/task/taskStatus.input";
 
 @Service()
 @Resolver(Task)
@@ -15,13 +16,17 @@ export class TaskResolver {
     return await Task.create({
       ...input,
       userId: 1,
+      completedTask: false
     });
   }
 
   @Query(() => [Task])
-  async tasks() {
-    const tasks = await Task.findAll({});
-    console.log(tasks);
+  async tasks(@Arg("input") input: TaskStatusInput) {
+    const tasks = await Task.findAll({
+      where: {
+        completedTask: input.completedTask
+      }
+    });
     return tasks;
   }
 

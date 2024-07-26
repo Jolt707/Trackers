@@ -14,10 +14,12 @@
       <template v-if="!editingId" #button>continue</template>
       <template v-if="editingId" #button>confirm</template>
     </TaskDialog>
-    <ConfirmationDialog
-      @submit="deleteTask"
-      v-model="confirmation"
-    ></ConfirmationDialog>
+    <ConfirmationDialog @submit="deleteTask" v-model="confirmation">
+      <template v-if="!completedId" #title>Delete Task</template>
+      <template v-if="completedId" #title>Complete Task</template>
+      <template v-if="!completedId" #button>Delete</template>
+      <template v-if="completedId" #button>Confirm</template>
+    </ConfirmationDialog>
     Task List
     <VSpacer />
     <VIcon
@@ -41,6 +43,15 @@
         <VSpacer />
         <VIcon
           @click.stop="
+            completedId = task.id;
+            confirmation = true;
+          "
+          color="green"
+        >
+          mdi-check
+        </VIcon>
+        <VIcon
+          @click.stop="
             editingId = task.id;
             addDialog = true;
             taskDetails.title = task.title;
@@ -56,6 +67,7 @@
         <VIcon
           @click.stop="
             editingId = task.id;
+            completedId = undefined;
             confirmation = true;
           "
           color="red"
@@ -92,6 +104,8 @@ import { UPDATE_TASK_QUERY } from "@/graphql/task/updateTask.graphql.ts";
 const addDialog = ref(false);
 
 const confirmation = ref(false);
+
+const completedId = ref<number | undefined>(undefined);
 
 const editingId = ref<number | undefined>(undefined);
 
@@ -136,17 +150,32 @@ async function editTask() {
 
 async function deleteTask() {
   const apollo = useApolloClient();
-  await apollo.client.mutate({
-    mutation: DELETE_TASK_QUERY,
-    variables: {
-      input: {
-        taskId: editingId.value
+  if (!completedId) {
+    await apollo.client.mutate({
+      mutation: DELETE_TASK_QUERY,
+      variables: {
+        input: {
+          taskId: editingId.value
+        }
       }
-    }
-  });
-  editingId.value = undefined;
-  tasks.value = await getTasks();
-  confirmation.value = false;
+    });
+    editingId.value = undefined;
+    tasks.value = await getTasks();
+    confirmation.value = false;
+  } else {
+    await apollo.client.mutate({
+      mutation: COMPLETE_TASK_QUERY,
+      variables: {
+        input: {
+          completedTask: true,
+          taskId: editingId.value
+        }
+      }
+    });
+    editingId.value = undefined;
+    tasks.value = await getTasks();
+    confirmation.value = false;
+  }
 }
 
 onMounted(async () => {

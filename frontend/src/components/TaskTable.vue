@@ -34,7 +34,9 @@ import { Task } from "@/gql/graphql.ts";
 import { getTasks } from "@/composables/getTasks.ts";
 
 const tasks = ref<Task[]>([]);
-
+const props = defineProps<{
+  status: boolean;
+}>();
 const tableHeader = [
   { key: "title", title: "Title" },
   { key: "description", title: "Description" },
@@ -45,6 +47,6 @@ const tableHeader = [
 ];
 
 onMounted(async () => {
-  tasks.value = await getTasks();
+  tasks.value = await getTasks(props.status);
 });
 </script>

@@ -35,6 +35,10 @@ module.exports = {
       priority: {
         type: Sequelize.INTEGER,
       },
+      completedTask: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      }
     })
   },
 

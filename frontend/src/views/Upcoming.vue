@@ -1,7 +1,7 @@
 <template>
   <VContainer>
     <h1>Upcoming</h1>
-    <TaskTable></TaskTable>
+    <TaskTable :status="false"></TaskTable>
   </VContainer>
 </template>
 

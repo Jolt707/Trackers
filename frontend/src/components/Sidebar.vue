@@ -22,6 +22,11 @@
         title="Upcoming Tasks"
         to="/upcoming"
       ></v-list-item>
+      <v-list-item
+        prepend-icon="mdi-clipboard-search"
+        title="Task History"
+        to="/history"
+      ></v-list-item>
     </v-list>
     <template #append>
       <v-list-item
