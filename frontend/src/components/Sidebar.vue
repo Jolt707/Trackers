@@ -1,35 +1,35 @@
 <template>
-  <v-navigation-drawer width="210" color="#181818" floating permanent>
-    <v-list color="gold" density="compact" nav>
-      <v-list-item prepend-icon="mdi-home" title="Home" to="/"></v-list-item>
-      <v-list-item
+  <VNavigationDrawer width="210" color="#181818" floating permanent>
+    <VList color="gold" density="compact" nav>
+      <VListItem prepend-icon="mdi-home" title="Home" to="/"></VListItem>
+      <VListItem
         prepend-icon="mdi-cog"
         title="Settings"
         to="/settings"
-      ></v-list-item>
-      <v-list-item
+      ></VListItem>
+      <VListItem
         prepend-icon="mdi-clipboard-edit"
         title="Tasks"
         to="/tasks"
-      ></v-list-item>
-      <v-list-item
+      ></VListItem>
+      <VListItem
         prepend-icon="mdi-clipboard-text"
         title="Assigned Tasks"
         to="/assigned"
-      ></v-list-item>
-      <v-list-item
+      ></VListItem>
+      <VListItem
         prepend-icon="mdi-clipboard-clock"
         title="Upcoming Tasks"
         to="/upcoming"
-      ></v-list-item>
-      <v-list-item
+      ></VListItem>
+      <VListItem
         prepend-icon="mdi-clipboard-search"
         title="Task History"
         to="/history"
-      ></v-list-item>
-    </v-list>
+      ></VListItem>
+    </VList>
     <template #append>
-      <v-list-item
+      <VListItem
         style="border-radius: 4px !important"
         class="my-2 mx-2"
         base-color="red"
@@ -37,9 +37,9 @@
         title="Logout"
         @click="userStore.logout"
         color="gold"
-      ></v-list-item>
+      ></VListItem>
     </template>
-  </v-navigation-drawer>
+  </VNavigationDrawer>
 </template>
 
 <script setup lang="ts">

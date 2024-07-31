@@ -3,7 +3,7 @@
   <VDataTable
     :headers="tableHeader"
     :items="tasks"
-    :sort-by="[{ key: 'dueDate', order: 'desc' }]"
+    :sort-by="[{ key: sortItem, order: sortDirection }]"
   >
     <template #item.description="{ item }">
       <div style="max-width: 150px" class="text-truncate">
@@ -36,6 +36,8 @@ import { getTasks } from "@/composables/getTasks.ts";
 const tasks = ref<Task[]>([]);
 const props = defineProps<{
   status: boolean;
+  sortItem: string;
+  sortDirection: boolean;
 }>();
 const tableHeader = [
   { key: "title", title: "Title" },

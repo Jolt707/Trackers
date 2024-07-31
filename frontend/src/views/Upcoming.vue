@@ -1,7 +1,11 @@
 <template>
   <VContainer>
     <h1>Upcoming</h1>
-    <TaskTable :status="false"></TaskTable>
+    <TaskTable
+      :status="false"
+      sortItem="dueDate"
+      sortDirection="asc"
+    ></TaskTable>
   </VContainer>
 </template>
 

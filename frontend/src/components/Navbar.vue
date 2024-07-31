@@ -1,31 +1,32 @@
 <template>
-  <v-app-bar :elevation="0" color="#181818">
+  <VAppBar :elevation="0" color="#181818">
     <template #append v-if="userStore.user">
-      <v-btn icon="mdi-bell" class="mr-2" color="white"></v-btn>
-      <v-app-bar-nav-icon class="mr-2" color="white"></v-app-bar-nav-icon>
+      <VBtn icon="mdi-bell" class="mr-2" color="white"></VBtn>
+      <VAppBarNavIcon class="mr-2" color="white"></VAppBarNavIcon>
     </template>
     <template #append v-else>
-      <v-btn to="/register" color="gold" class="mr-2">Register</v-btn>
-      <v-btn to="/login" color="gold" class="mr-2">Login</v-btn>
+      <VBtn to="/register" color="gold" class="mr-2">Register</VBtn>
+      <VBtn to="/login" color="gold" class="mr-2">Login</VBtn>
     </template>
-    <router-link to="/" style="text-decoration: none; padding-left: 60px">
-      <v-app-bar-title style="color: #ffd707; font-size: 20px">
+    <RouterLink to="/" style="text-decoration: none; padding-left: 60px">
+      <VAppBarTitle style="color: #ffd707; font-size: 20px">
         Trackers
-      </v-app-bar-title>
-    </router-link>
-    <div v-if="userStore.user"
+      </VAppBarTitle>
+    </RouterLink>
+    <div
+      v-if="userStore.user"
       class="d-flex justify-center align-center"
       style="margin-left: 90px; width: 200px"
     >
-      <v-text-field
+      <VTextField
         variant="outlined"
         density="compact"
         style="height: 40px"
         prepend-inner-icon="mdi-magnify"
         placeholder="Search Everything"
-      ></v-text-field>
+      ></VTextField>
     </div>
-  </v-app-bar>
+  </VAppBar>
 </template>
 
 <script setup lang="ts">

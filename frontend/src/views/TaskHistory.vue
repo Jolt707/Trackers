@@ -5,7 +5,11 @@ import TaskTable from "@/components/TaskTable.vue";
 <template>
   <VContainer>
     <h1>Task History</h1>
-    <TaskTable :status="true"></TaskTable>
+    <TaskTable
+      :status="true"
+      sortItem="updatedAt"
+      sortDirection="desc"
+    ></TaskTable>
   </VContainer>
 </template>
 
