@@ -6,15 +6,6 @@
   </template>
   <template v-else>
     <VContainer class="px-10">
-      <h1>Next Assignments</h1>
-      <div class="d-flex">
-        <TaskCard
-          v-for="task in tasks"
-          :key="task.id"
-          :task="task"
-          class="mb-6 mr-4"
-        ></TaskCard>
-      </div>
       <div class="d-flex justify-space-between mx-10">
         <div class="d-flex flex-column align-center">
           <h2>Create a Task</h2>
@@ -35,15 +26,48 @@
           </VBtn>
         </div>
       </div>
+      <h1>Next Assignments</h1>
+      <div class="d-flex flex-wrap">
+        <template v-if="!tasks[0]">
+          <div class="d-flex w-100 flex-column justify-center align-center">
+            <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
+            <h3>No assignments</h3>
+          </div>
+        </template>
+        <VSlideGroup>
+          <TaskCard
+            @refresh="refresher"
+            v-for="task in tasks
+              .concat()
+              .sort(
+                (a, b) =>
+                  new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
+              )"
+            :key="task.id"
+            :task="task"
+            class="mb-6 mr-4"
+          ></TaskCard>
+        </VSlideGroup>
+      </div>
       <h1 class="mt-6">All Assignments</h1>
-
+      <template v-if="!tasks[0]">
+        <div class="d-flex w-100 flex-column justify-center align-center">
+          <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
+          <h3>No assignments</h3>
+        </div>
+      </template>
       <div class="d-flex">
-        <TaskCard
-          v-for="task in tasks"
-          :key="task.id"
-          :task="task"
-          class="mb-6 mr-4"
-        ></TaskCard>
+        <VSlideGroup>
+          <TaskCard
+            @refresh="refresher"
+            v-for="task in tasks
+              .concat()
+              .sort((a, b) => b.priority - a.priority)"
+            :key="task.id"
+            :task="task"
+            class="mb-6 mr-4"
+          ></TaskCard>
+        </VSlideGroup>
       </div>
     </VContainer>
   </template>
@@ -57,9 +81,15 @@ import { onMounted, ref } from "vue";
 import TaskCard from "@/components/TaskCard.vue";
 import { Task } from "@/gql/graphql.ts";
 import { getTasks } from "@/composables/getTasks.ts";
+
 const userStore = useUserStore();
 
 const tasks = ref<Task[]>([]);
+
+async function refresher() {
+  tasks.value = await getTasks();
+  console.log(tasks);
+}
 
 onMounted(async () => {
   tasks.value = await getTasks();

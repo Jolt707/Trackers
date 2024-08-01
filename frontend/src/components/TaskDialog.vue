@@ -29,7 +29,7 @@
           ></VDateInput>
           <VTextField
             label="Due Time"
-            v-model="dueDate"
+            v-model="dueTime"
             style="margin-top: 8px"
           ></VTextField>
         </div>
@@ -61,7 +61,9 @@ const model = defineModel<boolean>();
 const title = defineModel("title");
 const description = defineModel("description");
 const notes = defineModel("notes");
-const dueDate = defineModel("dueDate");
+const dueDate = defineModel<Date>("dueDate");
+const dueTime = defineModel<string>("dueTime");
 const priority = defineModel("priority");
+
 defineEmits(["taskAdd"]);
 </script>
