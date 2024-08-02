@@ -1,4 +1,14 @@
+<!--
+Name: Jensen Stamp
+Description: This is the login page
+Details: This page uses the AuthCard.vue component
+Date: 2/8/24
+-->
 <template>
+  <!--
+  AuthCard component sends the username and password to be set to the login variable
+  Then the doLogin function is called
+  -->
   <AuthCard
     title="Login"
     v-model:username="login.username"
@@ -6,8 +16,6 @@
     @auth="doLogin"
   />
 </template>
-
-<style scoped></style>
 
 <script setup lang="ts">
 import AuthCard from "../components/AuthCard.vue";
@@ -17,6 +25,7 @@ import { useApolloClient } from "@vue/apollo-composable";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user.ts";
 
+// Defines the login details
 const login = ref({
   username: "",
   password: "",
@@ -26,6 +35,8 @@ const login = ref({
 const apolloClient = useApolloClient();
 const router = useRouter();
 const userStore = useUserStore();
+
+// doLogin function to login the user with the login details
 async function doLogin() {
   login.value.loading = true;
   try {
@@ -41,6 +52,7 @@ async function doLogin() {
       }
     });
 
+    // Sets the local storage token
     localStorage.setItem("token", response.token);
     await userStore.getUser();
     await router.push("/");

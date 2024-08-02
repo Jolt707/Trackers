@@ -1,3 +1,8 @@
+/*
+Name: Jensen Stamp
+Description: This is the user model to define the fields for the user
+Date: 2/8/24
+*/
 import {Column, DataType, Model, Table} from "sequelize-typescript";
 import {Field, Int, ObjectType} from "type-graphql";
 

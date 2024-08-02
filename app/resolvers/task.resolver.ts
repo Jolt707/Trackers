@@ -1,3 +1,8 @@
+/*
+Name: Jensen Stamp
+Description: UNFINISHED
+Date: 2/8/24
+*/
 import { Service } from "typedi";
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { User } from "../models/user.model";

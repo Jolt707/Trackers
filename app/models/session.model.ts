@@ -1,3 +1,8 @@
+/*
+Name: Jensen Stamp
+Description: This is to define the session model
+Date: 2/8/24
+*/
 import {BelongsTo, Column, DataType, Model, Table} from "sequelize-typescript";
 import {Field, Int, ObjectType} from "type-graphql";
 import {Col} from "sequelize/types/utils";
@@ -12,17 +17,21 @@ export class Session extends Model {
     })
     @Field(() => Int)
     id: number
+
     @Column
     @Field()
     token: string
+
     @Column
     @Field(() => Int)
     userId: number
+
     @Column({
         type: DataType.DATE
     })
     @Field()
     createdAt: string
+
     @Column({
         type: DataType.DATE
     })

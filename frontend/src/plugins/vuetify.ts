@@ -1,4 +1,8 @@
-/**
+/*
+ * Name: Vuetify
+ * Description: Vuetify plugin (not created by myself)
+ * Date: 2/8/24
+ *
  * plugins/vuetify.ts
  *
  * Framework documentation: https://vuetifyjs.com`

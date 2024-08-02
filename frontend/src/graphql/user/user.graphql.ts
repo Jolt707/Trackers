@@ -1,3 +1,8 @@
+/*
+ * Name: Jensen Stamp
+ * Description:
+ * Date: 2/8/24
+ */
 import {gql} from "@apollo/client";
 
 export const UserQuery = gql`

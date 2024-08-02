@@ -1,3 +1,9 @@
+/*
+Name: Jensen Stamp
+Description: This is used to define all the paths in the project
+Date: 2/8/24
+*/
+
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [

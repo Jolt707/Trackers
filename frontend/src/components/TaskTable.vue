@@ -1,10 +1,19 @@
+<!--
+Name: Jensen Stamp
+Description: This is the main table component that displays tasks
+Details: The parent pages for this component is TaskHistory.vue and Upcoming.vue
+Date: 2/8/24
+-->
 <template>
   <VToolbar class="px-6">Task Table</VToolbar>
+  <!-- Table that displays the headers from tableHeader and adds the task items -->
+  <!-- Also sorts by the sortItem and sortDirection prop -->
   <VDataTable
     :headers="tableHeader"
     :items="tasks"
     :sort-by="[{ key: sortItem, order: sortDirection }]"
   >
+    <!-- Each template is used to add styling and text-truncate (cut text off) -->
     <template #item.description="{ item }">
       <div style="max-width: 150px" class="text-truncate">
         {{ item.description }}
@@ -16,11 +25,13 @@
       </div>
     </template>
     <template #item.dueDate="{ item }">
+      <!-- Setting the date to the users locale -->
       <div style="max-width: 150px" class="text-truncate">
         {{ new Date(item.dueDate).toLocaleString() }}
       </div>
     </template>
     <template #item.updatedAt="{ item }">
+      <!-- Setting the date to the users locale -->
       <div style="max-width: 150px" class="text-truncate">
         {{ new Date(item.updatedAt).toLocaleString() }}
       </div>
@@ -33,12 +44,20 @@ import { onMounted, ref } from "vue";
 import { Task } from "@/gql/graphql.ts";
 import { getTasks } from "@/composables/getTasks.ts";
 
+// Defining tasks array
 const tasks = ref<Task[]>([]);
+
+// Defining the props
 const props = defineProps<{
+  // Defining status as a boolean (completed or not)
   status: boolean;
+  // Defining sortItem to assign a table value to sort by
   sortItem: string;
+  // Defining sortDirection to set the direction
   sortDirection: boolean;
 }>();
+
+// Defining the table values to display
 const tableHeader = [
   { key: "title", title: "Title" },
   { key: "description", title: "Description" },
@@ -48,6 +67,7 @@ const tableHeader = [
   { key: "priority", title: "Priority" }
 ];
 
+// When the page is mounted (loaded) it will retrieve either the completed or uncompleted task
 onMounted(async () => {
   tasks.value = await getTasks(props.status);
 });

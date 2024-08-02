@@ -1,34 +1,50 @@
+<!--
+Name: Jensen Stamp
+Description: This is the sidebar that contains all navigation links to other pages
+Details: This will be displayed on every page, but only when logged in
+Date: 2/8/24
+-->
 <template>
   <VNavigationDrawer width="210" color="#181818" floating permanent>
+    <!-- List to hold each navigation item, "to" sets the page it will direct to -->
     <VList color="gold" density="compact" nav>
+      <!-- Home -->
       <VListItem prepend-icon="mdi-home" title="Home" to="/"></VListItem>
+      <!-- Settings -->
       <VListItem
         prepend-icon="mdi-cog"
         title="Settings"
         to="/settings"
       ></VListItem>
+      <!-- Tasks -->
       <VListItem
         prepend-icon="mdi-clipboard-edit"
         title="Tasks"
         to="/tasks"
       ></VListItem>
+      <!-- Assigned Tasks -->
       <VListItem
         prepend-icon="mdi-clipboard-text"
         title="Assigned Tasks"
         to="/assigned"
       ></VListItem>
+      <!-- Upcoming Tasks -->
       <VListItem
         prepend-icon="mdi-clipboard-clock"
         title="Upcoming Tasks"
         to="/upcoming"
       ></VListItem>
+      <!-- Task History -->
       <VListItem
         prepend-icon="mdi-clipboard-search"
         title="Task History"
         to="/history"
       ></VListItem>
     </VList>
+    <!-- Appends the Logout button (displays it at the bottom) -->
     <template #append>
+      <!-- Logout -->
+      <!-- userStore.logout removes the token and redirects to home -->
       <VListItem
         style="border-radius: 4px !important"
         class="my-2 mx-2"
@@ -45,5 +61,6 @@
 <script setup lang="ts">
 import { useUserStore } from "@/stores/user.ts";
 
+// Defines the user from the user store, used above to determine if logged in or not
 const userStore = useUserStore();
 </script>

@@ -1,5 +1,17 @@
+<!--
+Name: Jensen Stamp
+Description: This is the main component that handles task creation, deleting, editing and completing
+Details: This component is used in Tasks.vue, however does not send any data to it
+Date: 2/8/24
+-->
 <template>
   <VToolbar class="px-6 mb-4">
+    <!--
+    Using the TaskDialog component
+    @taskAdd will either run editTask or createTask, depending on if there is an editingId
+    addDialog model to show the TaskDialog component
+    Setting the models from the component to the taskDetails variable
+    -->
     <TaskDialog
       @taskAdd="editingId ? editTask() : createTask()"
       v-model="addDialog"
@@ -10,12 +22,14 @@
       v-model:dueTime="taskDetails.dueTime"
       v-model:priority="taskDetails.priority"
     >
+      <!-- If editingId is selected the TaskDialog title and button slot will display the text for an edit  -->
       <template v-if="!editingId" #title>Create Task</template>
       <template v-if="editingId" #title>Editing Task</template>
       <template v-if="!editingId" #button>continue</template>
       <template v-if="editingId" #button>confirm</template>
     </TaskDialog>
-    <ConfirmationDialog @submit="deleteTask" v-model="confirmation">
+    <ConfirmationDialog @submit="updateTask" v-model="confirmation">
+      <!-- If completedId is defined the ConfirmationDialog shows text for completing a task  -->
       <template v-if="!completedId" #title>Delete Task</template>
       <template v-if="completedId" #title>Complete Task</template>
       <template v-if="!completedId" #button>Delete</template>
@@ -25,6 +39,7 @@
     </ConfirmationDialog>
     Task List
     <VSpacer />
+    <!-- Shows the dialog, unsets editingId and clears previous inputs -->
     <VIcon
       @click="
         addDialog = true;
@@ -37,11 +52,13 @@
   </VToolbar>
 
   <VExpansionPanels>
+    <!-- For loop to add tasks sorted by descending priority -->
     <VExpansionPanel
       v-for="task in tasks.concat().sort((a, b) => b.priority - a.priority)"
       :key="task.id"
     >
       <VExpansionPanelTitle>
+        <!-- Getting the task title for each task from -->
         {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
         <VSpacer />
         <VBtn
@@ -108,24 +125,26 @@ import { COMPLETE_TASK_QUERY } from "@/graphql/task/completeTask.graphql.ts";
 import { useRoute } from "vue-router";
 import dayjs from "dayjs";
 
+// Dialog variables
 const addDialog = ref(false);
-
 const confirmation = ref(false);
 
+// Id variables
 const completedId = ref<number | undefined>(undefined);
-
 const editingId = ref<number | undefined>(undefined);
 
+// Variable to combine the date input and time input
 const dateAndTime = computed(() => {
-  console.log(taskDetails.value.dueTime);
   if (!taskDetails.value.dueDate) return "";
   const date = dayjs(taskDetails.value.dueDate)
+    // Separates and sets hours, minutes and seconds by the : in the timestamp
     .set("minute", parseInt(taskDetails.value.dueTime.split(":")[1]))
     .set("hour", parseInt(taskDetails.value.dueTime.split(":")[0]))
     .set("second", parseInt(taskDetails.value.dueTime.split(":")[2]));
   return date.toISOString();
 });
 
+// Defining the task details to put into the create or edit function
 const taskDetails = ref({
   title: "",
   description: "",
@@ -135,24 +154,33 @@ const taskDetails = ref({
   priority: 0 as number | undefined
 });
 
+// Defining tasks array to display tasks
 const tasks = ref<Task[]>([]);
 
+// Create Task function, uses the taskDetails input to create a database table
 async function createTask() {
   const apollo = useApolloClient();
   await apollo.client.mutate({
     mutation: CREATE_TASK_QUERY,
     variables: {
       input: {
+        /*
+        Input details for the function, sets dueTime to undefined and dueDate to the dateAndTime variable
+        (This is done because originally there was no way to set a time, since the Vuetify datepicker doesn't have a time field)
+        */
         ...taskDetails.value,
         dueTime: undefined,
         dueDate: dateAndTime.value
       }
     }
   });
+  // Closes the dialog by setting addDialog to false
   addDialog.value = false;
+  // Runs the getTasks function to retrieve the created task, and to display it
   tasks.value = await getTasks();
 }
 
+// Edit Task function, takes the updated taskDetails and editingId to update an existing task
 async function editTask() {
   const apollo = useApolloClient();
   await apollo.client.mutate({
@@ -164,12 +192,16 @@ async function editTask() {
       }
     }
   });
+  // Closes the dialog by setting addDialog to false
   addDialog.value = false;
+  // Runs the getTasks function to retrieve the tasks, displaying the new one
   tasks.value = await getTasks();
 }
 
-async function deleteTask() {
+// Update Task function to either delete or complete a selected task
+async function updateTask() {
   const apollo = useApolloClient();
+  // If there is no completedId, the task will be deleted
   if (!completedId) {
     await apollo.client.mutate({
       mutation: DELETE_TASK_QUERY,
@@ -179,9 +211,14 @@ async function deleteTask() {
         }
       }
     });
+    // Unsets the editingId
     editingId.value = undefined;
+    // Runs the getTasks function to retrieve the tasks, removing the deleted task
     tasks.value = await getTasks();
+    // Closes the confirmation dialog
     confirmation.value = false;
+
+    // When there is a completedId, the task will be set as complete
   } else {
     await apollo.client.mutate({
       mutation: COMPLETE_TASK_QUERY,
@@ -192,14 +229,20 @@ async function deleteTask() {
         }
       }
     });
+    // Unsets the completedId
+    completedId.value = undefined;
+    // Unsets the editingId
     editingId.value = undefined;
+    // Runs the getTasks function to retrieve the tasks, removing the deleted task
     tasks.value = await getTasks();
+    // Closes the confirmation dialog
     confirmation.value = false;
   }
 }
 
 const route = useRoute();
 
+// Function that clears the inputs to avoid previous inputs from being shown when the dialog is opened
 async function clearInputs() {
   taskDetails.value.title = "";
   taskDetails.value.description = "";
@@ -208,13 +251,20 @@ async function clearInputs() {
   taskDetails.value.priority = 0;
 }
 
+// When the page is mounted (loaded) all of this will be run if relevant
 onMounted(async () => {
+  // Clears inputs and gets tasks
   await clearInputs();
   tasks.value = await getTasks();
+
+  // If the create query is in the route, the TaskDialog will open
   if (route.query.create) {
     addDialog.value = true;
   }
+
+  // If the edit query is in the route, the TaskDialog will open, and set the taskDetails to display in the dialog
   if (route.query.edit) {
+    // Gets the editingId from the query
     editingId.value = parseInt(<string>route.query.edit);
     const task = tasks.value.find((task) => task.id === editingId.value);
     if (!task) {

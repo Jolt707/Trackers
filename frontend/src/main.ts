@@ -1,3 +1,8 @@
+/*
+ * Name: Jensen Stamp
+ * Description:
+ * Date: 2/8/23
+ */
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'

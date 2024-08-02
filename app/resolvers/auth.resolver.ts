@@ -1,3 +1,8 @@
+/*
+Name: Jensen Stamp
+Description: This is the auth resolver which validates the login or register, and returns the session and token
+Date: 2/8/24
+*/
 import {Service} from "typedi";
 import {Arg, Mutation, Resolver} from "type-graphql";
 import {User} from "../models/user.model";

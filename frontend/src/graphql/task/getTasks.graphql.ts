@@ -1,3 +1,8 @@
+/*
+ * Name: Jensen Stamp
+ * Description: Get tasks query (sends task details to the frontend)
+ * Date: 2/8/23
+ */
 import { gql } from "@apollo/client";
 
 export const GET_TASKS_QUERY = gql`

@@ -1,3 +1,9 @@
+/*
+Name: Jensen Stamp
+Description:
+Date: 2/8/24
+*/
+
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import { useApolloClient } from "@vue/apollo-composable";
