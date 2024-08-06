@@ -4,56 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Added sort and direction prop for the upcoming and history pages">
+    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment">
+      <change afterPath="$PROJECT_DIR$/app/models/classTaskAssociation.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/classUserAssociation.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/graphql/task/completeTask.input.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/task/completeTask.input.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/graphql/task/createTask.input.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/task/createTask.input.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/graphql/task/deleteTask.input.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/task/deleteTask.input.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/graphql/task/taskStatus.input.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/task/taskStatus.input.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/graphql/task/updateTask.input.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/task/updateTask.input.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/graphql/user/createUser.input.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/user/createUser.input.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/graphql/user/loginUser.input.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/user/loginUser.input.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/graphql/user/loginUser.output.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/user/loginUser.output.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/class.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/class.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/session.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/session.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/task.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/task.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resolvers/auth.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/auth.resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resolvers/user.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/user.resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AuthCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AuthCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ConfirmationDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ConfirmationDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/gql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/gql/graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/auth/login.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/auth/login.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/auth/register.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/auth/register.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/completeTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/completeTask.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/createTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/createTask.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/deleteTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/deleteTask.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/getTasks.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/getTasks.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/updateTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/updateTask.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/user/user.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/user/user.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/plugins/apollo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/plugins/apollo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/plugins/vuetify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/plugins/vuetify.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/stores/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Assigned.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Assigned.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Settings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Settings.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/TaskHistory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TaskHistory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Tasks.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Tasks.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Upcoming.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Upcoming.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,31 +52,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;something&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/jolt707/WebstormProjects/Trackers/frontend/src/views&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\jolt707\\WebstormProjects\\Trackers\\frontend\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "something",
+    "last_opened_file_path": "C:/Users/jolt707/WebstormProjects/Trackers/app/models",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\frontend\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ],
-    &quot;vue.recent.templates&quot;: [
-      &quot;Vue Composition API Component&quot;
+    "vue.recent.templates": [
+      "Vue Composition API Component"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend/src/views" />
@@ -152,7 +107,8 @@
       <workItem from="1721948753232" duration="6707000" />
       <workItem from="1721956348387" duration="14176000" />
       <workItem from="1722388219742" duration="6389000" />
-      <workItem from="1722553936980" duration="14894000" />
+      <workItem from="1722553936980" duration="15380000" />
+      <workItem from="1722916010684" duration="1045000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, navbar, sidebar and pages">
       <option name="closed" value="true" />
@@ -202,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722393977978</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment">
+      <option name="closed" value="true" />
+      <created>1722569710774</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1722569710774</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +190,7 @@
     <MESSAGE value="Added completion of tasks" />
     <MESSAGE value="Added router query to open dialog after clicking the homepage create. Began to add query for the edit (unfinished)" />
     <MESSAGE value="Added sort and direction prop for the upcoming and history pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sort and direction prop for the upcoming and history pages" />
+    <MESSAGE value="Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment" />
   </component>
 </project>

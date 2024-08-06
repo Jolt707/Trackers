@@ -6,6 +6,7 @@ Date: 2/8/24
 import { BelongsTo, Column, DataType, Model, Table } from "sequelize-typescript";
 import { Field, Int, ObjectType } from "type-graphql";
 import { DateType } from "../graphql/date";
+import { User } from "./user.model";
 
 @Table
 @ObjectType()
@@ -17,30 +18,14 @@ export class Class extends Model {
   @Field(() => Int)
   id: number;
 
+  @Field(() => Int)
+  userId: number;
+
   @Column
   @Field(() => Int)
-  teacherId: number
+  task
 
-  @Column
-  @Field()
-  name: string;
-
-  @Column
-  @Field()
-
-
-  @Column({
-    type: DataType.DATE,
-  })
-  @Field()
-  createdAt: string;
-
-  @Column({
-    type: DataType.DATE,
-  })
-
-  @Field(() => DateType, { nullable: false })
-  updatedAt: string;
-
+  @BelongsTo(() => User, "userId")
+  user: User
 
 }

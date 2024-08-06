@@ -15,12 +15,15 @@ export class User extends Model {
     })
     @Field(() => Int)
     id: number
+
     @Column
     @Field()
     username: string
+
     @Column
     @Field()
     password: string
+
     @Column({
         type: DataType.DATE
     })
@@ -28,19 +31,23 @@ export class User extends Model {
         nullable: true
     })
     avatar: string | null
+
     @Column({
         type: DataType.DATE
     })
     @Field()
     createdAt: string
+
     @Column({
         type: DataType.DATE
     })
     @Field()
     updatedAt: string
+
     @Column
     @Field()
     admin: boolean
+
     @Column
     @Field()
     email: string
