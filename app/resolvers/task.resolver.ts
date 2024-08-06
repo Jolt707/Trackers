@@ -17,51 +17,58 @@ import { CompleteTaskInput } from "../graphql/task/completeTask.input";
 @Service()
 @Resolver(Task)
 export class TaskResolver {
+  @Authorized()
   @Mutation(() => Task)
-  async createTask(@Arg("input") input: CreateTaskInput) {
+  async createTask(@Arg("input") input: CreateTaskInput, @Ctx() ctx: Context) {
     return await Task.create({
       ...input,
-      userId: 1,
+      userId: ctx.user!.id,
     });
   }
 
+  @Authorized()
   @Query(() => [Task])
-  async tasks(@Arg("input") input: TaskStatusInput) {
+  async tasks(@Arg("input") input: TaskStatusInput, @Ctx() ctx: Context) {
     const tasks = await Task.findAll({
       where: {
-        completedTask: input.completedTask
+        completedTask: input.completedTask,
+        userId: ctx.user!.id,
       }
     });
     return tasks;
   }
 
+  @Authorized()
   @Mutation(() => Boolean)
-  async deleteTask(@Arg("input") input: DeleteTaskInput) {
+  async deleteTask(@Arg("input") input: DeleteTaskInput, @Ctx() ctx: Context) {
     await Task.destroy({
       where: {
         id: input.taskId,
-        userId: 1,
+        userId: ctx.user!.id,
       },
     });
     return true;
   }
 
+  @Authorized()
   @Mutation(() => Task)
-  async updateTask(@Arg("input") input: UpdateTaskInput) {
+  async updateTask(@Arg("input") input: UpdateTaskInput, @Ctx() ctx: Context) {
     await Task.update(input, {
       where: {
         id: input.taskId,
-        userId: 1,
+        userId: ctx.user!.id,
       },
     });
     return await Task.findByPk(input.taskId);
   }
+
+  @Authorized()
   @Mutation(() => Task)
-  async completeTask(@Arg("input") input: CompleteTaskInput) {
+  async completeTask(@Arg("input") input: CompleteTaskInput, @Ctx() ctx: Context) {
     await Task.update(input, {
       where: {
         id: input.taskId,
-        userId: 1,
+        userId: ctx.user!.id,
       },
     });
     return await Task.findByPk(input.taskId);

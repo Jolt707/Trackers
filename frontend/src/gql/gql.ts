@@ -1,12 +1,6 @@
-/*
- * Name: GraphQL
- * Description: Handled and created by Graphql
- * Date: 2/8/23
- */
-
 /* eslint-disable */
-import * as types from "./graphql";
-import type { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/core";
+import * as types from './graphql';
+import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 
 /**
  * Map of all GraphQL operations in the project.
@@ -19,20 +13,16 @@ import type { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-  "mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}":
-    types.LoginDocument,
-  "\n  mutation Register($input: UserInput!) {\n    register(input: $input) {\n      token\n      user {\n        username\n      }\n    }\n  }\n":
-    types.RegisterDocument,
-  "\n  mutation CreateTask($input: CreateTaskInput!) {\n    createTask(input: $input) {\n      id\n      userId\n      title\n      description\n      notes\n      createdAt\n      dueDate\n      priority\n      updatedAt\n      completedTask\n    }\n  }\n":
-    types.CreateTaskDocument,
-  "\n  mutation DeleteTask($input: DeleteTaskInput!) {\n    deleteTask(input: $input)\n  }\n":
-    types.DeleteTaskDocument,
-  "\n  query Tasks {\n    tasks {\n      id\n      title\n      description\n      notes\n      createdAt\n      dueDate\n      priority\n      updatedAt\n      completedTask\n    }\n  }\n":
-    types.TasksDocument,
-  "mutation UpdateTask($input: UpdateTaskInput!) {\n  updateTask(input: $input) {\n    id\n  }\n}":
-    types.UpdateTaskDocument,
-  "\n    query CurrentUser {\n  currentUser {\n    id\n    username\n    password\n    avatar\n    createdAt\n    updatedAt\n    admin\n    email\n  }\n}":
-    types.CurrentUserDocument
+    "mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}": types.LoginDocument,
+    "\n  mutation Register($input: UserInput!) {\n    register(input: $input) {\n      token\n      user {\n        username\n      }\n    }\n  }\n": types.RegisterDocument,
+    "\n  mutation CreateClass($input: CreateClassInput!) {\n    createClass(input: $input) {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n    }\n  }\n": types.CreateClassDocument,
+    "\n  query Classes {\n    classes {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n      students {\n        id\n        username\n        createdAt\n        updatedAt\n        email\n      }\n    }\n  }\n": types.ClassesDocument,
+    "\n  mutation CompleteTask($input: CompleteTaskInput!) {\n    completeTask(input: $input) {\n      id\n    }\n  }\n": types.CompleteTaskDocument,
+    "\n  mutation CreateTask($input: CreateTaskInput!) {\n    createTask(input: $input) {\n      id\n    }\n  }\n": types.CreateTaskDocument,
+    "\n  mutation DeleteTask($input: DeleteTaskInput!) {\n    deleteTask(input: $input)\n  }\n": types.DeleteTaskDocument,
+    "\n  query Tasks($input: TaskStatusInput!) {\n    tasks(input: $input) {\n      id\n      userId\n      title\n      description\n      notes\n      createdAt\n      dueDate\n      priority\n      updatedAt\n      completedTask\n    }\n  }\n": types.TasksDocument,
+    "mutation UpdateTask($input: UpdateTaskInput!) {\n  updateTask(input: $input) {\n    id\n  }\n}": types.UpdateTaskDocument,
+    "\n  query CurrentUser {\n    currentUser {\n      id\n      username\n      password\n      avatar\n      createdAt\n      updatedAt\n      accountType\n      email\n    }\n  }\n": types.CurrentUserDocument,
 };
 
 /**
@@ -52,49 +42,46 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
-  source: "mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}"
-): (typeof documents)["mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}"];
+export function graphql(source: "mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}"): (typeof documents)["mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
-  source: "\n  mutation Register($input: UserInput!) {\n    register(input: $input) {\n      token\n      user {\n        username\n      }\n    }\n  }\n"
-): (typeof documents)["\n  mutation Register($input: UserInput!) {\n    register(input: $input) {\n      token\n      user {\n        username\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  mutation Register($input: UserInput!) {\n    register(input: $input) {\n      token\n      user {\n        username\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Register($input: UserInput!) {\n    register(input: $input) {\n      token\n      user {\n        username\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
-  source: "\n  mutation CreateTask($input: CreateTaskInput!) {\n    createTask(input: $input) {\n      id\n      userId\n      title\n      description\n      notes\n      createdAt\n      dueDate\n      priority\n      updatedAt\n      completedTask\n    }\n  }\n"
-): (typeof documents)["\n  mutation CreateTask($input: CreateTaskInput!) {\n    createTask(input: $input) {\n      id\n      userId\n      title\n      description\n      notes\n      createdAt\n      dueDate\n      priority\n      updatedAt\n      completedTask\n    }\n  }\n"];
+export function graphql(source: "\n  mutation CreateClass($input: CreateClassInput!) {\n    createClass(input: $input) {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n    }\n  }\n"): (typeof documents)["\n  mutation CreateClass($input: CreateClassInput!) {\n    createClass(input: $input) {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
-  source: "\n  mutation DeleteTask($input: DeleteTaskInput!) {\n    deleteTask(input: $input)\n  }\n"
-): (typeof documents)["\n  mutation DeleteTask($input: DeleteTaskInput!) {\n    deleteTask(input: $input)\n  }\n"];
+export function graphql(source: "\n  query Classes {\n    classes {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n      students {\n        id\n        username\n        createdAt\n        updatedAt\n        email\n      }\n    }\n  }\n"): (typeof documents)["\n  query Classes {\n    classes {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n      students {\n        id\n        username\n        createdAt\n        updatedAt\n        email\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
-  source: "\n  query Tasks {\n    tasks {\n      id\n      title\n      description\n      notes\n      createdAt\n      dueDate\n      priority\n      updatedAt\n      completedTask\n    }\n  }\n"
-): (typeof documents)["\n  query Tasks {\n    tasks {\n      id\n      title\n      description\n      notes\n      createdAt\n      dueDate\n      priority\n      updatedAt\n      completedTask\n    }\n  }\n"];
+export function graphql(source: "\n  mutation CompleteTask($input: CompleteTaskInput!) {\n    completeTask(input: $input) {\n      id\n    }\n  }\n"): (typeof documents)["\n  mutation CompleteTask($input: CompleteTaskInput!) {\n    completeTask(input: $input) {\n      id\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
-  source: "mutation UpdateTask($input: UpdateTaskInput!) {\n  updateTask(input: $input) {\n    id\n  }\n}"
-): (typeof documents)["mutation UpdateTask($input: UpdateTaskInput!) {\n  updateTask(input: $input) {\n    id\n  }\n}"];
+export function graphql(source: "\n  mutation CreateTask($input: CreateTaskInput!) {\n    createTask(input: $input) {\n      id\n    }\n  }\n"): (typeof documents)["\n  mutation CreateTask($input: CreateTaskInput!) {\n    createTask(input: $input) {\n      id\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
-  source: "\n    query CurrentUser {\n  currentUser {\n    id\n    username\n    password\n    avatar\n    createdAt\n    updatedAt\n    admin\n    email\n  }\n}"
-): (typeof documents)["\n    query CurrentUser {\n  currentUser {\n    id\n    username\n    password\n    avatar\n    createdAt\n    updatedAt\n    admin\n    email\n  }\n}"];
+export function graphql(source: "\n  mutation DeleteTask($input: DeleteTaskInput!) {\n    deleteTask(input: $input)\n  }\n"): (typeof documents)["\n  mutation DeleteTask($input: DeleteTaskInput!) {\n    deleteTask(input: $input)\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query Tasks($input: TaskStatusInput!) {\n    tasks(input: $input) {\n      id\n      userId\n      title\n      description\n      notes\n      createdAt\n      dueDate\n      priority\n      updatedAt\n      completedTask\n    }\n  }\n"): (typeof documents)["\n  query Tasks($input: TaskStatusInput!) {\n    tasks(input: $input) {\n      id\n      userId\n      title\n      description\n      notes\n      createdAt\n      dueDate\n      priority\n      updatedAt\n      completedTask\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation UpdateTask($input: UpdateTaskInput!) {\n  updateTask(input: $input) {\n    id\n  }\n}"): (typeof documents)["mutation UpdateTask($input: UpdateTaskInput!) {\n  updateTask(input: $input) {\n    id\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query CurrentUser {\n    currentUser {\n      id\n      username\n      password\n      avatar\n      createdAt\n      updatedAt\n      accountType\n      email\n    }\n  }\n"): (typeof documents)["\n  query CurrentUser {\n    currentUser {\n      id\n      username\n      password\n      avatar\n      createdAt\n      updatedAt\n      accountType\n      email\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
 }
 
-export type DocumentType<TDocumentNode extends DocumentNode<any, any>> =
-  TDocumentNode extends DocumentNode<infer TType, any> ? TType : never;
+export type DocumentType<TDocumentNode extends DocumentNode<any, any>> = TDocumentNode extends DocumentNode<  infer TType,  any>  ? TType  : never;

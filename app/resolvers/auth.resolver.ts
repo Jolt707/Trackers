@@ -22,7 +22,7 @@ export class AuthResolver {
         const user = await User.create({
             username: input.username,
             password: await argon2.hash(input.password),
-            admin: false,
+            accountType: input.accountType,
             email: input.email
         })
         const session = await Session.create({

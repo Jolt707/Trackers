@@ -19,6 +19,16 @@ Date: 2/8/24
       <!-- Slot to add another text field specifically for registering -->
       <VTextField label="Email" v-model="login.email"></VTextField>
     </template>
+    <!-- Slot to add the buttons to the register page -->
+    <template #buttons>
+      <div class="d-flex justify-center py-2">
+        <VBtnToggle v-model="login.accountType">
+          <VBtn :value="AccountType.User">Student</VBtn>
+          <VBtn :value="AccountType.Teacher">Teacher</VBtn>
+          <VBtn :value="AccountType.Parent">Parent</VBtn>
+        </VBtnToggle>
+      </div>
+    </template>
   </AuthCard>
 </template>
 
@@ -32,13 +42,15 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user.ts";
 import { RegisterMutation } from "@/graphql/auth/register.graphql.ts";
 import { onMounted } from "vue";
+import { AccountType } from "@/gql/graphql.ts";
 
 // Login details
 const login = ref({
   username: "",
   password: "",
   email: "",
-  loading: false
+  loading: false,
+  accountType: AccountType.User
 });
 
 const apolloClient = useApolloClient();
@@ -57,7 +69,8 @@ async function doRegister() {
         input: {
           username: login.value.username,
           password: login.value.password,
-          email: login.value.email
+          email: login.value.email,
+          accountType: login.value.accountType
         }
       }
     });

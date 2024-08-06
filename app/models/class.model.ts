@@ -3,9 +3,12 @@ Name: Jensen Stamp
 Description: UNFINISHED
 Date: 2/8/24
 */
-import { BelongsTo, Column, DataType, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
 import { Field, Int, ObjectType } from "type-graphql";
 import { DateType } from "../graphql/date";
+import { HasMany } from "sequelize";
+import { User } from "./user.model";
+import { ClassUserAssociation } from "./classUserAssociation.model";
 
 @Table
 @ObjectType()
@@ -25,10 +28,6 @@ export class Class extends Model {
   @Field()
   name: string;
 
-  @Column
-  @Field()
-
-
   @Column({
     type: DataType.DATE,
   })
@@ -38,9 +37,11 @@ export class Class extends Model {
   @Column({
     type: DataType.DATE,
   })
-
   @Field(() => DateType, { nullable: false })
   updatedAt: string;
 
+  @BelongsToMany(() => User, () => ClassUserAssociation, "userId", "userId")
+  @Field(() => [User])
+  students: User[]
 
 }

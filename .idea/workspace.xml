@@ -5,11 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Created task and user association for classes">
+      <change afterPath="$PROJECT_DIR$/app/graphql/class/classUserAssociation.input.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/graphql/class/createClass.input.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/graphql/user/accountType.enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/resolvers/class.resolver.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/resolvers/classUserAssociation.resolver.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/SpeciesDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/SpeciesList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/composables/getClasses.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/class/classUserAssociation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/class/createClass.graphql.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/class/getClasses.graphql.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/views/Classes.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/graphql/user/createUser.input.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/user/createUser.input.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/class.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/class.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/classTaskAssociation.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/classTaskAssociation.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/task.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/task.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/classUserAssociation.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/classUserAssociation.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/resolvers/auth.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/auth.resolver.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/graphql.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/graphql.schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/AuthCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AuthCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/gql/fragment-masking.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/gql/fragment-masking.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/gql/gql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/gql/gql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/gql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/gql/graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/user/user.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/user/user.graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Register.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,9 +90,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\frontend\\node_modules\\prettier",
+    "prettierjs.PrettierConfiguration.Package": "/home/jolt707/WebstormProjects/Trackers/frontend/node_modules/prettier",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/home/jolt707/WebstormProjects/Trackers/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -87,9 +113,17 @@
       <recent name="$PROJECT_DIR$/frontend/src/plugins" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/graphql/class" />
       <recent name="$PROJECT_DIR$/frontend" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

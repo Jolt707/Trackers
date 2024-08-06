@@ -27,6 +27,7 @@
         v-model="password"
         type="password"
       ></VTextField>
+      <slot name="buttons" />
       <VCardActions>
         <VSpacer></VSpacer>
         <!-- Button to emit "auth" which will run a function on the parent component -->

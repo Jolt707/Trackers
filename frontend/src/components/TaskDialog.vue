@@ -44,6 +44,7 @@ Date: 2/8/24
             label="Due Time"
             v-model="dueTime"
             style="margin-top: 8px"
+            type="time"
           ></VTextField>
         </div>
         <!-- Priority -->

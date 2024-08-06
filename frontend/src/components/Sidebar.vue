@@ -16,6 +16,12 @@ Date: 2/8/24
         title="Settings"
         to="/settings"
       ></VListItem>
+      <!-- Classes -->
+      <VListItem
+        prepend-icon="mdi-human-male-board"
+        title="Classes"
+        to="/classes"
+      ></VListItem>
       <!-- Tasks -->
       <VListItem
         prepend-icon="mdi-clipboard-edit"

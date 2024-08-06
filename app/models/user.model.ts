@@ -5,6 +5,7 @@ Date: 2/8/24
 */
 import {Column, DataType, Model, Table} from "sequelize-typescript";
 import {Field, Int, ObjectType} from "type-graphql";
+import { AccountType } from "../graphql/user/accountType.enum";
 
 @Table
 @ObjectType()
@@ -44,9 +45,11 @@ export class User extends Model {
     @Field()
     updatedAt: string
 
-    @Column
-    @Field()
-    admin: boolean
+    @Column({
+        type: DataType.ENUM("USER", "TEACHER", "PARENT"),
+    })
+    @Field(() => AccountType)
+    accountType: AccountType
 
     @Column
     @Field()

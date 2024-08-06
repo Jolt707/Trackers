@@ -5,6 +5,7 @@ Date: 2/8/24
 */
 import {Field, InputType} from "type-graphql";
 import {IsEmail, MaxLength, MinLength} from "class-validator";
+import { AccountType } from "./accountType.enum";
 
 @InputType()
 export class UserInput {
@@ -18,4 +19,6 @@ export class UserInput {
     @Field()
     @IsEmail()
     email: string
+    @Field(() => AccountType)
+    accountType: AccountType
 }
