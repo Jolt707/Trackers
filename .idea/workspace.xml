@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment">
-      <change afterPath="$PROJECT_DIR$/app/models/classTaskAssociation.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/classUserAssociation.model.ts" afterDir="false" />
+    <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="Created task and user association for classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/class.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/class.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/classTaskAssociation.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/classTaskAssociation.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/task.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/task.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/out/tsconfig.app.tsbuildinfo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,11 +80,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jolt707\WebstormProjects\Trackers\app\models" />
       <recent name="$PROJECT_DIR$/frontend/src/views" />
       <recent name="$PROJECT_DIR$/frontend/src/graphql/auth" />
       <recent name="$PROJECT_DIR$/frontend/src" />
       <recent name="$PROJECT_DIR$/frontend/src/plugins" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend" />
@@ -108,7 +109,7 @@
       <workItem from="1721956348387" duration="14176000" />
       <workItem from="1722388219742" duration="6389000" />
       <workItem from="1722553936980" duration="15380000" />
-      <workItem from="1722916010684" duration="1045000" />
+      <workItem from="1722916010684" duration="2201000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, navbar, sidebar and pages">
       <option name="closed" value="true" />
@@ -166,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722569710774</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created task and user association for classes">
+      <option name="closed" value="true" />
+      <created>1722917530159</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722917530159</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +200,7 @@
     <MESSAGE value="Added router query to open dialog after clicking the homepage create. Began to add query for the edit (unfinished)" />
     <MESSAGE value="Added sort and direction prop for the upcoming and history pages" />
     <MESSAGE value="Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment, Comment" />
+    <MESSAGE value="Created task and user association for classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created task and user association for classes" />
   </component>
 </project>

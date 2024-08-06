@@ -6,7 +6,6 @@ Date: 2/8/24
 import { Column, DataType, Default, Model, Table } from "sequelize-typescript";
 import { Field, Int, ObjectType } from "type-graphql";
 import { DateType } from "../graphql/date";
-import { MinLength } from "class-validator";
 
 @Table
 @ObjectType()
