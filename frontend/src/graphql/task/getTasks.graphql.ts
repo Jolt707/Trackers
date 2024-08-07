@@ -18,6 +18,10 @@ export const GET_TASKS_QUERY = gql`
       priority
       updatedAt
       completedTask
+      classes {
+        id
+        name
+      }
     }
   }
 `;

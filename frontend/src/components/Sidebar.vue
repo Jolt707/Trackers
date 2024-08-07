@@ -49,6 +49,8 @@ Date: 2/8/24
     </VList>
     <!-- Appends the Logout button (displays it at the bottom) -->
     <template #append>
+      <VListItem>{{ userStore.user?.username }}</VListItem>
+
       <!-- Logout -->
       <!-- userStore.logout removes the token and redirects to home -->
       <VListItem

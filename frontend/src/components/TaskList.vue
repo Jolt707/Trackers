@@ -13,6 +13,7 @@ Date: 2/8/24
     Setting the models from the component to the taskDetails variable
     -->
     <TaskDialog
+      v-model:addClasses="addClasses"
       @taskAdd="editingId ? editTask() : createTask()"
       v-model="addDialog"
       v-model:title="taskDetails.title"
@@ -27,8 +28,24 @@ Date: 2/8/24
       <template v-if="editingId" #title>Editing Task</template>
       <template v-if="!editingId" #button>continue</template>
       <template v-if="editingId" #button>confirm</template>
+
+      <template v-if="!editingId" #autocomplete>
+        <VAutocomplete
+          multiple
+          chips
+          label="Classes"
+          :items="classes"
+          item-value="id"
+          item-title="name"
+          v-model="addClasses"
+        ></VAutocomplete>
+      </template>
     </TaskDialog>
-    <ConfirmationDialog @submit="updateTask" v-model="confirmation">
+    <ConfirmationDialog
+      @update:model-value="unsetIDs"
+      @submit="updateTask"
+      v-model="confirmation"
+    >
       <!-- If completedId is defined the ConfirmationDialog shows text for completing a task  -->
       <template v-if="!completedId" #title>Delete Task</template>
       <template v-if="completedId" #title>Complete Task</template>
@@ -36,6 +53,21 @@ Date: 2/8/24
       <template v-if="completedId" #button>Confirm</template>
       <template v-if="!completedId" #text>delete</template>
       <template v-if="completedId" #text>complete</template>
+
+      <template v-if="addingClasses" #title>Add Classes</template>
+      <template v-if="addingClasses" #text>add classes to</template>
+      <template v-if="addingClasses" #button>Add</template>
+      <template v-if="addingClasses" #autocomplete>
+        <VAutocomplete
+          multiple
+          chips
+          label="Classes"
+          :items="classes"
+          item-value="id"
+          item-title="name"
+          v-model="addClasses"
+        ></VAutocomplete>
+      </template>
     </ConfirmationDialog>
     Task List
     <VSpacer />
@@ -106,6 +138,20 @@ Date: 2/8/24
         <p class="font-weight-bold">Priority:</p>
         <p class="pb-2" style="font-size: 15px">Higher = Prioritised</p>
         <p class="text-truncate pb-2">{{ task.priority }}</p>
+        <p class="font-weight-bold pb-2">Classes:</p>
+        <VChipGroup>
+          <VChip
+            @click="
+              addingClasses = task.id;
+              confirmation = true;
+            "
+          >
+            <VIcon>mdi-plus</VIcon>
+          </VChip>
+          <VChip v-for="classItem in task.classes" :key="classItem.id">
+            {{ classItem.name }}
+          </VChip>
+        </VChipGroup>
       </VExpansionPanelText>
     </VExpansionPanel>
   </VExpansionPanels>
@@ -116,7 +162,7 @@ import { computed, onMounted, ref } from "vue";
 import TaskDialog from "@/components/TaskDialog.vue";
 import { useApolloClient } from "@vue/apollo-composable";
 import { CREATE_TASK_QUERY } from "@/graphql/task/createTask.graphql.ts";
-import { Task } from "@/gql/graphql.ts";
+import { AccountType, Task } from "@/gql/graphql.ts";
 import ConfirmationDialog from "@/components/ConfirmationDialog.vue";
 import { getTasks } from "@/composables/getTasks.ts";
 import { DELETE_TASK_QUERY } from "@/graphql/task/deleteTask.graphql.ts";
@@ -124,14 +170,24 @@ import { UPDATE_TASK_QUERY } from "@/graphql/task/updateTask.graphql.ts";
 import { COMPLETE_TASK_QUERY } from "@/graphql/task/completeTask.graphql.ts";
 import { useRoute } from "vue-router";
 import dayjs from "dayjs";
+import { TASK_CLASS_ASSOCIATION_MUTATION } from "@/graphql/task/taskClassAssociation.graphql.ts";
+import { getClasses } from "@/composables/getClasses.ts";
+import { useUserStore } from "@/stores/user.ts";
 
 // Dialog variables
 const addDialog = ref(false);
 const confirmation = ref(false);
 
+const addingClasses = ref<number | undefined>(undefined);
+
 // Id variables
 const completedId = ref<number | undefined>(undefined);
 const editingId = ref<number | undefined>(undefined);
+
+const addClasses = ref<number[]>([]);
+const classes = ref([]);
+
+const userStore = useUserStore();
 
 // Variable to combine the date input and time input
 const dateAndTime = computed(() => {
@@ -160,7 +216,9 @@ const tasks = ref<Task[]>([]);
 // Create Task function, uses the taskDetails input to create a database table
 async function createTask() {
   const apollo = useApolloClient();
-  await apollo.client.mutate({
+  const {
+    data: { createTask }
+  } = await apollo.client.mutate({
     mutation: CREATE_TASK_QUERY,
     variables: {
       input: {
@@ -174,10 +232,26 @@ async function createTask() {
       }
     }
   });
-  // Closes the dialog by setting addDialog to false
-  addDialog.value = false;
-  // Runs the getTasks function to retrieve the created task, and to display it
-  tasks.value = await getTasks();
+  if (userStore.user?.accountType === AccountType.Teacher) {
+    await addClassesFunction(createTask.id);
+    // Closes the dialog by setting addDialog to false
+    addDialog.value = false;
+    // Runs the getTasks function to retrieve the created task, and to display it
+    tasks.value = await getTasks();
+  }
+}
+
+async function addClassesFunction(taskId: number) {
+  const apollo = useApolloClient();
+  await apollo.client.mutate({
+    mutation: TASK_CLASS_ASSOCIATION_MUTATION,
+    variables: {
+      input: {
+        classId: addClasses.value,
+        taskId
+      }
+    }
+  });
 }
 
 // Edit Task function, takes the updated taskDetails and editingId to update an existing task
@@ -188,7 +262,9 @@ async function editTask() {
     variables: {
       input: {
         ...taskDetails.value,
-        taskId: editingId.value
+        taskId: editingId.value,
+        dueTime: undefined,
+        dueDate: dateAndTime.value
       }
     }
   });
@@ -219,7 +295,7 @@ async function updateTask() {
     confirmation.value = false;
 
     // When there is a completedId, the task will be set as complete
-  } else {
+  } else if (completedId.value) {
     await apollo.client.mutate({
       mutation: COMPLETE_TASK_QUERY,
       variables: {
@@ -229,15 +305,14 @@ async function updateTask() {
         }
       }
     });
-    // Unsets the completedId
-    completedId.value = undefined;
-    // Unsets the editingId
-    editingId.value = undefined;
     // Runs the getTasks function to retrieve the tasks, removing the deleted task
-    tasks.value = await getTasks();
     // Closes the confirmation dialog
-    confirmation.value = false;
+  } else if (addingClasses.value) {
+    await addClassesFunction(addingClasses.value);
   }
+  unsetIDs(false);
+  tasks.value = await getTasks();
+  confirmation.value = false;
 }
 
 const route = useRoute();
@@ -251,11 +326,21 @@ async function clearInputs() {
   taskDetails.value.priority = 0;
 }
 
+function unsetIDs(value: boolean) {
+  if (value) {
+    return;
+  }
+  completedId.value = undefined;
+  editingId.value = undefined;
+  addingClasses.value = undefined;
+}
+
 // When the page is mounted (loaded) all of this will be run if relevant
 onMounted(async () => {
-  // Clears inputs and gets tasks
+  // Clears inputs and gets tasks/classes
   await clearInputs();
   tasks.value = await getTasks();
+  classes.value = await getClasses();
 
   // If the create query is in the route, the TaskDialog will open
   if (route.query.create) {

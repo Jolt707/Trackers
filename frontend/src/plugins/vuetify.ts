@@ -205,7 +205,7 @@ export default createVuetify({
       fluid: true
     },
     VList: {
-      bgColor: "transparent"
+      // bgColor: "transparent"
     }
   },
   theme: {

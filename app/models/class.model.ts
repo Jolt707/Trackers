@@ -40,8 +40,11 @@ export class Class extends Model {
   @Field(() => DateType, { nullable: false })
   updatedAt: string;
 
-  @BelongsToMany(() => User, () => ClassUserAssociation, "userId", "userId")
+  @BelongsToMany(() => User, () => ClassUserAssociation, "classId", "userId")
   @Field(() => [User])
   students: User[]
+
+  @BelongsTo(() => ClassUserAssociation, "classId")
+  student: User
 
 }

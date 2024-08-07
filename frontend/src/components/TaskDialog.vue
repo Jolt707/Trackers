@@ -57,6 +57,7 @@ Date: 2/8/24
         <p class="mt-n4" style="font-size: 15px; color: #9d9d9d">
           Higher = Prioritised
         </p>
+        <slot name="autocomplete"></slot>
       </VContainer>
       <VCardActions>
         <VSpacer />

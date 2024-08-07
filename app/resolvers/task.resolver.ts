@@ -4,7 +4,7 @@ Description: UNFINISHED
 Date: 2/8/24
 */
 import { Service } from "typedi";
-import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Authorized, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 import { User } from "../models/user.model";
 import { Context } from "../graphql/server/context";
 import { Task } from "../models/task.model";
@@ -13,6 +13,7 @@ import { DeleteTaskInput } from "../graphql/task/deleteTask.input";
 import { UpdateTaskInput } from "../graphql/task/updateTask.input";
 import { TaskStatusInput } from "../graphql/task/taskStatus.input";
 import { CompleteTaskInput } from "../graphql/task/completeTask.input";
+import { Class } from "../models/class.model";
 
 @Service()
 @Resolver(Task)
@@ -36,6 +37,11 @@ export class TaskResolver {
       }
     });
     return tasks;
+  }
+
+  @FieldResolver(() => [Class])
+  classes(@Root() taskItem: Task) {
+    return taskItem.$get("classes")
   }
 
   @Authorized()

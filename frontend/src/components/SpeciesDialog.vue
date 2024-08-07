@@ -62,6 +62,9 @@ const tableHeader = [{ key: "email", title: "Email" }];
 const addedStudents = defineModel<{ email: string }[]>("students");
 
 async function addStudent() {
+  if (addedStudents.value!.find((s) => s.email === student.value)) {
+    return;
+  }
   addedStudents.value!.push({
     email: student.value
   });

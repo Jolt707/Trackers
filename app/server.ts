@@ -1,5 +1,4 @@
-import {Contains} from "sequelize-typescript";
-import {Container, Service} from "typedi";
+import { Service } from "typedi";
 import {createYoga, YogaServer} from "graphql-yoga";
 import {buildSchema, MiddlewareFn} from "type-graphql";
 import {UserResolver} from "./resolvers/user.resolver";
@@ -9,8 +8,8 @@ import {AuthResolver} from "./resolvers/auth.resolver";
 import {authChecker} from "./authChecker";
 import { TaskResolver } from "./resolvers/task.resolver";
 import { ClassResolver } from "./resolvers/class.resolver";
-import { ClassUserAssociation } from "./models/classUserAssociation.model";
 import { ClassUserResolver } from "./resolvers/classUserAssociation.resolver";
+import { ClassTaskResolver } from "./resolvers/classTaskAssociation.resolver";
 @Service()
 export class Server {
     graphqlServer: YogaServer<any, any>
@@ -27,7 +26,7 @@ export class Server {
         db
         // Create a Yoga instance with a GraphQL schema.
         const schema = await buildSchema({
-            resolvers: [UserResolver, AuthResolver, TaskResolver, ClassResolver, ClassUserResolver],
+            resolvers: [UserResolver, AuthResolver, TaskResolver, ClassResolver, ClassUserResolver, ClassTaskResolver],
             globalMiddlewares: [this.ErrorInterceptor],
             authChecker: authChecker,
         });

@@ -2,12 +2,12 @@ import { Service } from "typedi";
 import { Arg, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
 import { Class } from "../models/class.model";
 import { ClassUserAssociation } from "../models/classUserAssociation.model";
-import { Task } from "../models/task.model";
-import { CreateTaskInput } from "../graphql/task/createTask.input";
 import { Context } from "../graphql/server/context";
 import { ClassUserAssociationInput } from "../graphql/class/classUserAssociation.input";
 import { GraphQLError } from "graphql";
 import { User } from "../models/user.model";
+import { ClassTaskAssociation } from "../models/classTaskAssociation.model";
+import { AccountType } from "../graphql/user/accountType.enum";
 
 @Service()
 @Resolver(ClassUserAssociation)
@@ -34,6 +34,18 @@ export class ClassUserResolver {
     }
     const associations = []
     for (const user of users) {
+      if (user.accountType !== AccountType.USER) {
+        continue
+      }
+      const find = await ClassUserAssociation.findOne({
+        where: {
+          userId: user.id,
+          classId: input.classId,
+        }
+      })
+      if (find) {
+        continue
+      }
       const association = await ClassUserAssociation.create({
         userId: user.id,
         classId: input.classId,

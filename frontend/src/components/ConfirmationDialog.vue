@@ -12,10 +12,11 @@ Date: 2/8/24
         <VCardTitle><slot name="title"></slot></VCardTitle>
       </VToolbar>
       <VCardText>
-        This will permanently
+        This will
         <!-- Slot to change the text naming the action -->
         <slot name="text"></slot>
         the selected task
+        <slot name="autocomplete"></slot>
       </VCardText>
       <VCardActions>
         <VSpacer />
