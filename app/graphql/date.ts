@@ -11,11 +11,13 @@ export const DateType = new GraphQLScalarType({
     return null
   },
   //@ts-ignore
-  parseValue(value: string): Date {
+  parseValue(value: string): Date | null {
+    if(!value) return null
     return new Date(value)
   },
   //@ts-ignore
-  serialize(value: string | Date): string {
+  serialize(value: string | Date): string | null {
+    if(!value) return null
     return typeof value === "string" ? value : value.toISOString()
   }
 })

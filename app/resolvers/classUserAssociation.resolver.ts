@@ -6,7 +6,6 @@ import { Context } from "../graphql/server/context";
 import { ClassUserAssociationInput } from "../graphql/class/classUserAssociation.input";
 import { GraphQLError } from "graphql";
 import { User } from "../models/user.model";
-import { ClassTaskAssociation } from "../models/classTaskAssociation.model";
 import { AccountType } from "../graphql/user/accountType.enum";
 
 @Service()
@@ -15,6 +14,7 @@ export class ClassUserResolver {
   @Authorized()
   @Mutation(() => [ClassUserAssociation])
   async addUsersToClass(@Arg("input") input: ClassUserAssociationInput, @Ctx() ctx: Context) {
+console.log(await Class.findAll())
     const classItem = await Class.findOne({
       where: {
         teacherId: ctx.user!.id,
@@ -29,6 +29,9 @@ export class ClassUserResolver {
         email: input.emails
       }
     })
+    if (!users) {
+      throw new GraphQLError("Class not found")
+    }
     if (users.length !== input.emails.length) {
       throw new GraphQLError("Email not found")
     }

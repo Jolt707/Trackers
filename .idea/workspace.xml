@@ -5,31 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/graphql/task/classTaskAssociation.input.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/graphql/task/taskClassAssociation.input.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/resolvers/classTaskAssociation.resolver.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/task/classTaskAssociation.graphql.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/task/taskClassAssociation.graphql.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/graphql/date.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/date.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/class.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/class.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/classTaskAssociation.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/classTaskAssociation.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/classUserAssociation.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/classUserAssociation.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/task.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/task.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resolvers/class.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/class.resolver.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/resolvers/classUserAssociation.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/classUserAssociation.resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/task.resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/graphql.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/graphql.schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ConfirmationDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ConfirmationDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/SpeciesDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SpeciesDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/SpeciesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SpeciesList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/gql/gql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/gql/gql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/gql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/gql/graphql.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/getTasks.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/getTasks.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/plugins/vuetify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/plugins/vuetify.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +46,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -86,7 +73,7 @@
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "/home/jolt707/WebstormProjects/Trackers/frontend/node_modules/prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/home/jolt707/WebstormProjects/Trackers/node_modules/typescript/lib",
+    "ts.external.directory.path": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {

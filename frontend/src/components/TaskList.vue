@@ -29,7 +29,10 @@ Date: 2/8/24
       <template v-if="!editingId" #button>continue</template>
       <template v-if="editingId" #button>confirm</template>
 
-      <template v-if="!editingId" #autocomplete>
+      <template
+        v-if="userStore.user?.accountType === AccountType.Teacher && !editingId"
+        #autocomplete
+      >
         <VAutocomplete
           multiple
           chips
@@ -57,7 +60,12 @@ Date: 2/8/24
       <template v-if="addingClasses" #title>Add Classes</template>
       <template v-if="addingClasses" #text>add classes to</template>
       <template v-if="addingClasses" #button>Add</template>
-      <template v-if="addingClasses" #autocomplete>
+      <template
+        v-if="
+          userStore.user?.accountType === AccountType.Teacher && addingClasses
+        "
+        #autocomplete
+      >
         <VAutocomplete
           multiple
           chips
@@ -94,6 +102,7 @@ Date: 2/8/24
         {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
         <VSpacer />
         <VBtn
+          v-if="userStore.user?.accountType === AccountType.User"
           @click.stop="
             completedId = task.id;
             confirmation = true;
@@ -138,20 +147,22 @@ Date: 2/8/24
         <p class="font-weight-bold">Priority:</p>
         <p class="pb-2" style="font-size: 15px">Higher = Prioritised</p>
         <p class="text-truncate pb-2">{{ task.priority }}</p>
-        <p class="font-weight-bold pb-2">Classes:</p>
-        <VChipGroup>
-          <VChip
-            @click="
-              addingClasses = task.id;
-              confirmation = true;
-            "
-          >
-            <VIcon>mdi-plus</VIcon>
-          </VChip>
-          <VChip v-for="classItem in task.classes" :key="classItem.id">
-            {{ classItem.name }}
-          </VChip>
-        </VChipGroup>
+        <template v-if="userStore.user?.accountType === AccountType.Teacher">
+          <p class="font-weight-bold pb-2">Classes:</p>
+          <VChipGroup>
+            <VChip
+              @click="
+                addingClasses = task.id;
+                confirmation = true;
+              "
+            >
+              <VIcon>mdi-plus</VIcon>
+            </VChip>
+            <VChip v-for="classItem in task.classes" :key="classItem.id">
+              {{ classItem.name }}
+            </VChip>
+          </VChipGroup>
+        </template>
       </VExpansionPanelText>
     </VExpansionPanel>
   </VExpansionPanels>
@@ -191,12 +202,12 @@ const userStore = useUserStore();
 
 // Variable to combine the date input and time input
 const dateAndTime = computed(() => {
+  console.log(taskDetails.value.dueTime);
   if (!taskDetails.value.dueDate) return "";
   const date = dayjs(taskDetails.value.dueDate)
     // Separates and sets hours, minutes and seconds by the : in the timestamp
     .set("minute", parseInt(taskDetails.value.dueTime.split(":")[1]))
-    .set("hour", parseInt(taskDetails.value.dueTime.split(":")[0]))
-    .set("second", parseInt(taskDetails.value.dueTime.split(":")[2]));
+    .set("hour", parseInt(taskDetails.value.dueTime.split(":")[0]));
   return date.toISOString();
 });
 
@@ -206,7 +217,7 @@ const taskDetails = ref({
   description: "",
   notes: "" as string | null | undefined,
   dueDate: new Date() as Date | undefined,
-  dueTime: "00:00:00",
+  dueTime: "00:00",
   priority: 0 as number | undefined
 });
 
@@ -234,11 +245,11 @@ async function createTask() {
   });
   if (userStore.user?.accountType === AccountType.Teacher) {
     await addClassesFunction(createTask.id);
-    // Closes the dialog by setting addDialog to false
-    addDialog.value = false;
-    // Runs the getTasks function to retrieve the created task, and to display it
-    tasks.value = await getTasks();
   }
+  // Closes the dialog by setting addDialog to false
+  addDialog.value = false;
+  // Runs the getTasks function to retrieve the created task, and to display it
+  tasks.value = await getTasks();
 }
 
 async function addClassesFunction(taskId: number) {

@@ -52,7 +52,7 @@ export class Task extends Model {
     type: DataType.DATE,
   })
   @Field(() => DateType, { nullable: true })
-  dueDate: string;
+  dueDate: Date;
 
   @Column
   @Field()

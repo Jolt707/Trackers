@@ -13,7 +13,7 @@
       v-model="confirmation"
       @submit="updateTask"
     ></ConfirmationDialog>
-    Task List
+    Classes List
     <VSpacer />
     <VIcon
       v-if="userStore.user?.accountType === AccountType.Teacher"
@@ -40,9 +40,7 @@
           <VChip>
             <VIcon>mdi-plus</VIcon>
           </VChip>
-          <VChip v-for="student in item.students" :key="student.id">
-            {{ item.name }}
-          </VChip>
+          <VChip>Placeholder</VChip>
         </VChipGroup>
       </VExpansionPanelText>
     </VExpansionPanel>
@@ -54,16 +52,18 @@ import { onMounted, ref } from "vue";
 import SpeciesDialog from "@/components/SpeciesDialog.vue";
 import { useApolloClient } from "@vue/apollo-composable";
 import { CREATE_CLASS_QUERY } from "@/graphql/class/createClass.graphql.ts";
-import { AccountType, Class } from "@/gql/graphql.ts";
+import { AccountType, Class, Task } from "@/gql/graphql.ts";
 import { getClasses } from "@/composables/getClasses.ts";
 import { CLASS_USER_ASSOCIATION_MUTATION } from "@/graphql/class/classUserAssociation.ts";
 import ConfirmationDialog from "@/components/ConfirmationDialog.vue";
 import { useUserStore } from "@/stores/user.ts";
+import { getTasks } from "@/composables/getTasks.ts";
 
 const addDialog = ref(false);
 const className = ref("");
 const students = ref([]);
 const classes = ref<Class[]>([]);
+const tasks = ref<Task[]>([]);
 
 const userStore = useUserStore();
 
@@ -102,5 +102,6 @@ async function addStudents(classId: number) {
 onMounted(async () => {
   // Clears inputs and gets tasks
   classes.value = await getClasses();
+  tasks.value = await getTasks();
 });
 </script>
