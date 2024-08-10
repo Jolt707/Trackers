@@ -39,52 +39,51 @@ Date: 2/8/24
         </div>
       </div>
 
-      <h1>Next Assignments</h1>
-      <div class="d-flex flex-wrap">
-        <template v-if="!tasks[0]">
-          <div class="d-flex w-100 flex-column justify-center align-center">
-            <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
-            <h3>No assignments</h3>
-          </div>
-        </template>
-        <VSlideGroup>
-          <!-- Displays all Tasks with TaskCard in order of dueDate -->
-          <TaskCard
-            @refresh="refresher"
-            v-for="task in tasks
-              .concat()
-              .sort(
-                (a, b) =>
-                  new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
-              )"
-            :key="task.id"
-            :task="task"
-            class="mb-6 mr-4"
-          ></TaskCard>
-        </VSlideGroup>
+      <!-- If there are no tasks, an icon and text will be shown instead of the tasks -->
+      <div
+        v-if="!tasks[0]"
+        class="d-flex w-100 flex-column justify-center align-center"
+      >
+        <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
+        <h3>You have no pending tasks</h3>
       </div>
 
-      <h1 class="mt-6">All Assignments</h1>
-      <!-- If there are no tasks, an icon and text will be shown instead of the tasks -->
-      <template v-if="!tasks[0]">
-        <div class="d-flex w-100 flex-column justify-center align-center">
-          <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
-          <h3>No assignments</h3>
+      <div v-else>
+        <h1>Next Assignments</h1>
+        <div class="d-flex flex-wrap">
+          <VSlideGroup>
+            <!-- Displays all Tasks with TaskCard in order of dueDate -->
+            <TaskCard
+              @refresh="refresher"
+              v-for="task in tasks
+                .concat()
+                .sort(
+                  (a, b) =>
+                    new Date(a.dueDate).getTime() -
+                    new Date(b.dueDate).getTime()
+                )"
+              :key="task.id"
+              :task="task"
+              class="mb-6 mr-4"
+            ></TaskCard>
+          </VSlideGroup>
         </div>
-      </template>
-      <div class="d-flex">
-        <VSlideGroup>
-          <!-- Displays all Tasks with TaskCard in order of priority -->
-          <TaskCard
-            @refresh="refresher"
-            v-for="task in tasks
-              .concat()
-              .sort((a, b) => b.priority - a.priority)"
-            :key="task.id"
-            :task="task"
-            class="mb-6 mr-4"
-          ></TaskCard>
-        </VSlideGroup>
+
+        <h1 class="mt-6">All Assignments</h1>
+        <div class="d-flex">
+          <VSlideGroup>
+            <!-- Displays all Tasks with TaskCard in order of priority -->
+            <TaskCard
+              @refresh="refresher"
+              v-for="task in tasks
+                .concat()
+                .sort((a, b) => b.priority - a.priority)"
+              :key="task.id"
+              :task="task"
+              class="mb-6 mr-4"
+            ></TaskCard>
+          </VSlideGroup>
+        </div>
       </div>
     </VContainer>
   </template>

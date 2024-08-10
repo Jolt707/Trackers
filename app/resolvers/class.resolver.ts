@@ -6,6 +6,8 @@ import { CreateClassInput } from "../graphql/class/createClass.input";
 import { User } from "../models/user.model";
 import { AccountType } from "../graphql/user/accountType.enum";
 import { ClassUserAssociation } from "../models/classUserAssociation.model";
+import { DeleteClassInput } from "../graphql/class/deleteClass.input";
+import { UpdateClassInput } from "../graphql/class/updateClass.input";
 
 @Service()
 @Resolver(Class)
@@ -22,9 +24,38 @@ export class ClassResolver {
     });
   }
 
+  @Authorized()
+  @Mutation(() => Boolean)
+  async deleteClass(@Arg("input") input: DeleteClassInput, @Ctx() ctx: Context) {
+    await Class.destroy({
+      where: {
+        id: input.classId,
+        teacherId: ctx.user!.id,
+      },
+    });
+    return true;
+  }
+
+  @Authorized()
+  @Mutation(() => Class)
+  async updateClass(@Arg("input") input: UpdateClassInput, @Ctx() ctx: Context) {
+    await Class.update(input, {
+      where: {
+        id: input.classId,
+        teacherId: ctx.user!.id,
+      },
+    });
+    return await Class.findByPk(input.classId);
+  }
+
   @FieldResolver(() => [User])
   students(@Root() classItem: Class) {
     return classItem.$get("students")
+  }
+
+  @FieldResolver(() => [Class])
+  tasks(@Root() classItem: Class) {
+    return classItem.$get("tasks")
   }
 
   @Authorized()

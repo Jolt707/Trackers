@@ -3,12 +3,12 @@ Name: Jensen Stamp
 Description:
 Date: 2/8/24
 */
-import {Container, Service} from "typedi";
-import {Arg, Args, Authorized, Ctx, Mutation, Query, Resolver} from "type-graphql";
+import { Service } from "typedi";
+import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import {User} from "../models/user.model";
-import {UserInput} from "../graphql/user/createUser.input";
-import argon2 from "argon2";
 import {Context} from "../graphql/server/context";
+import { LinkParentInput } from "../graphql/user/linkParent.input";
+import { GraphQLError } from "graphql";
 
 
 @Service()
@@ -23,6 +23,23 @@ export class UserResolver {
                 username
             }
         })
+    }
+
+    @Authorized()
+    @Mutation(() => User)
+    async linkParent(@Arg("input") input: LinkParentInput, @Ctx() ctx: Context) {
+        const parent = await User.findOne({
+            where: {
+                email: input.email
+            }
+        })
+        if (!parent) {
+            throw new GraphQLError("Deez")
+        }
+        await parent.update({
+            studentId: ctx.user!.id
+        })
+        return parent
     }
 
     @Authorized()

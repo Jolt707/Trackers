@@ -30,6 +30,7 @@ Date: 2/8/24
       ></VListItem>
       <!-- Assigned Tasks -->
       <VListItem
+        v-if="userStore.user?.accountType === AccountType.User"
         prepend-icon="mdi-clipboard-text"
         title="Assigned Tasks"
         to="/assigned"
@@ -68,6 +69,7 @@ Date: 2/8/24
 
 <script setup lang="ts">
 import { useUserStore } from "@/stores/user.ts";
+import { AccountType } from "@/gql/graphql.ts";
 
 // Defines the user from the user store, used above to determine if logged in or not
 const userStore = useUserStore();

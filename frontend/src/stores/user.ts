@@ -19,7 +19,8 @@ export const useUserStore = defineStore("user", () => {
     const {
       data: { currentUser }
     } = await apolloClient.client.query({
-      query: UserQuery
+      query: UserQuery,
+      fetchPolicy: "network-only"
     });
 
     user.value = currentUser;

@@ -16,7 +16,7 @@ const documents = {
     "mutation Login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    user {\n      username\n    }\n  }\n}": types.LoginDocument,
     "\n  mutation Register($input: UserInput!) {\n    register(input: $input) {\n      token\n      user {\n        username\n      }\n    }\n  }\n": types.RegisterDocument,
     "\n  mutation CreateClass($input: CreateClassInput!) {\n    createClass(input: $input) {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n    }\n  }\n": types.CreateClassDocument,
-    "\n  query Classes {\n    classes {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n      students {\n        id\n        username\n        createdAt\n        updatedAt\n        email\n      }\n    }\n  }\n": types.ClassesDocument,
+    "\n  query Classes {\n    classes {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n      students {\n        id\n        username\n        createdAt\n        updatedAt\n      }\n      tasks {\n        createdAt\n        updatedAt\n        title\n        priority\n        dueDate\n      }\n    }\n  }\n": types.ClassesDocument,
     "\n  mutation AddTaskToClass($input: ClassTaskAssociationInput!) {\n    addTasksToClass(input: $input) {\n      id\n      taskId\n      classId\n    }\n  }\n": types.AddTaskToClassDocument,
     "\n  mutation CompleteTask($input: CompleteTaskInput!) {\n    completeTask(input: $input) {\n      id\n    }\n  }\n": types.CompleteTaskDocument,
     "\n  mutation CreateTask($input: CreateTaskInput!) {\n    createTask(input: $input) {\n      id\n    }\n  }\n": types.CreateTaskDocument,
@@ -56,7 +56,7 @@ export function graphql(source: "\n  mutation CreateClass($input: CreateClassInp
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query Classes {\n    classes {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n      students {\n        id\n        username\n        createdAt\n        updatedAt\n        email\n      }\n    }\n  }\n"): (typeof documents)["\n  query Classes {\n    classes {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n      students {\n        id\n        username\n        createdAt\n        updatedAt\n        email\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query Classes {\n    classes {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n      students {\n        id\n        username\n        createdAt\n        updatedAt\n      }\n      tasks {\n        createdAt\n        updatedAt\n        title\n        priority\n        dueDate\n      }\n    }\n  }\n"): (typeof documents)["\n  query Classes {\n    classes {\n      id\n      teacherId\n      name\n      createdAt\n      updatedAt\n      students {\n        id\n        username\n        createdAt\n        updatedAt\n      }\n      tasks {\n        createdAt\n        updatedAt\n        title\n        priority\n        dueDate\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

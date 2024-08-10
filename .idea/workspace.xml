@@ -5,15 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/graphql/class/deleteClass.input.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/graphql/class/updateClass.input.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/graphql/user/linkParent.input.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/class/deleteClass.graphql.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/class/updateClass.graphql.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/graphql/date.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/date.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/graphql/task/updateTask.input.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/graphql/task/updateTask.input.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/class.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/class.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/classUserAssociation.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/classUserAssociation.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/task.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/task.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resolvers/classUserAssociation.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/classUserAssociation.resolver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/resolvers/class.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/class.resolver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/resolvers/user.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/user.resolver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/graphql.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/graphql.schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ConfirmationDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ConfirmationDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/SpeciesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SpeciesList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/getTasks.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/getTasks.graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/gql/gql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/gql/gql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/gql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/gql/graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/class/getClasses.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/class/getClasses.graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stores/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Assigned.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Assigned.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +80,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "something",
-    "last_opened_file_path": "/home/jolt707/WebstormProjects/Trackers",
+    "last_opened_file_path": "/home/jolt707/WebstormProjects/Trackers/app/graphql/class",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -73,7 +88,7 @@
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "/home/jolt707/WebstormProjects/Trackers/frontend/node_modules/prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/home/jolt707/WebstormProjects/Trackers/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -87,18 +102,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/graphql/class" />
+      <recent name="$PROJECT_DIR$/frontend/src/graphql/class" />
+      <recent name="$PROJECT_DIR$/frontend/src/components" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/frontend/src/graphql/task" />
-      <recent name="$PROJECT_DIR$/app/graphql/task" />
-      <recent name="C:\Users\jolt707\WebstormProjects\Trackers\app\models" />
-      <recent name="$PROJECT_DIR$/frontend/src/views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/graphql/user" />
       <recent name="$PROJECT_DIR$/frontend/src/graphql/task" />
       <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/app/resolvers" />
       <recent name="$PROJECT_DIR$/app/graphql/task" />
-      <recent name="$PROJECT_DIR$/frontend/src/graphql/class" />
     </key>
   </component>
   <component name="SharedIndexes">

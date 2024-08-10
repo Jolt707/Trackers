@@ -61,7 +61,7 @@ export class Task extends Model {
   @Column({
     type: DataType.DATE,
   })
-  @Field(() => DateType, { nullable: false })
+  @Field(() => DateType)
   updatedAt: string;
 
   @Field()

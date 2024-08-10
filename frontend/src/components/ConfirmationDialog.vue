@@ -15,8 +15,9 @@ Date: 2/8/24
         This will
         <!-- Slot to change the text naming the action -->
         <slot name="text"></slot>
-        the selected task
-        <slot name="autocomplete"></slot>
+        the selected
+        <slot name="type"></slot>
+        <slot name="options"></slot>
       </VCardText>
       <VCardActions>
         <VSpacer />

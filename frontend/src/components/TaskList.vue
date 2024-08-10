@@ -31,7 +31,7 @@ Date: 2/8/24
 
       <template
         v-if="userStore.user?.accountType === AccountType.Teacher && !editingId"
-        #autocomplete
+        #options
       >
         <VAutocomplete
           multiple
@@ -49,6 +49,8 @@ Date: 2/8/24
       @submit="updateTask"
       v-model="confirmation"
     >
+      <template #type>task</template>
+
       <!-- If completedId is defined the ConfirmationDialog shows text for completing a task  -->
       <template v-if="!completedId" #title>Delete Task</template>
       <template v-if="completedId" #title>Complete Task</template>
@@ -64,7 +66,7 @@ Date: 2/8/24
         v-if="
           userStore.user?.accountType === AccountType.Teacher && addingClasses
         "
-        #autocomplete
+        #options
       >
         <VAutocomplete
           multiple
@@ -90,7 +92,12 @@ Date: 2/8/24
       mdi-plus
     </VIcon>
   </VToolbar>
-
+  <div v-if="!tasks[0]" class="d-flex justify-center">
+    <div class="d-flex w-100 flex-column justify-center align-center">
+      <h2>You have no pending tasks</h2>
+      <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
+    </div>
+  </div>
   <VExpansionPanels>
     <!-- For loop to add tasks sorted by descending priority -->
     <VExpansionPanel
@@ -127,7 +134,7 @@ Date: 2/8/24
         ></VBtn>
         <VBtn
           @click.stop="
-            editingId = task.id;
+            destroyId = task.id;
             completedId = undefined;
             confirmation = true;
           "
@@ -194,6 +201,7 @@ const addingClasses = ref<number | undefined>(undefined);
 // Id variables
 const completedId = ref<number | undefined>(undefined);
 const editingId = ref<number | undefined>(undefined);
+const destroyId = ref<number | undefined>(undefined);
 
 const addClasses = ref<number[]>([]);
 const classes = ref([]);
@@ -289,21 +297,15 @@ async function editTask() {
 async function updateTask() {
   const apollo = useApolloClient();
   // If there is no completedId, the task will be deleted
-  if (!completedId) {
+  if (destroyId.value) {
     await apollo.client.mutate({
       mutation: DELETE_TASK_QUERY,
       variables: {
         input: {
-          taskId: editingId.value
+          taskId: destroyId.value
         }
       }
     });
-    // Unsets the editingId
-    editingId.value = undefined;
-    // Runs the getTasks function to retrieve the tasks, removing the deleted task
-    tasks.value = await getTasks();
-    // Closes the confirmation dialog
-    confirmation.value = false;
 
     // When there is a completedId, the task will be set as complete
   } else if (completedId.value) {

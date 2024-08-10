@@ -16,9 +16,20 @@ export const GET_CLASSES_QUERY = gql`
       students {
         id
         username
+        email
         createdAt
         updatedAt
-        email
+      }
+      tasks {
+        id
+        title
+        description
+        notes
+        createdAt
+        dueDate
+        priority
+        updatedAt
+        completedTask
       }
     }
   }

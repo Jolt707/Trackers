@@ -52,6 +52,10 @@ export class User extends Model {
     accountType: AccountType
 
     @Column
+    @Field(() => Int, { nullable: true })
+    studentId: number
+
+    @Column
     @Field()
     email: string
 }
