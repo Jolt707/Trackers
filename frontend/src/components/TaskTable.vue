@@ -54,7 +54,7 @@ const props = defineProps<{
   // Defining sortItem to assign a table value to sort by
   sortItem: string;
   // Defining sortDirection to set the direction
-  sortDirection: boolean;
+  sortDirection: "desc" | "asc";
 }>();
 
 // Defining the table values to display
