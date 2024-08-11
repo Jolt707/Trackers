@@ -1,3 +1,8 @@
+/*
+Name: Jensen Stamp
+Description: This is a file which modifies the database by creating the "Tasks" table, called a migration
+Date: 11/8/24
+*/
 'use strict';
 
 const { ensureInstalledCorrectGraphQLPackage } = require("type-graphql/dist/utils/graphql-version");

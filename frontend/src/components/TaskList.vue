@@ -105,9 +105,10 @@ Date: 2/8/24
       :key="task.id"
     >
       <VExpansionPanelTitle>
-        <!-- Getting the task title for each task from -->
+        <!-- Getting the task title and dueDate-->
         {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
         <VSpacer />
+        <!-- Button to complete tasks for a student (unfinished functionality for teachers -->
         <VBtn
           v-if="userStore.user?.accountType === AccountType.User"
           @click.stop="
@@ -118,6 +119,7 @@ Date: 2/8/24
           icon="mdi-check"
           color="green"
         ></VBtn>
+        <!-- Button to edit a task -->
         <VBtn
           @click.stop="
             editingId = task.id;
@@ -132,6 +134,7 @@ Date: 2/8/24
           icon="mdi-pencil"
           color="#0190ea"
         ></VBtn>
+        <!-- Button to delete a task -->
         <VBtn
           @click.stop="
             destroyId = task.id;
@@ -144,6 +147,7 @@ Date: 2/8/24
           color="red"
         ></VBtn>
       </VExpansionPanelTitle>
+      <!-- Showing task details -->
       <VExpansionPanelText>
         <p class="font-weight-bold pb-2">Description:</p>
         <p class="text-truncate pb-2">
@@ -154,6 +158,7 @@ Date: 2/8/24
         <p class="font-weight-bold">Priority:</p>
         <p class="pb-2" style="font-size: 15px">Higher = Prioritised</p>
         <p class="text-truncate pb-2">{{ task.priority }}</p>
+        <!-- Shows the classes associated with the logged in teachers tasks -->
         <template v-if="userStore.user?.accountType === AccountType.Teacher">
           <p class="font-weight-bold pb-2">Classes:</p>
           <VChipGroup>
@@ -165,6 +170,7 @@ Date: 2/8/24
             >
               <VIcon>mdi-plus</VIcon>
             </VChip>
+            <!-- Displays the classes associated with the task-->
             <VChip v-for="classItem in task.classes" :key="classItem.id">
               {{ classItem.name }}
             </VChip>
@@ -260,6 +266,7 @@ async function createTask() {
   tasks.value = await getTasks();
 }
 
+// Adds classes to the task
 async function addClassesFunction(taskId: number) {
   const apollo = useApolloClient();
   await apollo.client.mutate({
@@ -328,6 +335,7 @@ async function updateTask() {
   confirmation.value = false;
 }
 
+// Defining route, which is used for the route query to open the dialogs from the homepage
 const route = useRoute();
 
 // Function that clears the inputs to avoid previous inputs from being shown when the dialog is opened

@@ -1,6 +1,6 @@
 /*
 Name: Jensen Stamp
-Description:
+Description: User store that is used to get the user and logged (you may see useUserStore assigned to a variable in most files
 Date: 2/8/24
 */
 

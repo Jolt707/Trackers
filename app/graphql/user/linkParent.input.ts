@@ -1,7 +1,7 @@
 /*
 Name: Jensen Stamp
-Description: This is the input used to create a task
-Date: 2/8/24
+Description: This is the input used link a parent account to a student (UNFINISHED FUNCTIONALITY)
+Date: 11/8/24
 */
 
 import { Field, InputType } from "type-graphql";

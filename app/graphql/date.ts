@@ -1,3 +1,8 @@
+/*
+Name: Jensen Stamp
+Description: This is a file used to define DateType (a date value)
+Date: 11/8/24
+*/
 import { GraphQLScalarType } from "graphql/type"
 import { Kind } from "graphql/language"
 

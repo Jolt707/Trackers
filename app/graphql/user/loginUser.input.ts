@@ -4,7 +4,7 @@ Description: This is the input used for the login details
 Date: 2/8/24
 */
 import {Field, InputType} from "type-graphql";
-import {IsEmail, MaxLength, MinLength} from "class-validator";
+import { MaxLength, MinLength} from "class-validator";
 
 @InputType()
 export class LoginInput {

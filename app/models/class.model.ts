@@ -1,9 +1,9 @@
 /*
 Name: Jensen Stamp
-Description: UNFINISHED
-Date: 2/8/24
+Description: This is the class model to define the possible fields for a class
+Date: 11/8/24
 */
-import { BelongsTo, HasOne, BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
+import { HasOne, BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
 import { Field, Int, ObjectType } from "type-graphql";
 import { DateType } from "../graphql/date";
 import { User } from "./user.model";

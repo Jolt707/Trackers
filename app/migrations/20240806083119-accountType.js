@@ -1,3 +1,8 @@
+/*
+Name: Jensen Stamp
+Description: This is a file which modifies the database by adding the "accountType" column to "Users", called a migration
+Date: 11/8/24
+*/
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */

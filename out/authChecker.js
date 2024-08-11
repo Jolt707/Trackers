@@ -26,4 +26,4 @@ const authChecker = async ({ context }, options) => {
     return true;
 };
 exports.authChecker = authChecker;
-//# sourceMappingURL=authChecker.js.map
+//# sourceMappingURL=authCheck.js.map

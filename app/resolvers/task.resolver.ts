@@ -1,7 +1,7 @@
 /*
 Name: Jensen Stamp
-Description: UNFINISHED
-Date: 2/8/24
+Description: This is a task resolver that modifies the tasks
+Date: 11/8/24
 */
 import { Service } from "typedi";
 import { Arg, Authorized, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
@@ -20,7 +20,9 @@ import { Class } from "../models/class.model";
 export class TaskResolver {
   @Authorized()
   @Mutation(() => Task)
+  // Create task function with the input
   async createTask(@Arg("input") input: CreateTaskInput, @Ctx() ctx: Context) {
+    // Creates a task with the details from the input
     return await Task.create({
       ...input,
       userId: ctx.user!.id,
@@ -29,6 +31,7 @@ export class TaskResolver {
 
   @Authorized()
   @Query(() => [Task])
+  // Finds all of the tasks with an input of completedTask and userId
   async tasks(@Arg("input") input: TaskStatusInput, @Ctx() ctx: Context) {
     const tasks = await Task.findAll({
       where: {
@@ -39,6 +42,7 @@ export class TaskResolver {
     return tasks;
   }
 
+  // This field resolver is used to give the tasks to the class
   @FieldResolver(() => [Class])
   classes(@Root() taskItem: Task) {
     return taskItem.$get("classes")
@@ -46,7 +50,9 @@ export class TaskResolver {
 
   @Authorized()
   @Mutation(() => Boolean)
+  // Delete task function
   async deleteTask(@Arg("input") input: DeleteTaskInput, @Ctx() ctx: Context) {
+    // Destroys the task with the id input
     await Task.destroy({
       where: {
         id: input.taskId,
@@ -58,25 +64,31 @@ export class TaskResolver {
 
   @Authorized()
   @Mutation(() => Task)
+  // Update task function
   async updateTask(@Arg("input") input: UpdateTaskInput, @Ctx() ctx: Context) {
+    // Updates the task with the input details
     await Task.update(input, {
       where: {
         id: input.taskId,
         userId: ctx.user!.id,
       },
     });
+    // Returns it by the primary key of taskId
     return await Task.findByPk(input.taskId);
   }
 
   @Authorized()
   @Mutation(() => Task)
+  // Complete task function
   async completeTask(@Arg("input") input: CompleteTaskInput, @Ctx() ctx: Context) {
+    // Updates the task with the complete task input, setting it to complete
     await Task.update(input, {
       where: {
         id: input.taskId,
         userId: ctx.user!.id,
       },
     });
+    // Returns it by the primary key of taskId
     return await Task.findByPk(input.taskId);
   }
 }

@@ -1,9 +1,9 @@
 /*
 Name: Jensen Stamp
-Description: UNFINISHED
-Date: 2/8/24
+Description: This is the classTaskAssociation it "associates" or links classes and tasks with the @BelongsTo fields
+Date: 11/8/24
 */
-import { BelongsTo, Column, DataType, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, Model, Table } from "sequelize-typescript";
 import { Field, Int, ObjectType } from "type-graphql";
 import { Task } from "./task.model"
 import { Class } from "./class.model";

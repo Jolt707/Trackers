@@ -1,3 +1,8 @@
+/*
+Name: Jensen Stamp
+Description: Function to get the classes from a query, used to refresh after most functions edit a class
+Date: 11/08/24
+*/
 import { useApolloClient } from "@vue/apollo-composable";
 import { GET_CLASSES_QUERY } from "@/graphql/class/getClasses.graphql.ts";
 

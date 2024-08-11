@@ -5,7 +5,6 @@ Date: 2/8/24
 */
 import {BelongsTo, Column, DataType, Model, Table} from "sequelize-typescript";
 import {Field, Int, ObjectType} from "type-graphql";
-import {Col} from "sequelize/types/utils";
 import {User} from "./user.model";
 
 @Table

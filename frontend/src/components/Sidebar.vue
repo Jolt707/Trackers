@@ -18,6 +18,7 @@ Date: 2/8/24
       ></VListItem>
       <!-- Classes -->
       <VListItem
+        v-if="userStore.user?.accountType === AccountType.Teacher"
         prepend-icon="mdi-human-male-board"
         title="Classes"
         to="/classes"

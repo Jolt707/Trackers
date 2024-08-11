@@ -1,7 +1,7 @@
 <!--
 Name: Jensen Stamp
-Description: UNFINISHED
-Details: UNFINISHED
+Description: Assigned task page, shows the classes and tasks for a student
+Details: Uses ConfirmationDialog
 Date: 2/8/24
 -->
 <template>
@@ -20,12 +20,7 @@ Date: 2/8/24
         @update:model-value="unsetIDs"
         @submit=""
         v-model="confirmation"
-      >
-        <!-- If completedId is defined the ConfirmationDialog shows text for completing a task  -->
-        <template #title>Complete Task</template>
-        <template #button>Confirm</template>
-        <template #text>complete</template>
-      </ConfirmationDialog>
+      ></ConfirmationDialog>
       <div v-if="!item.tasks[0]" class="d-flex justify-center">
         <div class="d-flex w-100 flex-column justify-center align-center">
           <h2>You have no pending tasks</h2>
@@ -44,17 +39,8 @@ Date: 2/8/24
             <!-- Getting the task title for each task from -->
             {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
             <VSpacer />
-            <VBtn
-              v-if="userStore.user?.accountType === AccountType.User"
-              @click.stop="
-                completedId = task.id;
-                confirmation = true;
-              "
-              variant="text"
-              icon="mdi-check"
-              color="green"
-            ></VBtn>
           </VExpansionPanelTitle>
+          <!-- Shows task details -->
           <VExpansionPanelText>
             <p class="font-weight-bold pb-2">Description:</p>
             <p class="text-truncate pb-2">
@@ -65,24 +51,6 @@ Date: 2/8/24
             <p class="font-weight-bold">Priority:</p>
             <p class="pb-2" style="font-size: 15px">Higher = Prioritised</p>
             <p class="text-truncate pb-2">{{ task.priority }}</p>
-            <template
-              v-if="userStore.user?.accountType === AccountType.Teacher"
-            >
-              <p class="font-weight-bold pb-2">Classes:</p>
-              <VChipGroup>
-                <VChip
-                  @click="
-                    addingClasses = task.id;
-                    confirmation = true;
-                  "
-                >
-                  <VIcon>mdi-plus</VIcon>
-                </VChip>
-                <VChip v-for="classItem in task.classes" :key="classItem.id">
-                  {{ classItem.name }}
-                </VChip>
-              </VChipGroup>
-            </template>
           </VExpansionPanelText>
         </VExpansionPanel>
       </VExpansionPanels>
@@ -95,15 +63,13 @@ Date: 2/8/24
 import { onMounted, ref } from "vue";
 import { getClasses } from "@/composables/getClasses.ts";
 import { getTasks } from "@/composables/getTasks.ts";
-import { AccountType, Class, Task } from "@/gql/graphql.ts";
-import { useUserStore } from "@/stores/user.ts";
+import { Class, Task } from "@/gql/graphql.ts";
 import ConfirmationDialog from "@/components/ConfirmationDialog.vue";
 
 const classes = ref<Class[]>([]);
 const tasks = ref<Task[]>([]);
-const userStore = useUserStore();
 
-// Dialog variables
+// Dialog variable
 const confirmation = ref(false);
 
 const addingClasses = ref<number | undefined>(undefined);

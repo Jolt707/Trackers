@@ -1,6 +1,6 @@
 /*
 Name: Jensen Stamp
-Description: UNFINISHED
+Description: This is the classUserAssociation it "associates" or links classes and users with the @BelongsTo fields
 Date: 2/8/24
 */
 import { BelongsTo, Column, Model, Table } from "sequelize-typescript";

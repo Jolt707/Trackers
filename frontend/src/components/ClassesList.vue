@@ -1,6 +1,12 @@
+<!--
+Name: Jensen Stamp
+Description: This is the ClassesList that shows on the classes page for teachers
+Details: Uses the ClassesDialog and ConfirmationDialog
+Date: 11/8/24
+-->
 <template>
   <VToolbar class="px-6 mb-4">
-    <SpeciesDialog
+    <ClassesDialog
       v-model:students="students"
       v-model="addDialog"
       v-model:name="className"
@@ -8,15 +14,17 @@
     >
       <template #title>Create Class</template>
       <template #button>Confirm</template>
-    </SpeciesDialog>
+    </ClassesDialog>
     <ConfirmationDialog v-model="confirmation" @submit="updateClass">
       <template #type>class</template>
 
+      <!-- Slots for the addingStudents (when adding students to a class) -->
       <template v-if="addingStudents" #title>Add Students</template>
       <template v-if="addingStudents" #text>add students to</template>
       <template v-if="addingStudents" #button>Add</template>
       <template v-if="addingStudents" #options>
         <div class="d-flex">
+          <!-- TextField for the email -->
           <VTextField
             v-model="student"
             label="Student Email"
@@ -27,10 +35,13 @@
         <VDataTable :headers="tableHeader" :items="addedStudents"></VDataTable>
       </template>
 
+      <!-- Slots for the addingTasks (when adding tasks to a class) -->
       <template v-if="addingTasks" #title>Add Tasks</template>
       <template v-if="addingTasks" #text>add tasks to</template>
       <template v-if="addingTasks" #button>Add</template>
       <template v-if="addingTasks" #options>
+        <!-- Autocomplete for the tasks -->
+
         <VAutocomplete
           multiple
           chips
@@ -42,19 +53,23 @@
         ></VAutocomplete>
       </template>
 
+      <!-- Slots for the destroyId (when deleting a class) -->
       <template v-if="destroyId" #title>Delete Class</template>
       <template v-if="destroyId" #text>delete</template>
       <template v-if="destroyId" #button>Delete</template>
 
+      <!-- Slots for the destroyId (when renaming a class) -->
       <template v-if="editingId" #title>Edit Class</template>
       <template v-if="editingId" #text>edit</template>
       <template v-if="editingId" #button>Confirm</template>
       <template v-if="editingId" #options>
+        <!-- TextField for the updated name -->
         <VTextField label="Name" autofocus v-model="updateName"></VTextField>
       </template>
     </ConfirmationDialog>
     Classes List
     <VSpacer />
+    <!-- Only shows a plus is the account is a teacher -->
     <VIcon
       v-if="userStore.user?.accountType === AccountType.Teacher"
       @click="addDialog = true"
@@ -63,11 +78,14 @@
     </VIcon>
   </VToolbar>
   <VExpansionPanels>
+    <!-- Shows each class with a for loop with a key of the id -->
     <VExpansionPanel v-for="item in classes" :key="item.id">
       <VExpansionPanelTitle>
         {{ item.name }}
         <VSpacer />
+        <!-- Button for editing classes, unsets other selector variables -->
         <VBtn
+          v-if="userStore.user?.accountType === AccountType.Teacher"
           @click.stop="
             addingTasks = undefined;
             addingStudents = undefined;
@@ -79,7 +97,9 @@
           icon="mdi-pencil"
           color="#0190ea"
         ></VBtn>
+        <!-- Button for deleting classes, unsets other selector variables -->
         <VBtn
+          v-if="userStore.user?.accountType === AccountType.Teacher"
           @click.stop="
             addingTasks = undefined;
             addingStudents = undefined;
@@ -96,7 +116,9 @@
       <VExpansionPanelText>
         <p class="font-weight-bold pb-2">Students:</p>
         <VChipGroup>
+          <!-- Button for adding students to the class, unsets other selector variables -->
           <VChip
+            v-if="userStore.user?.accountType === AccountType.Teacher"
             @click="
               addingTasks = undefined;
               destroyId = undefined;
@@ -107,13 +129,16 @@
           >
             <VIcon>mdi-plus</VIcon>
           </VChip>
+          <!-- For loop to show the students in the class -->
           <VChip v-for="student in item.students" :key="student.id">
             {{ student.username }}
           </VChip>
         </VChipGroup>
         <p class="font-weight-bold pb-2">Active Tasks:</p>
         <VChipGroup>
+          <!-- Button for adding tasks to the class, unsets other selector variables -->
           <VChip
+            v-if="userStore.user?.accountType === AccountType.Teacher"
             @click="
               addingStudents = undefined;
               destroyId = undefined;
@@ -124,6 +149,7 @@
           >
             <VIcon>mdi-plus</VIcon>
           </VChip>
+          <!-- For loop to show the tasks in the class -->
           <VChip v-for="taskItem in item.tasks" :key="taskItem.id">
             {{ taskItem.title }}
           </VChip>
@@ -135,7 +161,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import SpeciesDialog from "@/components/SpeciesDialog.vue";
+import ClassesDialog from "@/components/ClassesDialog.vue";
 import { useApolloClient } from "@vue/apollo-composable";
 import { CREATE_CLASS_QUERY } from "@/graphql/class/createClass.graphql.ts";
 import { AccountType, Class, Task } from "@/gql/graphql.ts";
@@ -148,6 +174,7 @@ import { DELETE_CLASS_QUERY } from "@/graphql/class/deleteClass.graphql.ts";
 import { UPDATE_CLASS_QUERY } from "@/graphql/class/updateClass.graphql.ts";
 import { CLASS_TASK_ASSOCIATION_MUTATION } from "@/graphql/task/classTaskAssociation.graphql.ts";
 
+// Defines a lot of variables for opening dialogs, selecting IDs, adding students, etc
 const addDialog = ref(false);
 const className = ref("");
 const students = ref([]);
@@ -163,9 +190,9 @@ const student = ref("");
 const addedStudents = ref<{ email: string }[]>([]);
 const tableHeader = [{ key: "email", title: "Email" }];
 const addTasks = ref<number[]>([]);
-
 const userStore = useUserStore();
 
+// Add tasks function to add multiple tasks to a class with the input of addTasks
 async function addTasksFunction(classId: number) {
   const apollo = useApolloClient();
   await apollo.client.mutate({
@@ -179,6 +206,7 @@ async function addTasksFunction(classId: number) {
   });
 }
 
+// Creates a class using the name input from className.value
 async function createClass() {
   const apollo = useApolloClient();
   const {
@@ -191,15 +219,18 @@ async function createClass() {
       }
     }
   });
+  // Runs addStudents to associate the students to the created task
   await addStudents(createClass.id, students.value);
   // Closes the dialog by setting addDialog to false
   addDialog.value = false;
-  // Runs the getTasks function to retrieve the created task, and to display it
+  // Runs the getClasses function to retrieve the created class, and to display it
   classes.value = await getClasses();
 }
 
+// Update class function for deleting, adding and editing a task
 async function updateClass() {
   const apollo = useApolloClient();
+  // If the destroyId is selected, class is deleted
   if (destroyId.value) {
     await apollo.client.mutate({
       mutation: DELETE_CLASS_QUERY,
@@ -209,6 +240,7 @@ async function updateClass() {
         }
       }
     });
+    // If the editingId is selected, the class gets its named updated
   } else if (editingId.value) {
     await apollo.client.mutate({
       mutation: UPDATE_CLASS_QUERY,
@@ -219,10 +251,11 @@ async function updateClass() {
         }
       }
     });
+    // If addingStudents is selected, the addStudents function is called
   } else if (addingStudents.value) {
     await addStudents(addingStudents.value, addedStudents.value);
+    // If addingTasks is selected, the addTasksFunction is called
   } else if (addingTasks.value) {
-    console.log(addingTasks.value);
     await addTasksFunction(addingTasks.value);
   }
   classes.value = await getClasses();
@@ -231,6 +264,7 @@ async function updateClass() {
   destroyId.value = undefined;
 }
 
+// addStudent function that adds the students to the table
 async function addStudent() {
   if (addedStudents.value!.find((s) => s.email === student.value)) {
     return;
@@ -240,6 +274,7 @@ async function addStudent() {
   });
 }
 
+// Associates students with the class
 async function addStudents(classId: number, students: { email: string }[]) {
   const apollo = useApolloClient();
   await apollo.client.mutate({
@@ -253,8 +288,9 @@ async function addStudents(classId: number, students: { email: string }[]) {
   });
 }
 
+// Runs on page load
 onMounted(async () => {
-  // Clears inputs and gets tasks
+  // Clears gets tasks and classes
   classes.value = await getClasses();
   tasks.value = await getTasks();
 });

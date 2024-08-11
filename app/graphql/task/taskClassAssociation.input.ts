@@ -1,7 +1,7 @@
 /*
 Name: Jensen Stamp
-Description: This is the input used to create a task
-Date: 2/8/24
+Description: This is the input used to create a taskClass association (multiple classes into a task)
+Date: 11/8/24
 */
 
 import { Field, InputType } from "type-graphql";

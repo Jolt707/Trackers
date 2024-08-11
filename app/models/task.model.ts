@@ -6,8 +6,6 @@ Date: 2/8/24
 import { BelongsToMany, Column, DataType, Default, Model, Table } from "sequelize-typescript";
 import { Field, Int, ObjectType } from "type-graphql";
 import { DateType } from "../graphql/date";
-import { User } from "./user.model";
-import { ClassUserAssociation } from "./classUserAssociation.model";
 import { ClassTaskAssociation } from "./classTaskAssociation.model";
 import { Class } from "./class.model";
 

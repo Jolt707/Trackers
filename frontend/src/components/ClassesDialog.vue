@@ -1,7 +1,7 @@
 <!--
 Name: Jensen Stamp
-Description: This is the dialog that displays to input task details for creating a task
-Details: The parent component is only the TaskList.vue
+Description: This is the dialog for inputting class name and students array for creating a class
+Details: The parent component is only the ClassesList.vue
 Date: 2/8/24
 -->
 <template>
@@ -21,6 +21,7 @@ Date: 2/8/24
           style="margin-top: -2px"
         ></VTextField>
         <div class="d-flex">
+          <!-- Emails, runs a function if enter is pressed to addStudent to the table -->
           <VTextField
             v-model="student"
             label="Student Email"
@@ -28,7 +29,7 @@ Date: 2/8/24
           ></VTextField>
           <VIcon @click="addStudent" class="mt-3">mdi-plus</VIcon>
         </div>
-
+        <!-- Shows a table if there is at least 1 item -->
         <VDataTable
           v-if="addedStudents![0]"
           :headers="tableHeader"
@@ -37,9 +38,11 @@ Date: 2/8/24
       </VContainer>
       <VCardActions>
         <VSpacer />
+        <!-- Button that emits classAdd -->
         <VBtn @click="$emit('classAdd')" color="#ffd707" class="mr-3">
           <slot name="button" />
         </VBtn>
+        <!-- Closes Dialog-->
         <VBtn @click="show = false">Cancel</VBtn>
       </VCardActions>
     </VCard>
@@ -51,20 +54,18 @@ Date: 2/8/24
 import { ref } from "vue";
 
 const show = defineModel<boolean>();
-
 const student = ref("");
-
 // Defines a model for each text field to handle the task details
 const name = defineModel("name");
-
 const tableHeader = [{ key: "email", title: "Email" }];
-
 const addedStudents = defineModel<{ email: string }[]>("students");
 
+// Function to add a student to the table with the value of their email
 async function addStudent() {
   if (addedStudents.value!.find((s) => s.email === student.value)) {
     return;
   }
+  // Pushes the added student to an array
   addedStudents.value!.push({
     email: student.value
   });

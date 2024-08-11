@@ -1,7 +1,7 @@
 /*
 Name: Jensen Stamp
 Description: This is the input used to delete a class
-Date: 2/8/24
+Date: 11/8/24
 */
 import { Field, InputType, Int } from "type-graphql";
 

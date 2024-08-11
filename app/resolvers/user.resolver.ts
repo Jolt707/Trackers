@@ -1,7 +1,7 @@
 /*
 Name: Jensen Stamp
-Description:
-Date: 2/8/24
+Description: This is the user resolver, has some code with unfinished functionality, returns the current user
+Date: 11/8/24
 */
 import { Service } from "typedi";
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
@@ -14,19 +14,9 @@ import { GraphQLError } from "graphql";
 @Service()
 @Resolver(User)
 export class UserResolver {
-    @Query(() => User, {
-        nullable: true
-    })
-    async user(@Arg("username") username: string) {
-        return await User.findOne({
-            where: {
-                username
-            }
-        })
-    }
-
     @Authorized()
     @Mutation(() => User)
+    // UNFINISHED FUNCTIONALITY links the parent to the student account with an email
     async linkParent(@Arg("input") input: LinkParentInput, @Ctx() ctx: Context) {
         const parent = await User.findOne({
             where: {
@@ -34,7 +24,7 @@ export class UserResolver {
             }
         })
         if (!parent) {
-            throw new GraphQLError("Deez")
+            throw new GraphQLError("No account found")
         }
         await parent.update({
             studentId: ctx.user!.id
@@ -44,6 +34,7 @@ export class UserResolver {
 
     @Authorized()
     @Query(() => User)
+    // Returns the ctx.user which is populated by authCheck.ts (called by @Authorized)
     async currentUser(@Ctx() ctx: Context) {
         return ctx.user
     }
