@@ -5,7 +5,7 @@ Details: Uses the ClassesDialog and ConfirmationDialog
 Date: 11/8/24
 -->
 <template>
-  <VToolbar class="px-6 mb-4">
+  <VToolbar class="px-6 mb-4" style="border-radius: 4px">
     <ClassesDialog
       v-model:students="students"
       v-model="addDialog"
@@ -50,6 +50,7 @@ Date: 11/8/24
           item-value="id"
           item-title="title"
           v-model="addTasks"
+          addTask="addTask"
         ></VAutocomplete>
       </template>
 
@@ -132,6 +133,20 @@ Date: 11/8/24
           <!-- For loop to show the students in the class -->
           <VChip v-for="student in item.students" :key="student.id">
             {{ student.username }}
+            <!-- TODO: Find out why no work -->
+            <VBtn
+              icon="mdi-close"
+              class="ml-2"
+              size="20px"
+              @click="
+                addedStudents = [];
+                classId = item.id;
+                addedStudents.push(student.email);
+                console.log(student.email);
+                console.log(addedStudents);
+                addStudents(classId, addedStudents);
+              "
+            ></VBtn>
           </VChip>
         </VChipGroup>
         <p class="font-weight-bold pb-2">Active Tasks:</p>
@@ -152,6 +167,17 @@ Date: 11/8/24
           <!-- For loop to show the tasks in the class -->
           <VChip v-for="taskItem in item.tasks" :key="taskItem.id">
             {{ taskItem.title }}
+            <VBtn
+              icon="mdi-close"
+              class="ml-2"
+              size="20px"
+              @click="
+                addTasks = [];
+                classId = item.id;
+                addTasks.push(taskItem.id);
+                addTasksFunction(classId);
+              "
+            ></VBtn>
           </VChip>
         </VChipGroup>
       </VExpansionPanelText>
@@ -204,6 +230,7 @@ async function addTasksFunction(classId: number) {
       }
     }
   });
+  classes.value = await getClasses();
 }
 
 // Creates a class using the name input from className.value

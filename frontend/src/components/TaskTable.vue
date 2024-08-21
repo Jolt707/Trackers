@@ -5,10 +5,11 @@ Details: The parent pages for this component is TaskHistory.vue and Upcoming.vue
 Date: 2/8/24
 -->
 <template>
-  <VToolbar class="px-6">Task Table</VToolbar>
+  <VToolbar class="px-6 mb-4" style="border-radius: 4px">Task Table</VToolbar>
   <!-- Table that displays the headers from tableHeader and adds the task items -->
   <!-- Also sorts by the sortItem and sortDirection prop -->
   <VDataTable
+    style="border-radius: 4px"
     :headers="tableHeader"
     :items="tasks"
     :sort-by="[{ key: sortItem, order: sortDirection }]"
@@ -38,6 +39,17 @@ Date: 2/8/24
     </template>
   </VDataTable>
 </template>
+
+<style scoped>
+.v-data-table >>> .v-data-table-header {
+  background-color: #191919 !important;
+}
+</style>
+<style>
+.v-data-table-header {
+  background-color: #191919 !important;
+}
+</style>
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";

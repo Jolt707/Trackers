@@ -5,7 +5,9 @@ Details: UNFINISHED
 Date: 2/8/24
 -->
 <template>
-  <h1>Settings</h1>
+  <VContainer>
+    <h1>Settings</h1>
+  </VContainer>
 </template>
 
 <script setup lang="ts">

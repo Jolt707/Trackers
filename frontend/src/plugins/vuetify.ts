@@ -24,7 +24,7 @@ export class DefaultThemes {
     this.themes = {
       dark: {
         colors: {
-          surface: "#212121",
+          surface: "#191919",
           "surface-bright": "#ccbfd6",
           "surface-variant": "#a3a3a3",
           "on-surface-variant": "#424242",

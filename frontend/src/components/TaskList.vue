@@ -5,7 +5,7 @@ Details: This component is used in Tasks.vue, however does not send any data to 
 Date: 2/8/24
 -->
 <template>
-  <VToolbar class="px-6 mb-4">
+  <VToolbar class="px-6 mb-4" style="border-radius: 4px">
     <!--
     Using the TaskDialog component
     @taskAdd will either run editTask or createTask, depending on if there is an editingId
@@ -80,22 +80,33 @@ Date: 2/8/24
       </template>
     </ConfirmationDialog>
     Task List
-    <VSpacer />
     <!-- Shows the dialog, unsets editingId and clears previous inputs -->
-    <VIcon
+    <VBtn
+      class="ml-2"
       @click="
         addDialog = true;
         editingId = undefined;
         clearInputs();
       "
-    >
-      mdi-plus
-    </VIcon>
+      icon="mdi-plus"
+      color="gold"
+    ></VBtn>
   </VToolbar>
   <div v-if="!tasks[0]" class="d-flex justify-center">
-    <div class="d-flex w-100 flex-column justify-center align-center">
+    <div
+      class="d-flex w-100 flex-column justify-center align-center"
+      style="color: #696969"
+    >
       <h2>You have no pending tasks</h2>
-      <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
+      <p>
+        Use the
+        <VIcon class="mb-1" color="gold">mdi-plus</VIcon>
+        icon to create a task
+      </p>
+
+      <VIcon size="150px" style="color: #696969">
+        mdi-close-circle-outline
+      </VIcon>
     </div>
   </div>
   <VExpansionPanels>
@@ -105,8 +116,14 @@ Date: 2/8/24
       :key="task.id"
     >
       <VExpansionPanelTitle>
-        <!-- Getting the task title and dueDate-->
-        {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
+        <!-- Getting the task title and dueDate, displaying both if there is a dueDate-->
+        <div v-if="task.dueDate">
+          {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
+        </div>
+        <div v-else>
+          {{ task.title }} •
+          <span style="color: #9d9d9d">Unset Due Date</span>
+        </div>
         <VSpacer />
         <!-- Button to complete tasks for a student (unfinished functionality for teachers -->
         <VBtn
@@ -121,6 +138,7 @@ Date: 2/8/24
         ></VBtn>
         <!-- Button to edit a task -->
         <VBtn
+          v-if="task.dueDate"
           @click.stop="
             editingId = task.id;
             addDialog = true;
@@ -128,6 +146,23 @@ Date: 2/8/24
             taskDetails.description = task.description;
             taskDetails.notes = task.notes;
             taskDetails.dueDate = new Date(task.dueDate);
+            taskDetails.priority = task.priority;
+          "
+          variant="text"
+          icon="mdi-pencil"
+          color="#0190ea"
+        ></VBtn>
+        <!-- TODO: CHANGE THIS FOR GOODNESSY SAKE -->
+        <!-- TODO: ALSO MAKE DUE TIME POPULATE -->
+        <VBtn
+          v-else
+          @click.stop="
+            editingId = task.id;
+            addDialog = true;
+            taskDetails.title = task.title;
+            taskDetails.description = task.description;
+            taskDetails.notes = task.notes;
+            taskDetails.dueDate = task.dueDate;
             taskDetails.priority = task.priority;
           "
           variant="text"
@@ -150,14 +185,32 @@ Date: 2/8/24
       <!-- Showing task details -->
       <VExpansionPanelText>
         <p class="font-weight-bold pb-2">Description:</p>
-        <p class="text-truncate pb-2">
+        <p
+          v-if="!task.description"
+          class="text-truncate pb-2"
+          style="color: #9d9d9d"
+        >
+          No description
+        </p>
+        <p v-else class="text-truncate pb-2">
           {{ task.description }}
         </p>
+
         <p class="font-weight-bold pb-2">Notes:</p>
-        <p class="text-truncate pb-2">{{ task.notes }}</p>
-        <p class="font-weight-bold">Priority:</p>
-        <p class="pb-2" style="font-size: 15px">Higher = Prioritised</p>
-        <p class="text-truncate pb-2">{{ task.priority }}</p>
+        <p v-if="!task.notes" class="text-truncate pb-2" style="color: #9d9d9d">
+          No notes
+        </p>
+        <p v-else class="text-truncate pb-2">{{ task.notes }}</p>
+        <p class="font-weight-bold pb-2">Priority:</p>
+        <p
+          v-if="task.priority == 0"
+          class="text-truncate pb-2"
+          style="color: #9d9d9d"
+        >
+          {{ task.priority }}
+        </p>
+        <p v-else class="text-truncate pb-2">{{ task.priority }}</p>
+        <p style="font-size: 12px; color: #9d9d9d">Higher = Prioritised</p>
         <!-- Shows the classes associated with the logged in teachers tasks -->
         <template v-if="userStore.user?.accountType === AccountType.Teacher">
           <p class="font-weight-bold pb-2">Classes:</p>
@@ -217,7 +270,7 @@ const userStore = useUserStore();
 // Variable to combine the date input and time input
 const dateAndTime = computed(() => {
   console.log(taskDetails.value.dueTime);
-  if (!taskDetails.value.dueDate) return "";
+  if (!taskDetails.value.dueDate) return undefined;
   const date = dayjs(taskDetails.value.dueDate)
     // Separates and sets hours, minutes and seconds by the : in the timestamp
     .set("minute", parseInt(taskDetails.value.dueTime.split(":")[1]))
@@ -344,6 +397,7 @@ async function clearInputs() {
   taskDetails.value.description = "";
   taskDetails.value.notes = "";
   taskDetails.value.dueDate = undefined;
+  taskDetails.value.dueTime = "00:00";
   taskDetails.value.priority = 0;
 }
 

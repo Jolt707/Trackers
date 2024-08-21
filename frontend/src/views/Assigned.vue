@@ -9,21 +9,33 @@ Date: 2/8/24
     <!-- Large title -->
     <h1>Assigned</h1>
     <div v-if="!classes[0]" class="d-flex justify-center">
-      <div class="d-flex w-100 flex-column justify-center align-center">
+      <div
+        class="d-flex w-100 flex-column justify-center align-center"
+        style="color: #696969"
+      >
         <h2>You have no Classes</h2>
-        <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
+        <p style="font-size: 15px">
+          Tell your teacher your email so they can add you
+        </p>
+        <VIcon size="150px">mdi-close-circle-outline</VIcon>
       </div>
     </div>
     <div v-else v-for="item in classes" :key="item.id" class="pb-10">
-      <VToolbar class="px-6 mb-4">{{ item.name }}</VToolbar>
+      <VToolbar class="px-6 mb-4" style="border-radius: 4px">
+        {{ item.name }}
+      </VToolbar>
       <ConfirmationDialog
         @update:model-value="unsetIDs"
         @submit=""
         v-model="confirmation"
       ></ConfirmationDialog>
       <div v-if="!item.tasks[0]" class="d-flex justify-center">
-        <div class="d-flex w-100 flex-column justify-center align-center">
+        <div
+          class="d-flex w-100 flex-column justify-center align-center"
+          style="color: #696969"
+        >
           <h2>You have no pending tasks</h2>
+          <p>Ask your teacher to assign some</p>
           <VIcon size="150px" class="">mdi-close-circle-outline</VIcon>
         </div>
       </div>

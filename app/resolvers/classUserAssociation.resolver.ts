@@ -61,6 +61,7 @@ export class ClassUserResolver {
       })
       // If it is found, it does not add it
       if (find) {
+        await find.destroy()
         continue
       }
       // Creates an association with the user.id and input.classId and returns them

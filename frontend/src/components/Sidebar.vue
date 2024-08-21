@@ -10,12 +10,6 @@ Date: 2/8/24
     <VList color="gold" density="compact" nav>
       <!-- Home -->
       <VListItem prepend-icon="mdi-home" title="Home" to="/"></VListItem>
-      <!-- Settings -->
-      <VListItem
-        prepend-icon="mdi-cog"
-        title="Settings"
-        to="/settings"
-      ></VListItem>
       <!-- Classes -->
       <VListItem
         v-if="userStore.user?.accountType === AccountType.Teacher"
@@ -51,8 +45,24 @@ Date: 2/8/24
     </VList>
     <!-- Appends the Logout button (displays it at the bottom) -->
     <template #append>
-      <VListItem>{{ userStore.user?.username }}</VListItem>
-
+      <VListItem
+        style="border-radius: 4px !important"
+        class="my-2 mx-2"
+        prepend-icon="mdi-account"
+        color="gold"
+      >
+        {{ userStore.user?.username }} • {{ userStore.user?.accountType }}
+      </VListItem>
+      <VDivider></VDivider>
+      <!-- Settings -->
+      <VListItem
+        style="border-radius: 4px !important"
+        class="my-2 mx-2"
+        prepend-icon="mdi-cog"
+        title="Settings"
+        to="/settings"
+        color="gold"
+      ></VListItem>
       <!-- Logout -->
       <!-- userStore.logout removes the token and redirects to home -->
       <VListItem

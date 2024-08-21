@@ -20,6 +20,9 @@ Date: 2/8/24
           v-model="title"
           style="margin-top: -2px"
         ></VTextField>
+        <p style="color: #9d9d9d; font-size: 12px" class="mt-n4 mb-2">
+          Must contain at least 1 character
+        </p>
         <!-- Description -->
         <VTextField
           label="Description"
@@ -49,13 +52,14 @@ Date: 2/8/24
         </div>
         <!-- Priority -->
         <VNumberInput
+          style="border-radius: 4px"
           label="Priority"
           v-model="priority"
           :min="0"
           :max="100"
         ></VNumberInput>
-        <p class="mt-n4" style="font-size: 15px; color: #9d9d9d">
-          Higher = Prioritised
+        <p class="mt-n4" style="font-size: 12px; color: #9d9d9d">
+          Higher = Prioritised (Max 100)
         </p>
         <slot name="options"></slot>
       </VContainer>

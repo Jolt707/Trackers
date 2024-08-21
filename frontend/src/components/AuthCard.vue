@@ -14,6 +14,7 @@
       </VCardTitle>
       <!-- Username field, sets the model to the user input -->
       <VTextField
+        autofocus
         label="Username"
         v-model="username"
         @keydown.enter="$emit('auth')"
@@ -27,6 +28,9 @@
         v-model="password"
         type="password"
       ></VTextField>
+      <p style="color: #9d9d9d; font-size: 12px" class="mt-n4 mb-2">
+        Must contain at least 8 characters
+      </p>
       <slot name="buttons" />
       <VCardActions>
         <VSpacer></VSpacer>

@@ -4,6 +4,7 @@ Description: This is the card item that displays tasks on the homepage
 Details: The parent component is only the homepage
 Date: 2/8/24
 -->
+<!-- TODO: FIX THE DATE STUFF ON THIS COMPONENT -->
 <template>
   <VCard class="mt-6">
     <!-- Title sets to the task title -->
@@ -17,6 +18,7 @@ Date: 2/8/24
     <VCardActions class="mt-n4">
       <!-- Runs the completeTask function and sets the completedId -->
       <VBtn
+        v-if="userStore.user?.accountType === AccountType.User"
         color="#ffd707"
         @click.stop="
           completedId = task.id;
@@ -32,10 +34,11 @@ Date: 2/8/24
 </template>
 
 <script setup lang="ts">
-import { Task } from "@/gql/graphql.ts";
+import { AccountType, Task } from "@/gql/graphql.ts";
 import { ref } from "vue";
 import { useApolloClient } from "@vue/apollo-composable";
 import { COMPLETE_TASK_QUERY } from "@/graphql/task/completeTask.graphql.ts";
+import { useUserStore } from "@/stores/user.ts";
 
 const completedId = ref<number | undefined>(undefined);
 
@@ -59,4 +62,6 @@ const props = defineProps<{ task: Task }>();
 
 // Defines a refresh emit that will run getTasks on the parent component
 const emit = defineEmits(["refresh"]);
+
+const userStore = useUserStore();
 </script>
