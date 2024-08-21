@@ -23,6 +23,7 @@ Date: 2/8/24
         <div class="d-flex">
           <!-- Emails, runs a function if enter is pressed to addStudent to the table -->
           <VTextField
+            type="email"
             v-model="student"
             label="Student Email"
             @keydown.enter="addStudent"
@@ -34,7 +35,11 @@ Date: 2/8/24
           v-if="addedStudents![0]"
           :headers="tableHeader"
           :items="addedStudents"
-        ></VDataTable>
+        >
+          <template #item.actions="{ item }">
+            <VBtn icon="mdi-close" @click="removeStudent(item.email)"></VBtn>
+          </template>
+        </VDataTable>
       </VContainer>
       <VCardActions>
         <VSpacer />
@@ -57,7 +62,17 @@ const show = defineModel<boolean>();
 const student = ref("");
 // Defines a model for each text field to handle the task details
 const name = defineModel("name");
-const tableHeader = [{ key: "email", title: "Email" }];
+const tableHeader = [
+  { key: "email", title: "Email" },
+  { key: "actions", title: "Actions" }
+];
+
+function removeStudent(email: string) {
+  addedStudents.value = addedStudents.value!.filter(
+    (student) => student.email !== email
+  );
+}
+
 const addedStudents = defineModel<{ email: string }[]>("students");
 
 // Function to add a student to the table with the value of their email
@@ -65,10 +80,14 @@ async function addStudent() {
   if (addedStudents.value!.find((s) => s.email === student.value)) {
     return;
   }
+  if (addedStudents.value?.includes((s) => s.email ) {
+
+  }
   // Pushes the added student to an array
   addedStudents.value!.push({
     email: student.value
   });
+  student.value = "";
 }
 
 // Defines the taskAdd emit, which will run a function on the parent component
