@@ -84,7 +84,9 @@ async function addStudent() {
   if (addedStudents.value!.find((s) => s.email === student.value)) {
     return;
   }
+  // TODO make this do something
   if (addedStudents.value?.includes((s) => s.email)) {
+
   }
   // Pushes the added student to an array
   addedStudents.value!.push({
