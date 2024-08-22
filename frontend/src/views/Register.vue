@@ -22,7 +22,7 @@ Date: 2/8/24
     <!-- Slot to add the buttons to the register page -->
     <template #buttons>
       <div class="d-flex justify-center py-2">
-        <VBtnToggle v-model="login.accountType">
+        <VBtnToggle mandatory v-model="login.accountType">
           <VBtn :value="AccountType.User">Student</VBtn>
           <VBtn :value="AccountType.Teacher">Teacher</VBtn>
           <VBtn :value="AccountType.Parent">Parent</VBtn>

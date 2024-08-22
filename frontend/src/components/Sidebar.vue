@@ -51,7 +51,10 @@ Date: 2/8/24
         prepend-icon="mdi-account"
         color="gold"
       >
-        {{ userStore.user?.username }} • {{ userStore.user?.accountType }}
+        {{ userStore.user?.username }}
+        <VCardSubtitle style="padding: 0; font-size: 13px">
+          {{ userStore.user?.accountType }}
+        </VCardSubtitle>
       </VListItem>
       <VDivider></VDivider>
       <!-- Settings -->

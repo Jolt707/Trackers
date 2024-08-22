@@ -5,7 +5,7 @@ Details: Uses the ClassesDialog and ConfirmationDialog
 Date: 11/8/24
 -->
 <template>
-  <VToolbar class="px-6 mb-4" style="border-radius: 4px">
+  <VToolbar class="mb-4 pl-6" style="border-radius: 4px">
     <ClassesDialog
       v-model:students="students"
       v-model="addDialog"
@@ -26,13 +26,26 @@ Date: 11/8/24
         <div class="d-flex">
           <!-- TextField for the email -->
           <VTextField
+            autofocus
             v-model="student"
             label="Student Email"
             @keydown.enter="addStudent"
           ></VTextField>
           <VIcon @click="addStudent" class="mt-3">mdi-plus</VIcon>
         </div>
-        <VDataTable :headers="tableHeader" :items="addedStudents"></VDataTable>
+        <VDataTable
+          v-if="addedStudents![0]"
+          :headers="tableHeader"
+          :items="addedStudents"
+        >
+          <template #item.actions="{ item }">
+            <VBtn
+              variant="text"
+              icon="mdi-close"
+              @click="removeStudent(item.email)"
+            ></VBtn>
+          </template>
+        </VDataTable>
       </template>
 
       <!-- Slots for the addingTasks (when adding tasks to a class) -->
@@ -57,7 +70,7 @@ Date: 11/8/24
       <!-- Slots for the destroyId (when deleting a class) -->
       <template v-if="destroyId" #title>Delete Class</template>
       <template v-if="destroyId" #text>delete</template>
-      <template v-if="destroyId" #button>Delete</template>
+      <template v-if="destroyId" #button style>Delete</template>
 
       <!-- Slots for the destroyId (when renaming a class) -->
       <template v-if="editingId" #title>Edit Class</template>
@@ -70,13 +83,17 @@ Date: 11/8/24
     </ConfirmationDialog>
     Classes List
     <VSpacer />
-    <!-- Only shows a plus is the account is a teacher -->
-    <VIcon
+    <!-- Only shows a plus if the account is a teacher -->
+    <VBtn
+      class="mr-3"
+      icon="mdi-plus"
+      color="#ffd707"
       v-if="userStore.user?.accountType === AccountType.Teacher"
-      @click="addDialog = true"
-    >
-      mdi-plus
-    </VIcon>
+      @click="
+        addDialog = true;
+        addedStudents = [];
+      "
+    ></VBtn>
   </VToolbar>
   <VExpansionPanels>
     <!-- Shows each class with a for loop with a key of the id -->
@@ -121,6 +138,7 @@ Date: 11/8/24
           <VChip
             v-if="userStore.user?.accountType === AccountType.Teacher"
             @click="
+              addedStudents = [];
               addingTasks = undefined;
               destroyId = undefined;
               editingId = undefined;
@@ -132,16 +150,16 @@ Date: 11/8/24
           </VChip>
           <!-- For loop to show the students in the class -->
           <VChip v-for="student in item.students" :key="student.id">
-            {{ student.username }}
-            <!-- TODO: Find out why no work -->
+            {{ student.username }} • {{ student.email }}
             <VBtn
+              variant="text"
               icon="mdi-close"
               class="ml-2"
               size="20px"
               @click="
                 addedStudents = [];
                 classId = item.id;
-                addedStudents.push(student.email);
+                addedStudents.push({ email: student.email });
                 console.log(student.email);
                 console.log(addedStudents);
                 addStudents(classId, addedStudents);
@@ -159,6 +177,7 @@ Date: 11/8/24
               destroyId = undefined;
               editingId = undefined;
               confirmation = true;
+              addTasks = item.tasks.map((task) => task.id);
               addingTasks = item.id;
             "
           >
@@ -168,6 +187,7 @@ Date: 11/8/24
           <VChip v-for="taskItem in item.tasks" :key="taskItem.id">
             {{ taskItem.title }}
             <VBtn
+              variant="text"
               icon="mdi-close"
               class="ml-2"
               size="20px"
@@ -214,7 +234,10 @@ const editingId = ref<number | undefined>(undefined);
 const updateName = defineModel("updateName");
 const student = ref("");
 const addedStudents = ref<{ email: string }[]>([]);
-const tableHeader = [{ key: "email", title: "Email" }];
+const tableHeader = [
+  { key: "email", title: "Email" },
+  { key: "actions", title: "Remove" }
+];
 const addTasks = ref<number[]>([]);
 const userStore = useUserStore();
 
@@ -299,6 +322,7 @@ async function addStudent() {
   addedStudents.value!.push({
     email: student.value
   });
+  student.value = "";
 }
 
 // Associates students with the class
@@ -313,6 +337,13 @@ async function addStudents(classId: number, students: { email: string }[]) {
       }
     }
   });
+  classes.value = await getClasses();
+}
+
+function removeStudent(email: string) {
+  addedStudents.value = addedStudents.value!.filter(
+    (student) => student.email !== email
+  );
 }
 
 // Runs on page load

@@ -1,5 +1,5 @@
-import { Service } from "typedi";
-import {createYoga, YogaServer} from "graphql-yoga";
+import { Container, Service } from "typedi";
+import { createYoga, maskError, YogaServer } from "graphql-yoga";
 import {buildSchema, MiddlewareFn} from "type-graphql";
 import {UserResolver} from "./resolvers/user.resolver";
 import {createServer} from "node:http"
@@ -10,6 +10,8 @@ import { TaskResolver } from "./resolvers/task.resolver";
 import { ClassResolver } from "./resolvers/class.resolver";
 import { ClassUserResolver } from "./resolvers/classUserAssociation.resolver";
 import { ClassTaskResolver } from "./resolvers/classTaskAssociation.resolver";
+import { ValidationError } from "sequelize";
+import { GraphQLError } from "graphql";
 @Service()
 export class Server {
     // Throws unhandled errors for each resolver
@@ -27,15 +29,25 @@ export class Server {
         // Generate GraphQLSchema based on resolvers
         const schema = await buildSchema({
             resolvers: [UserResolver, AuthResolver, TaskResolver, ClassResolver, ClassUserResolver, ClassTaskResolver],
-            globalMiddlewares: [this.ErrorInterceptor],
             authChecker: authCheck,
+            container: Container,
+            validate: {
+                forbidUnknownValues: false
+            }
         });
         // Create a GraphQL server instance with a GraphQL schema.
         const yoga = createYoga({ schema, context: (initialContext) => {
             return {
                 token: initialContext?.request?.headers?.get("Authorization")
             }
-            } })
+            },
+            maskedErrors: {
+                maskError(error: any, message: any, isDev: any): Error {
+                    console.log(error, message, isDev)
+                    return error
+                }
+            }
+             })
         const server = createServer(yoga)
 
         server.listen(6969, () => {

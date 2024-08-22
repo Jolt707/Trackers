@@ -16,6 +16,7 @@ export const useUserStore = defineStore("user", () => {
   const apolloClient = useApolloClient();
 
   async function getUser() {
+    if (!localStorage.getItem("token")) return;
     const {
       data: { currentUser }
     } = await apolloClient.client.query({

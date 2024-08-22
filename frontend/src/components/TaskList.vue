@@ -5,7 +5,7 @@ Details: This component is used in Tasks.vue, however does not send any data to 
 Date: 2/8/24
 -->
 <template>
-  <VToolbar class="px-6 mb-4" style="border-radius: 4px">
+  <VToolbar class="mb-4 pl-6" style="border-radius: 4px">
     <!--
     Using the TaskDialog component
     @taskAdd will either run editTask or createTask, depending on if there is an editingId
@@ -79,18 +79,20 @@ Date: 2/8/24
         ></VAutocomplete>
       </template>
     </ConfirmationDialog>
+
     Task List
-    <!-- Shows the dialog, unsets editingId and clears previous inputs -->
+    <VSpacer />
     <VBtn
-      class="ml-2"
+      class="mr-3"
       @click="
         addDialog = true;
         editingId = undefined;
         clearInputs();
       "
       icon="mdi-plus"
-      color="gold"
+      color="#ffd707"
     ></VBtn>
+    <!-- Shows the dialog, unsets editingId and clears previous inputs -->
   </VToolbar>
   <div v-if="!tasks[0]" class="d-flex justify-center">
     <div
@@ -138,31 +140,13 @@ Date: 2/8/24
         ></VBtn>
         <!-- Button to edit a task -->
         <VBtn
-          v-if="task.dueDate"
           @click.stop="
             editingId = task.id;
             addDialog = true;
             taskDetails.title = task.title;
             taskDetails.description = task.description;
             taskDetails.notes = task.notes;
-            taskDetails.dueDate = new Date(task.dueDate);
-            taskDetails.priority = task.priority;
-          "
-          variant="text"
-          icon="mdi-pencil"
-          color="#0190ea"
-        ></VBtn>
-        <!-- TODO: CHANGE THIS FOR GOODNESSY SAKE -->
-        <!-- TODO: ALSO MAKE DUE TIME POPULATE -->
-        <VBtn
-          v-else
-          @click.stop="
-            editingId = task.id;
-            addDialog = true;
-            taskDetails.title = task.title;
-            taskDetails.description = task.description;
-            taskDetails.notes = task.notes;
-            taskDetails.dueDate = task.dueDate;
+            taskDetails.dueDate = task.dueDate ? new Date(task.dueDate) : null;
             taskDetails.priority = task.priority;
           "
           variant="text"
@@ -217,6 +201,7 @@ Date: 2/8/24
           <VChipGroup>
             <VChip
               @click="
+                addClasses = task.classes.map((c) => c.id);
                 addingClasses = task.id;
                 confirmation = true;
               "

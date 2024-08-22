@@ -38,6 +38,7 @@ Date: 2/8/24
         <!-- Due Date (Date input) -->
         <div class="d-flex">
           <VDateInput
+            reactive
             prepend-icon=""
             label="Due Date"
             v-model="dueDate"

@@ -7,6 +7,7 @@ import { useApolloClient } from "@vue/apollo-composable";
 import { GET_CLASSES_QUERY } from "@/graphql/class/getClasses.graphql.ts";
 
 export async function getClasses() {
+  if (!localStorage.getItem("token")) return [];
   const apollo = useApolloClient();
   const {
     data: { classes: classesList }

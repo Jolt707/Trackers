@@ -7,9 +7,7 @@ Date: 2/8/24
 <template>
   <!-- If the user is logged out, the homepage will be shown -->
   <template v-if="!userStore.user">
-    <v-card-title class="d-flex justify-center text-lg-h3">
-      Trackers
-    </v-card-title>
+    <VCardTitle class="d-flex justify-center text-lg-h3">Trackers</VCardTitle>
   </template>
 
   <!-- If the user is signed in, the users homepage will be shown -->

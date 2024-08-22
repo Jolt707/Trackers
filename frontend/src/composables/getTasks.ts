@@ -7,6 +7,7 @@ import { useApolloClient } from "@vue/apollo-composable";
 import { GET_TASKS_QUERY } from "@/graphql/task/getTasks.graphql.ts";
 
 export async function getTasks(completedTask: boolean = false) {
+  if (!localStorage.getItem("token")) return [];
   const apollo = useApolloClient();
   const {
     data: { tasks: tasksList }

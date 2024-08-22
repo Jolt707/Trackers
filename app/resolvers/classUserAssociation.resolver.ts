@@ -38,8 +38,8 @@ export class ClassUserResolver {
       }
     })
     // If there are no users, throw an error
-    if (!users.length) {
-      throw new GraphQLError("User not found")
+    if (!input.emails.length) {
+      throw new GraphQLError("Please add a student's email")
     }
     // Validation to check if the users length is equal to the email input length, throws an error
     if (users.length !== input.emails.length) {

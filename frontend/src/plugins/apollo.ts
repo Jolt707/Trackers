@@ -14,6 +14,8 @@ import {
 } from "@apollo/client/core";
 import { loadDevMessages, loadErrorMessages } from "@apollo/client/dev";
 import { provideApolloClient } from "@vue/apollo-composable";
+import { onError } from "@apollo/client/link/error";
+import { useToast } from "vue-toastification";
 
 function getToken() {
   return localStorage.getItem("token");
@@ -22,6 +24,26 @@ function getToken() {
 export default function setup(app: App) {
   const httpLink = new HttpLink({
     uri: "/graphql"
+  });
+
+  const toast = useToast();
+
+  const errorLink = onError(({ graphQLErrors }) => {
+    if (graphQLErrors) {
+      for (const error of graphQLErrors) {
+        if (error.extensions?.code === "BAD_USER_INPUT") {
+          for (const err of error.extensions.validationErrors as any[]) {
+            const values: string[] = Object.values(err.constraints);
+
+            for (const value of values) {
+              toast.error(value);
+            }
+          }
+        } else {
+          toast.error(error.message);
+        }
+      }
+    }
   });
 
   const authLink = new ApolloLink((operation, forward) => {
@@ -51,7 +73,7 @@ export default function setup(app: App) {
     loadErrorMessages();
   }
 
-  const appLink = from([cleanTypeName, authLink, httpLink]);
+  const appLink = from([cleanTypeName, authLink, errorLink, httpLink]);
 
   // Create the apollo client
   const apolloClient = new ApolloClient({

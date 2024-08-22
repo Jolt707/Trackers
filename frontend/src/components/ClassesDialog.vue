@@ -16,7 +16,7 @@ Date: 2/8/24
         <!-- Name -->
         <VTextField
           :autofocus="true"
-          label="Name"
+          label="Class Name"
           v-model="name"
           style="margin-top: -2px"
         ></VTextField>
@@ -37,7 +37,11 @@ Date: 2/8/24
           :items="addedStudents"
         >
           <template #item.actions="{ item }">
-            <VBtn icon="mdi-close" @click="removeStudent(item.email)"></VBtn>
+            <VBtn
+              variant="text"
+              icon="mdi-close"
+              @click="removeStudent(item.email)"
+            ></VBtn>
           </template>
         </VDataTable>
       </VContainer>
@@ -56,7 +60,7 @@ Date: 2/8/24
 
 <script setup lang="ts">
 // Defining the show model that will make the parent component use addDialog and show the dialog
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const show = defineModel<boolean>();
 const student = ref("");
@@ -64,7 +68,7 @@ const student = ref("");
 const name = defineModel("name");
 const tableHeader = [
   { key: "email", title: "Email" },
-  { key: "actions", title: "Actions" }
+  { key: "actions", title: "Remove" }
 ];
 
 function removeStudent(email: string) {
@@ -80,8 +84,7 @@ async function addStudent() {
   if (addedStudents.value!.find((s) => s.email === student.value)) {
     return;
   }
-  if (addedStudents.value?.includes((s) => s.email ) {
-
+  if (addedStudents.value?.includes((s) => s.email)) {
   }
   // Pushes the added student to an array
   addedStudents.value!.push({
@@ -89,6 +92,15 @@ async function addStudent() {
   });
   student.value = "";
 }
+
+watch(
+  () => show.value,
+  (val) => {
+    if (!val) {
+      addedStudents.value = [];
+    }
+  }
+);
 
 // Defines the taskAdd emit, which will run a function on the parent component
 defineEmits(["classAdd"]);
