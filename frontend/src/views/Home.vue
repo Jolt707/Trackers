@@ -22,11 +22,14 @@ Date: 2/8/24
             <VIcon size="75px">mdi-information</VIcon>
           </VBtn>
         </div>
-        <div class="d-flex flex-column align-center">
+        <div
+          v-if="userStore.user?.accountType === AccountType.Teacher"
+          class="d-flex flex-column align-center"
+        >
           <!-- Class page -->
           <h3>Manage Classes</h3>
           <!-- Redirects to the classes page -->
-          <VBtn class="mt-2" size="150px" color="#ffd707" to="/help">
+          <VBtn class="mt-2" size="150px" color="#ffd707" to="/classes">
             <VIcon size="75px">mdi-human-male-board</VIcon>
           </VBtn>
         </div>
@@ -113,7 +116,7 @@ Date: 2/8/24
 import { useUserStore } from "@/stores/user.ts";
 import { onMounted, ref } from "vue";
 import TaskCard from "@/components/TaskCard.vue";
-import { Task } from "@/gql/graphql.ts";
+import { AccountType, Task } from "@/gql/graphql.ts";
 import { getTasks } from "@/composables/getTasks.ts";
 
 const userStore = useUserStore();

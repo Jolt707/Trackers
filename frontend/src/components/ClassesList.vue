@@ -114,7 +114,11 @@ Date: 11/8/24
   </div>
   <VExpansionPanels>
     <!-- Shows each class with a for loop with a key of the id -->
-    <VExpansionPanel v-for="item in classes" :key="item.id">
+    <VExpansionPanel
+      v-if="userStore.user?.accountType === AccountType.Teacher"
+      v-for="item in classes"
+      :key="item.id"
+    >
       <VExpansionPanelTitle>
         {{ item.name }}
         <VSpacer />
