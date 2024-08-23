@@ -1,7 +1,7 @@
 /*
  * Name: Jensen Stamp
  * Description: Get tasks query (sends task details to the frontend)
- * Date: 6/8/23
+ * Date: 6/8/24
  */
 import { gql } from "@apollo/client";
 

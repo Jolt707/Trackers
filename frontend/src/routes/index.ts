@@ -15,7 +15,8 @@ const routes = [
   { path: "/assigned", component: () => import("../views/Assigned.vue") },
   { path: "/upcoming", component: () => import("../views/Upcoming.vue") },
   { path: "/history", component: () => import("../views/TaskHistory.vue") },
-  { path: "/classes", component: () => import("../views/Classes.vue") }
+  { path: "/classes", component: () => import("../views/Classes.vue") },
+  { path: "/help", component: () => import("../views/Help.vue") }
 ];
 
 export const router = createRouter({

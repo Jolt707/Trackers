@@ -10,6 +10,12 @@ Date: 2/8/24
     <VList color="gold" density="compact" nav>
       <!-- Home -->
       <VListItem prepend-icon="mdi-home" title="Home" to="/"></VListItem>
+      <!-- Help -->
+      <VListItem
+        prepend-icon="mdi-information"
+        title="Help"
+        to="/help"
+      ></VListItem>
       <!-- Classes -->
       <VListItem
         v-if="userStore.user?.accountType === AccountType.Teacher"

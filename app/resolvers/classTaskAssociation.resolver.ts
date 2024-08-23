@@ -37,6 +37,9 @@ export class ClassTaskResolver {
         id: input.taskId
       }
     })
+    if (!input.taskId.length) {
+      throw new GraphQLError("Please add a task")
+    }
     // Defines the associations from the input
     const associations = []
     for (const task of tasks) {
@@ -82,6 +85,9 @@ export class ClassTaskResolver {
         id: input.classId
       }
     })
+    if (!input.classId.length) {
+      throw new GraphQLError("Please add a class")
+    }
     // Defining an array of multiple associations with the classItem.id and input.taskId
     const associations = []
     for (const classItem of classes) {

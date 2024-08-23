@@ -16,21 +16,35 @@ Date: 2/8/24
   >
     <!-- Each template is used to add styling and text-truncate (cut text off) -->
     <template #item.description="{ item }">
-      <div style="max-width: 150px" class="text-truncate">
+      <div
+        v-if="item.description"
+        style="max-width: 150px"
+        class="text-truncate"
+      >
         {{ item.description }}
+      </div>
+      <div v-else style="max-width: 150px" class="text-truncate">
+        <p style="color: #9d9d9d">No description</p>
       </div>
     </template>
     <template #item.notes="{ item }">
-      <div style="max-width: 150px" class="text-truncate">
+      <div v-if="item.notes" style="max-width: 150px" class="text-truncate">
         {{ item.notes }}
+      </div>
+      <div v-else style="max-width: 150px" class="text-truncate">
+        <p style="color: #9d9d9d">No notes</p>
       </div>
     </template>
     <template #item.dueDate="{ item }">
       <!-- Setting the date to the users locale -->
-      <div style="max-width: 150px" class="text-truncate">
+      <div v-if="item.dueDate" style="max-width: 150px" class="text-truncate">
         {{ new Date(item.dueDate).toLocaleString() }}
       </div>
+      <div v-else style="max-width: 150px" class="text-truncate">
+        <p style="color: #9d9d9d">Unset Due Date</p>
+      </div>
     </template>
+
     <template #item.updatedAt="{ item }">
       <!-- Setting the date to the users locale -->
       <div style="max-width: 150px" class="text-truncate">
@@ -39,17 +53,6 @@ Date: 2/8/24
     </template>
   </VDataTable>
 </template>
-
-<style scoped>
-.v-data-table >>> .v-data-table-header {
-  background-color: #191919 !important;
-}
-</style>
-<style>
-.v-data-table-header {
-  background-color: #191919 !important;
-}
-</style>
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";

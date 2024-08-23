@@ -20,6 +20,9 @@ Date: 2/8/24
           v-model="name"
           style="margin-top: -2px"
         ></VTextField>
+        <p style="color: #9d9d9d; font-size: 12px" class="mt-n4 mb-2">
+          Must contain at least 1 character
+        </p>
         <div class="d-flex">
           <!-- Emails, runs a function if enter is pressed to addStudent to the table -->
           <VTextField
@@ -83,10 +86,6 @@ const addedStudents = defineModel<{ email: string }[]>("students");
 async function addStudent() {
   if (addedStudents.value!.find((s) => s.email === student.value)) {
     return;
-  }
-  // TODO make this do something
-  if (addedStudents.value?.includes((s) => s.email)) {
-
   }
   // Pushes the added student to an array
   addedStudents.value!.push({

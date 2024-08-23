@@ -1,7 +1,7 @@
 /*
  * Name: Jensen Stamp
- * Description:
- * Date: 2/8/23
+ * Description: File that creates the app and other libraries used in the app
+ * Date: 2/8/24
  */
 import { createApp } from "vue";
 import "./style.css";

@@ -160,8 +160,6 @@ Date: 11/8/24
                 addedStudents = [];
                 classId = item.id;
                 addedStudents.push({ email: student.email });
-                console.log(student.email);
-                console.log(addedStudents);
                 addStudents(classId, addedStudents);
               "
             ></VBtn>

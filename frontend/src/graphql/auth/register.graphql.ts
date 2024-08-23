@@ -1,7 +1,7 @@
 /*
  * Name: Jensen Stamp
  * Description: Register mutation (returns the token and user)
- * Date: 2/8/23
+ * Date: 2/8/24
  */
 import { gql } from "@apollo/client";
 

@@ -211,6 +211,18 @@ Date: 2/8/24
             <!-- Displays the classes associated with the task-->
             <VChip v-for="classItem in task.classes" :key="classItem.id">
               {{ classItem.name }}
+              <VBtn
+                variant="text"
+                icon="mdi-close"
+                class="ml-2"
+                size="20px"
+                @click="
+                  addClasses = [];
+                  taskId = task.id;
+                  addClasses.push(classItem.id);
+                  addClassesFunction(taskId);
+                "
+              ></VBtn>
             </VChip>
           </VChipGroup>
         </template>
@@ -316,6 +328,7 @@ async function addClassesFunction(taskId: number) {
       }
     }
   });
+  tasks.value = await getTasks();
 }
 
 // Edit Task function, takes the updated taskDetails and editingId to update an existing task

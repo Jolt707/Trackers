@@ -1,7 +1,7 @@
 /*
  * Name: Jensen Stamp
  * Description: Delete class mutation (sends nothing back to the frontend, because the class is deleted)
- * Date: 2/8/23
+ * Date: 2/8/24
  */
 import { gql } from "@apollo/client";
 
