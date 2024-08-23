@@ -44,6 +44,7 @@ Date: 2/8/24
       ></VListItem>
       <!-- Task History -->
       <VListItem
+        v-if="userStore.user?.accountType === AccountType.User"
         prepend-icon="mdi-clipboard-search"
         title="Task History"
         to="/history"

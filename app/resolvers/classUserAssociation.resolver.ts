@@ -43,7 +43,7 @@ export class ClassUserResolver {
     }
     // Validation to check if the users length is equal to the email input length, throws an error
     if (users.length !== input.emails.length) {
-      throw new GraphQLError("Email not found")
+      throw new GraphQLError("Email not found, check each table element")
     }
     // Defines associations
     const associations = []

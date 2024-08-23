@@ -14,26 +14,26 @@ Date: 2/8/24
     <VCardText v-else class="text-truncate mt-n2" style="color: #9d9d9d">
       Unset due date
     </VCardText>
-    <VCardText v-if="task.description" class="text-truncate mt-n2">
+    <VCardText v-if="task.description" class="text-truncate mt-n4">
       {{ props.task.description }}
     </VCardText>
-    <VCardText v-else class="text-truncate mt-n2" style="color: #9d9d9d">
+    <VCardText v-else class="text-truncate mt-n4" style="color: #9d9d9d">
       No description
     </VCardText>
-    <VCardActions class="mt-n4">
+    <VCardActions class="mt-n3">
       <!-- Runs the completeTask function and sets the completedId -->
       <VBtn
         v-if="userStore.user?.accountType === AccountType.User"
-        color="#ffd707"
+        color="green"
         @click.stop="
           completedId = task.id;
           completeTask();
         "
       >
-        SET AS COMPLETE
+        COMPLETE TASK
       </VBtn>
       <!-- Redirects to the tasks with the edit query -->
-      <VBtn color="#ffd707" :to="'/tasks?edit=' + task.id">EDIT TASK</VBtn>
+      <VBtn color="blue" :to="'/tasks?edit=' + task.id">EDIT TASK</VBtn>
     </VCardActions>
   </VCard>
 </template>

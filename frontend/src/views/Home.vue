@@ -15,11 +15,19 @@ Date: 2/8/24
     <VContainer class="px-10">
       <div class="d-flex justify-space-between mx-10">
         <div class="d-flex flex-column align-center">
-          <!-- Create Task icon -->
+          <!-- Help page button -->
           <h3>Go to help page</h3>
-          <!-- Redirects to the tasks page with the create query (opens the dialog) -->
+          <!-- Redirects to the help page -->
           <VBtn class="mt-2" size="150px" color="#ffd707" to="/help">
             <VIcon size="75px">mdi-information</VIcon>
+          </VBtn>
+        </div>
+        <div class="d-flex flex-column align-center">
+          <!-- Class page -->
+          <h3>Manage Classes</h3>
+          <!-- Redirects to the classes page -->
+          <VBtn class="mt-2" size="150px" color="#ffd707" to="/help">
+            <VIcon size="75px">mdi-human-male-board</VIcon>
           </VBtn>
         </div>
         <div class="d-flex flex-column align-center">

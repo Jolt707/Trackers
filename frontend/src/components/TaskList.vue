@@ -82,6 +82,7 @@ Date: 2/8/24
 
     Task List
     <VSpacer />
+    <!-- Shows the dialog, unsets editingId and clears previous inputs -->
     <VBtn
       class="mr-3"
       @click="
@@ -89,10 +90,10 @@ Date: 2/8/24
         editingId = undefined;
         clearInputs();
       "
+      variant="tonal"
       icon="mdi-plus"
       color="#ffd707"
     ></VBtn>
-    <!-- Shows the dialog, unsets editingId and clears previous inputs -->
   </VToolbar>
   <div v-if="!tasks[0]" class="d-flex justify-center">
     <div
@@ -134,7 +135,8 @@ Date: 2/8/24
             completedId = task.id;
             confirmation = true;
           "
-          variant="text"
+          class="mr-3"
+          variant="tonal"
           icon="mdi-check"
           color="green"
         ></VBtn>
@@ -149,7 +151,8 @@ Date: 2/8/24
             taskDetails.dueDate = task.dueDate ? new Date(task.dueDate) : null;
             taskDetails.priority = task.priority;
           "
-          variant="text"
+          class="mr-3"
+          variant="tonal"
           icon="mdi-pencil"
           color="#0190ea"
         ></VBtn>
@@ -160,44 +163,44 @@ Date: 2/8/24
             completedId = undefined;
             confirmation = true;
           "
-          class="mr-2"
-          variant="text"
+          class="mr-5"
+          variant="tonal"
           icon="mdi-delete"
           color="red"
         ></VBtn>
       </VExpansionPanelTitle>
       <!-- Showing task details -->
       <VExpansionPanelText>
-        <p class="font-weight-bold pb-2">Description:</p>
+        <p class="font-weight-bold mb-2">Description:</p>
         <p
           v-if="!task.description"
-          class="text-truncate pb-2"
+          class="text-truncate mb-2"
           style="color: #9d9d9d"
         >
           No description
         </p>
-        <p v-else class="text-truncate pb-2">
+        <p v-else class="text-truncate mb-2">
           {{ task.description }}
         </p>
 
-        <p class="font-weight-bold pb-2">Notes:</p>
-        <p v-if="!task.notes" class="text-truncate pb-2" style="color: #9d9d9d">
+        <p class="font-weight-bold mb-2">Notes:</p>
+        <p v-if="!task.notes" class="text-truncate mb-2" style="color: #9d9d9d">
           No notes
         </p>
-        <p v-else class="text-truncate pb-2">{{ task.notes }}</p>
-        <p class="font-weight-bold pb-2">Priority:</p>
+        <p v-else class="text-truncate mb-2">{{ task.notes }}</p>
+        <p class="font-weight-bold mb-2">Priority:</p>
         <p
           v-if="task.priority == 0"
-          class="text-truncate pb-2"
+          class="text-truncate"
           style="color: #9d9d9d"
         >
           {{ task.priority }}
         </p>
-        <p v-else class="text-truncate pb-2">{{ task.priority }}</p>
+        <p v-else class="text-truncate">{{ task.priority }}</p>
         <p style="font-size: 12px; color: #9d9d9d">Higher = Prioritised</p>
         <!-- Shows the classes associated with the logged in teachers tasks -->
         <template v-if="userStore.user?.accountType === AccountType.Teacher">
-          <p class="font-weight-bold pb-2">Classes:</p>
+          <p class="font-weight-bold mt-2">Classes:</p>
           <VChipGroup>
             <VChip
               @click="

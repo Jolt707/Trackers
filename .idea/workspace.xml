@@ -5,33 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a440a60b-d5b7-4e88-855d-1380aa3d3020" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Help.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b981f8c2-5b44-4953-9d4e-a4697c91fa6a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b981f8c2-5b44-4953-9d4e-a4697c91fa6a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resolvers/classTaskAssociation.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/classTaskAssociation.resolver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/resolvers/classUserAssociation.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/resolvers/classUserAssociation.resolver.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ClassesDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ClassesDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/ClassesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ClassesList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskCard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/auth/login.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/auth/login.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/auth/register.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/auth/register.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/class/classUserAssociation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/class/classUserAssociation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/class/createClass.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/class/createClass.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/class/deleteClass.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/class/deleteClass.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/class/getClasses.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/class/getClasses.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/class/updateClass.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/class/updateClass.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/classTaskAssociation.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/classTaskAssociation.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/completeTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/completeTask.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/createTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/createTask.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/deleteTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/deleteTask.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/getTasks.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/getTasks.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/taskClassAssociation.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/taskClassAssociation.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/task/updateTask.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/task/updateTask.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Assigned.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Assigned.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Help.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Help.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +76,7 @@
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\frontend\\node_modules\\prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "C:\\Users\\jolt707\\WebstormProjects\\Trackers\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/home/jolt707/WebstormProjects/Trackers/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {

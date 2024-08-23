@@ -13,7 +13,7 @@ Date: 11/8/24
       @classAdd="createClass"
     >
       <template #title>Create Class</template>
-      <template #button>Confirm</template>
+      <template #button>Continue</template>
     </ClassesDialog>
     <ConfirmationDialog v-model="confirmation" @submit="updateClass">
       <template #type>class</template>
@@ -85,6 +85,7 @@ Date: 11/8/24
     <VSpacer />
     <!-- Only shows a plus if the account is a teacher -->
     <VBtn
+      variant="tonal"
       class="mr-3"
       icon="mdi-plus"
       color="#ffd707"
@@ -95,6 +96,22 @@ Date: 11/8/24
       "
     ></VBtn>
   </VToolbar>
+  <div v-if="!classes[0]" class="d-flex justify-center">
+    <div
+      class="d-flex w-100 flex-column justify-center align-center"
+      style="color: #696969"
+    >
+      <h2>You have no created classes</h2>
+      <p>
+        Use the
+        <VIcon class="mb-1" color="gold">mdi-plus</VIcon>
+        icon to create a class
+      </p>
+      <VIcon size="150px" style="color: #696969">
+        mdi-close-circle-outline
+      </VIcon>
+    </div>
+  </div>
   <VExpansionPanels>
     <!-- Shows each class with a for loop with a key of the id -->
     <VExpansionPanel v-for="item in classes" :key="item.id">
@@ -111,7 +128,8 @@ Date: 11/8/24
             confirmation = true;
             editingId = item.id;
           "
-          variant="text"
+          class="mr-3"
+          variant="tonal"
           icon="mdi-pencil"
           color="#0190ea"
         ></VBtn>
@@ -125,15 +143,15 @@ Date: 11/8/24
             confirmation = true;
             destroyId = item.id;
           "
-          class="mr-2"
-          variant="text"
+          class="mr-5"
+          variant="tonal"
           icon="mdi-delete"
           color="red"
         ></VBtn>
       </VExpansionPanelTitle>
       <VExpansionPanelText>
-        <p class="font-weight-bold pb-2">Students:</p>
-        <VChipGroup>
+        <p class="font-weight-bold">Students:</p>
+        <VChipGroup class="pb-4">
           <!-- Button for adding students to the class, unsets other selector variables -->
           <VChip
             v-if="userStore.user?.accountType === AccountType.Teacher"
@@ -165,7 +183,7 @@ Date: 11/8/24
             ></VBtn>
           </VChip>
         </VChipGroup>
-        <p class="font-weight-bold pb-2">Active Tasks:</p>
+        <p class="font-weight-bold">Active Tasks:</p>
         <VChipGroup>
           <!-- Button for adding tasks to the class, unsets other selector variables -->
           <VChip

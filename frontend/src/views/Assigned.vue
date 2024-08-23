@@ -48,21 +48,49 @@ Date: 2/8/24
           :key="task.id"
         >
           <VExpansionPanelTitle>
-            <!-- Getting the task title for each task from -->
-            {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
+            <!-- Getting the task title and dueDate, displaying both if there is a dueDate-->
+            <div v-if="task.dueDate">
+              {{ task.title }} • {{ new Date(task.dueDate).toLocaleString() }}
+            </div>
+            <div v-else>
+              {{ task.title }} •
+              <span style="color: #9d9d9d">Unset Due Date</span>
+            </div>
             <VSpacer />
           </VExpansionPanelTitle>
           <!-- Shows task details -->
           <VExpansionPanelText>
-            <p class="font-weight-bold pb-2">Description:</p>
-            <p class="text-truncate pb-2">
+            <p class="font-weight-bold mb-2">Description:</p>
+            <p
+              v-if="!task.description"
+              class="text-truncate mb-2"
+              style="color: #9d9d9d"
+            >
+              No description
+            </p>
+            <p v-else class="text-truncate mb-2">
               {{ task.description }}
             </p>
-            <p class="font-weight-bold pb-2">Notes:</p>
-            <p class="text-truncate pb-2">{{ task.notes }}</p>
-            <p class="font-weight-bold">Priority:</p>
-            <p class="pb-2" style="font-size: 15px">Higher = Prioritised</p>
-            <p class="text-truncate pb-2">{{ task.priority }}</p>
+
+            <p class="font-weight-bold mb-2">Notes:</p>
+            <p
+              v-if="!task.notes"
+              class="text-truncate mb-2"
+              style="color: #9d9d9d"
+            >
+              No notes
+            </p>
+            <p v-else class="text-truncate mb-2">{{ task.notes }}</p>
+            <p class="font-weight-bold mb-2">Priority:</p>
+            <p
+              v-if="task.priority == 0"
+              class="text-truncate"
+              style="color: #9d9d9d"
+            >
+              {{ task.priority }}
+            </p>
+            <p v-else class="text-truncate">{{ task.priority }}</p>
+            <p style="font-size: 12px; color: #9d9d9d">Higher = Prioritised</p>
           </VExpansionPanelText>
         </VExpansionPanel>
       </VExpansionPanels>
