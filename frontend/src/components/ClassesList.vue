@@ -70,7 +70,7 @@ Date: 11/8/24
       <!-- Slots for the destroyId (when deleting a class) -->
       <template v-if="destroyId" #title>Delete Class</template>
       <template v-if="destroyId" #text>delete</template>
-      <template v-if="destroyId" #button style>Delete</template>
+      <template v-if="destroyId" #button>Delete</template>
 
       <!-- Slots for the destroyId (when renaming a class) -->
       <template v-if="editingId" #title>Edit Class</template>
@@ -250,6 +250,7 @@ const confirmation = ref(false);
 const addingTasks = ref<number | undefined>(undefined);
 const addingStudents = ref<number | undefined>(undefined);
 const destroyId = ref<number | undefined>(undefined);
+const classId = ref<number | undefined>(undefined);
 const editingId = ref<number | undefined>(undefined);
 const updateName = defineModel("updateName");
 const student = ref("");

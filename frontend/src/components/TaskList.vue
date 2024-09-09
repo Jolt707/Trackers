@@ -40,7 +40,7 @@ Date: 2/8/24
           :items="classes"
           item-value="id"
           item-title="name"
-          v-model="addClasses"
+          v-model="addClasses as never[]"
         ></VAutocomplete>
       </template>
     </TaskDialog>
@@ -75,7 +75,7 @@ Date: 2/8/24
           :items="classes"
           item-value="id"
           item-title="name"
-          v-model="addClasses"
+          v-model="addClasses as never[]"
         ></VAutocomplete>
       </template>
     </ConfirmationDialog>
@@ -260,6 +260,7 @@ const addingClasses = ref<number | undefined>(undefined);
 // Id variables
 const completedId = ref<number | undefined>(undefined);
 const editingId = ref<number | undefined>(undefined);
+const taskId = ref<number | undefined>(undefined);
 const destroyId = ref<number | undefined>(undefined);
 
 const addClasses = ref<number[]>([]);
@@ -283,7 +284,7 @@ const taskDetails = ref({
   title: "",
   description: "",
   notes: "" as string | null | undefined,
-  dueDate: new Date() as Date | undefined,
+  dueDate: new Date() as Date | null,
   dueTime: "00:00",
   priority: 0 as number | undefined
 });
@@ -397,7 +398,7 @@ async function clearInputs() {
   taskDetails.value.title = "";
   taskDetails.value.description = "";
   taskDetails.value.notes = "";
-  taskDetails.value.dueDate = undefined;
+  taskDetails.value.dueDate = null;
   taskDetails.value.dueTime = "00:00";
   taskDetails.value.priority = 0;
 }

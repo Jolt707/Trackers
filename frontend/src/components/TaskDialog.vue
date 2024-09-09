@@ -82,10 +82,10 @@ const show = defineModel<boolean>();
 // Defines a model for each text field to handle the task details
 const title = defineModel("title");
 const description = defineModel("description");
-const notes = defineModel("notes");
-const dueDate = defineModel<Date>("dueDate");
+const notes = defineModel<string | null>("notes");
+const dueDate = defineModel<Date | null>("dueDate");
 const dueTime = defineModel<string>("dueTime");
-const priority = defineModel("priority");
+const priority = defineModel<number>("priority");
 
 // Defines the taskAdd emit, which will run a function on the parent component
 defineEmits(["taskAdd"]);
